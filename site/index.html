@@ -30,6 +30,7 @@
 <link rel="icon" href="assets/logo/wbs-favicon-forest.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/components.css">
+<link rel="stylesheet" href="assets/motion.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Waiheke Backyards Solutions","alternateName":"WBS","founder":{"@type":"Person","name":"Pablo Baldo"},"foundingDate":"2024","telephone":"+64211822723","email":"pablo.wbs@gmail.com","areaServed":{"@type":"Place","name":"Waiheke Island, Auckland, New Zealand"},"address":{"@type":"PostalAddress","addressLocality":"Waiheke Island","addressRegion":"Auckland","addressCountry":"NZ"},"priceRange":"$$","url":"https://waiheke-backyards-solutions.netlify.app/","image":"https://waiheke-backyards-solutions.netlify.app/assets/photos/og-image.jpg","logo":"https://waiheke-backyards-solutions.netlify.app/assets/logo/wbs-mark-color.svg","openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:30","closes":"17:30"}}
 </script>
@@ -82,7 +83,8 @@ h1,h2,h3{margin:0;font-weight:600}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-6);margin-top:var(--space-8);padding-top:var(--space-6);border-top:1px solid var(--line)}
 .stat b{display:block;font:400 22px/28px var(--font-mono);letter-spacing:0.9px;text-transform:uppercase}
 @media (min-width:768px){.stat b{font-size:28px;line-height:32px;letter-spacing:1.1px}}
-.stat span{display:block;margin-top:4px;font-size:14px;line-height:20px;color:var(--ink-muted)}
+.stat > span{display:block;margin-top:4px;font-size:14px;line-height:20px;color:var(--ink-muted)}
+.stat b .cnt{display:inline;font:inherit}
 .ridge{position:relative;aspect-ratio:4/3;background:var(--forest);border-radius:var(--radius-md);overflow:hidden}
 @media (min-width:1000px){.ridge{aspect-ratio:4/5}}
 .ridge img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -194,15 +196,11 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
 .foot a{color:var(--bone)}
 .foot .mono{font-family:var(--font-mono);letter-spacing:0.6px}
 .legal{margin-top:var(--space-7);padding-top:var(--space-4);border-top:1px solid #3f5c4f;font-family:var(--font-mono);font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:#a8b5af}
-/* reveal */
-html.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
-html.js .reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){html.js .reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="header">
+<header class="header" id="siteHeader">
   <div class="wrap nav">
     <a class="logo" href="#top" aria-label="Waiheke Backyards Solutions, home">
       <img src="assets/logo/wbs-mark-color.svg" alt="" width="40" height="40">
@@ -232,12 +230,16 @@ html.js .reveal.in{opacity:1;transform:none}
   </nav>
 </header>
 
+<div class="cta-bar" id="ctaBar" data-visible="false" aria-hidden="true">
+  <a class="wbs-btn wbs-btn--primary" href="#contact">Get a quote</a>
+</div>
+
 <main id="main">
 <section class="hero" id="top">
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">Landscape · Carpentry · Build · Waiheke Island</span>
-      <h1 class="display">Backyards <em>built with care.</em></h1>
+      <h1 class="display"><span class="w">Backyards</span> <em><span class="w">built</span> <span class="w">with</span> <span class="w">care.</span></em></h1>
       <p class="lead">Decks, fences, retaining walls, sleepouts and renovations, designed and built by Pablo Baldo and a small local team. A written quote before we start, a weather-honest timeline, and a 12-month workmanship warranty when we finish.</p>
       <div class="hero-actions">
         <a class="wbs-btn wbs-btn--primary" href="#contact">Get a quote</a>
@@ -245,8 +247,8 @@ html.js .reveal.in{opacity:1;transform:none}
       </div>
       <div class="stats" aria-label="At a glance">
         <div class="stat"><b>Est 2024</b><span>Waiheke Island, Auckland</span></div>
-        <div class="stat"><b>12 mo</b><span>workmanship warranty</span></div>
-        <div class="stat"><b>30 days</b><span>every quote stays valid</span></div>
+        <div class="stat"><b><span class="cnt" data-count="12">12</span> mo</b><span>workmanship warranty</span></div>
+        <div class="stat"><b><span class="cnt" data-count="30">30</span> days</b><span>every quote stays valid</span></div>
       </div>
     </div>
     <figure class="ridge">
@@ -265,7 +267,7 @@ html.js .reveal.in{opacity:1;transform:none}
     <h2 class="h1">Landscape, carpentry and build for the backyard you actually use</h2>
     <p class="lead">Three trades, one team. Every job starts with a site visit and a fixed, itemised quote.</p>
     <div class="cards">
-      <article class="card reveal">
+      <article class="card reveal" data-stagger="0">
         <div class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M5 20V12l4-3 4 3 4-3 4 3v8M12 20v-5"/></svg></div>
         <h3>Landscape</h3>
         <p>Ground work that makes a sloping Waiheke section usable and dry.</p>
@@ -275,7 +277,7 @@ html.js .reveal.in{opacity:1;transform:none}
           <li>Planting, lawns and garden beds</li>
         </ul>
       </article>
-      <article class="card reveal">
+      <article class="card reveal" data-stagger="1">
         <div class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 10-10-3-3L5 16l-1 4zM13 7l3 3M3 4h5M3 8h3"/></svg></div>
         <h3>Carpentry</h3>
         <p>Outdoor timber work built to handle salt air and winter rain.</p>
@@ -285,7 +287,7 @@ html.js .reveal.in{opacity:1;transform:none}
           <li>Repairs, re-boards and re-stains</li>
         </ul>
       </article>
-      <article class="card reveal">
+      <article class="card reveal" data-stagger="2">
         <div class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-6 7 6v12M9 21v-6h6v6"/></svg></div>
         <h3>Build</h3>
         <p>Small builds and renovations, from the framing up.</p>
@@ -299,18 +301,27 @@ html.js .reveal.in{opacity:1;transform:none}
   </div>
 </section>
 
+<div class="wrap" aria-hidden="true">
+  <svg class="ridgeline" viewBox="0 0 600 24" preserveAspectRatio="none"><path d="M0 18 L80 6 L160 20 L240 4 L320 16 L400 8 L480 20 L560 6 L600 14"/></svg>
+</div>
+
 <section id="process">
   <div class="wrap">
     <span class="eyebrow">02 · How we work</span>
     <h2 class="h1">Four steps, no surprises</h2>
-    <div class="steps">
-      <article class="step reveal"><figure class="step__photo"><picture><source srcset="assets/photos/step-01-site-visit.webp" type="image/webp"><img src="assets/photos/step-01-site-visit.jpg" alt="Builder with a tape measure at a timber door frame, client in the background" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 01</span><h3>Site visit</h3><p>We walk the site with you, take levels and photos, and talk through what is possible and what it will cost.</p></div></article>
-      <article class="step reveal"><figure class="step__photo"><picture><source srcset="assets/photos/step-02-written-quote.webp" type="image/webp"><img src="assets/photos/step-02-written-quote.jpg" alt="Clipboard and pencil on a workbench beside a tape measure and hand tools" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 02</span><h3>Written quote</h3><p>An itemised quote, valid for 30 days. A 30% deposit confirms the booking and reserves materials.</p></div></article>
-      <article class="step reveal"><figure class="step__photo"><picture><source srcset="assets/photos/step-03-the-build.webp" type="image/webp"><img src="assets/photos/step-03-the-build.jpg" alt="Gloved hand driving a screw into a hinge on pine timber" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 03</span><h3>The build</h3><p>Our own team on site with progress photos on WhatsApp. Any change of scope is quoted and agreed in writing first.</p></div></article>
-      <article class="step reveal"><figure class="step__photo"><picture><source srcset="assets/photos/step-04-handover.webp" type="image/webp"><img src="assets/photos/step-04-handover.jpg" alt="Handing over a set of keys at the end of a job" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 04</span><h3>Handover</h3><p>A final walk-through together, the balance invoiced on completion, and 12 months of workmanship warranty.</p></div></article>
+    <div class="steps-wrap">
+      <div class="rail" aria-hidden="true"><span class="rail__fill"></span></div>
+      <div class="steps">
+        <article class="step reveal" data-stagger="0"><figure class="step__photo"><picture><source srcset="assets/photos/step-01-site-visit.webp" type="image/webp"><img src="assets/photos/step-01-site-visit.jpg" alt="Builder with a tape measure at a timber door frame, client in the background" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 01</span><h3>Site visit</h3><p>We walk the site with you, take levels and photos, and talk through what is possible and what it will cost.</p></div></article>
+        <article class="step reveal" data-stagger="1"><figure class="step__photo"><picture><source srcset="assets/photos/step-02-written-quote.webp" type="image/webp"><img src="assets/photos/step-02-written-quote.jpg" alt="Clipboard and pencil on a workbench beside a tape measure and hand tools" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 02</span><h3>Written quote</h3><p>An itemised quote, valid for 30 days. A 30% deposit confirms the booking and reserves materials.</p></div></article>
+        <article class="step reveal" data-stagger="2"><figure class="step__photo"><picture><source srcset="assets/photos/step-03-the-build.webp" type="image/webp"><img src="assets/photos/step-03-the-build.jpg" alt="Gloved hand driving a screw into a hinge on pine timber" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 03</span><h3>The build</h3><p>Our own team on site with progress photos on WhatsApp. Any change of scope is quoted and agreed in writing first.</p></div></article>
+        <article class="step reveal" data-stagger="3"><figure class="step__photo"><picture><source srcset="assets/photos/step-04-handover.webp" type="image/webp"><img src="assets/photos/step-04-handover.jpg" alt="Handing over a set of keys at the end of a job" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 04</span><h3>Handover</h3><p>A final walk-through together, the balance invoiced on completion, and 12 months of workmanship warranty.</p></div></article>
+      </div>
     </div>
   </div>
 </section>
+
+<div class="marquee" aria-hidden="true"><div class="marquee__track"><span>Landscape · Carpentry · Build · Waiheke &nbsp;</span><span>Landscape · Carpentry · Build · Waiheke &nbsp;</span></div></div>
 
 <section class="reverse" id="about">
   <div class="wrap about-grid">
@@ -318,7 +329,7 @@ html.js .reveal.in{opacity:1;transform:none}
     <div>
       <span class="eyebrow">03 · About</span>
       <div class="founder">
-        <picture class="avatar"><source srcset="assets/photos/pablo-baldo-160.webp 1x, assets/photos/pablo-baldo-320.webp 2x" type="image/webp"><img src="assets/photos/pablo-baldo-160.jpg" srcset="assets/photos/pablo-baldo-320.jpg 2x" alt="Pablo Baldo" width="160" height="160" loading="lazy"></picture>
+        <span class="avatar"><picture><source srcset="assets/photos/pablo-baldo-160.webp 1x, assets/photos/pablo-baldo-320.webp 2x" type="image/webp"><img src="assets/photos/pablo-baldo-160.jpg" srcset="assets/photos/pablo-baldo-320.jpg 2x" alt="Pablo Baldo" width="160" height="160" loading="lazy"></picture><svg class="ring" aria-hidden="true" viewBox="0 0 88 88"><circle cx="44" cy="44" r="42"/></svg></span>
         <h2 class="h1">Pablo Baldo, founder</h2>
       </div>
       <p class="lead">Pablo started Waiheke Backyards Solutions in 2024 after years in landscaping, carpentry and construction. He lives on the island, quotes every job himself, and is on the tools with the team most days.</p>
@@ -332,22 +343,34 @@ html.js .reveal.in{opacity:1;transform:none}
   </div>
 </section>
 
+<div class="wrap" aria-hidden="true">
+  <svg class="ridgeline" viewBox="0 0 600 24" preserveAspectRatio="none"><path d="M0 10 L70 20 L150 6 L230 18 L310 4 L390 16 L470 8 L540 20 L600 12"/></svg>
+</div>
+
 <section class="alt" id="work">
   <div class="wrap">
     <span class="eyebrow">04 · Recent work</span>
     <h2 class="h1">Recent work across the island</h2>
     <p class="lead">The kind of work we do across the island. Photos of finished WBS jobs are added with each client's permission.</p>
+    <div class="filters" role="group" aria-label="Filter by category">
+      <button type="button" class="chip" data-filter="All" aria-pressed="true">All</button>
+      <button type="button" class="chip" data-filter="Landscape" aria-pressed="false">Landscape</button>
+      <button type="button" class="chip" data-filter="Carpentry" aria-pressed="false">Carpentry</button>
+      <button type="button" class="chip" data-filter="Build" aria-pressed="false">Build</button>
+    </div>
     <div class="gallery">
     <!-- Stock photos via Pexels (free licence, no attribution required), served through Netlify Image CDN. Replace with client photos as they arrive. -->
-      <figure class="tile reveal tile--duo"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F10847167%2Fpexels-photo-10847167.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F10847167%2Fpexels-photo-10847167.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F10847167%2Fpexels-photo-10847167.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Wooden deck with a pergola overlooking a garden" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Cedar deck and pergola</b><span>Onetangi</span></div></figure>
-      <figure class="tile reveal tile--duo"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F34532537%2Fpexels-photo-34532537.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F34532537%2Fpexels-photo-34532537.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F34532537%2Fpexels-photo-34532537.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Garden walkway with timber steps and benches" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Timber retaining and steps</b><span>Oneroa</span></div></figure>
-      <figure class="tile reveal tile--duo"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F4406335%2Fpexels-photo-4406335.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F4406335%2Fpexels-photo-4406335.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F4406335%2Fpexels-photo-4406335.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Small wooden cabin on a hillside" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Sleepout fit-out</b><span>Palm Beach</span></div></figure>
-      <figure class="tile reveal tile--duo"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F259888%2Fpexels-photo-259888.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F259888%2Fpexels-photo-259888.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F259888%2Fpexels-photo-259888.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Timber gate and fence in a grassy paddock" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Fence and gate</b><span>Surfdale</span></div></figure>
-      <figure class="tile reveal tile--duo"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F33326592%2Fpexels-photo-33326592.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F33326592%2Fpexels-photo-33326592.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F33326592%2Fpexels-photo-33326592.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Coastal timber deck overlooking the sea" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Bach deck renovation</b><span>Ostend</span></div></figure>
-      <figure class="tile reveal tile--duo"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F7174111%2Fpexels-photo-7174111.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F7174111%2Fpexels-photo-7174111.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F7174111%2Fpexels-photo-7174111.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Garden path through planting beside a gazebo" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Backyard landscaping</b><span>Omiha</span></div></figure>
+      <figure class="tile reveal tile--duo" data-cat="Carpentry"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F10847167%2Fpexels-photo-10847167.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F10847167%2Fpexels-photo-10847167.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F10847167%2Fpexels-photo-10847167.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Wooden deck with a pergola overlooking a garden" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Cedar deck and pergola</b><span>Onetangi · Carpentry</span></div></figure>
+      <figure class="tile reveal tile--duo" data-cat="Landscape"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F34532537%2Fpexels-photo-34532537.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F34532537%2Fpexels-photo-34532537.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F34532537%2Fpexels-photo-34532537.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Garden walkway with timber steps and benches" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Timber retaining and steps</b><span>Oneroa · Landscape</span></div></figure>
+      <figure class="tile reveal tile--duo" data-cat="Build"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F4406335%2Fpexels-photo-4406335.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F4406335%2Fpexels-photo-4406335.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F4406335%2Fpexels-photo-4406335.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Small wooden cabin on a hillside" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Sleepout fit-out</b><span>Palm Beach · Build</span></div></figure>
+      <figure class="tile reveal tile--duo" data-cat="Carpentry"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F259888%2Fpexels-photo-259888.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F259888%2Fpexels-photo-259888.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F259888%2Fpexels-photo-259888.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Timber gate and fence in a grassy paddock" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Fence and gate</b><span>Surfdale · Carpentry</span></div></figure>
+      <figure class="tile reveal tile--duo" data-cat="Carpentry"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F33326592%2Fpexels-photo-33326592.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F33326592%2Fpexels-photo-33326592.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F33326592%2Fpexels-photo-33326592.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Coastal timber deck overlooking the sea" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Bach deck renovation</b><span>Ostend · Carpentry</span></div></figure>
+      <figure class="tile reveal tile--duo" data-cat="Landscape"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F7174111%2Fpexels-photo-7174111.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F7174111%2Fpexels-photo-7174111.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F7174111%2Fpexels-photo-7174111.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Garden path through planting beside a gazebo" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Backyard landscaping</b><span>Omiha · Landscape</span></div></figure>
     </div>
   </div>
 </section>
+
+<div class="marquee" aria-hidden="true"><div class="marquee__track"><span>Landscape · Carpentry · Build · Waiheke &nbsp;</span><span>Landscape · Carpentry · Build · Waiheke &nbsp;</span></div></div>
 
 
 <section class="alt" id="faq">
@@ -379,12 +402,12 @@ html.js .reveal.in{opacity:1;transform:none}
     <form id="quote" name="quote" method="post" action="/thanks.html" data-netlify="true" netlify-honeypot="company" novalidate>
       <input type="hidden" name="form-name" value="quote">
       <p class="hp" aria-hidden="true"><label>Company <input name="company" tabindex="-1" autocomplete="off"></label></p>
-      <div class="wbs-field"><label for="name" class="wbs-field__label">Your name</label><input id="name" name="name" class="wbs-field__input" type="text" autocomplete="name" required></div>
-      <div class="wbs-field"><label for="phone" class="wbs-field__label">Phone or WhatsApp</label><input id="phone" name="phone" class="wbs-field__input" type="tel" autocomplete="tel" inputmode="tel" required><span class="wbs-field__hint" id="phone-hint">NZ mobile, e.g. 021 182 2723</span></div>
-      <div class="wbs-field"><label for="email" class="wbs-field__label">Email</label><input id="email" name="email" class="wbs-field__input" type="email" autocomplete="email"></div>
+      <div class="wbs-field wbs-field--float"><input id="name" name="name" class="wbs-field__input" type="text" autocomplete="name" placeholder=" " required><label for="name" class="wbs-field__label">Your name</label></div>
+      <div class="wbs-field wbs-field--float"><input id="phone" name="phone" class="wbs-field__input" type="tel" autocomplete="tel" inputmode="tel" placeholder=" " required><label for="phone" class="wbs-field__label">Phone or WhatsApp</label><span class="wbs-field__hint" id="phone-hint">NZ mobile, e.g. 021 182 2723</span></div>
+      <div class="wbs-field wbs-field--float"><input id="email" name="email" class="wbs-field__input" type="email" autocomplete="email" placeholder=" "><label for="email" class="wbs-field__label">Email</label></div>
       <div class="wbs-field"><label for="service" class="wbs-field__label">What do you need?</label><select id="service" name="service" class="wbs-field__input"><option>Landscape</option><option>Carpentry</option><option>Build</option><option>Not sure yet</option></select></div>
-      <div class="wbs-field span2"><label for="message" class="wbs-field__label">Tell us about the job</label><textarea id="message" name="message" class="wbs-field__input" required placeholder="Where on the island, roughly what size, and when you would like it done."></textarea></div>
-      <label class="consent span2"><input type="checkbox" name="consent" required> I agree that Waiheke Backyards Solutions may use these details to contact me about this quote, in line with the New Zealand Privacy Act 2020 (see our <a href="privacy.html">privacy notice</a>).</label>
+      <div class="wbs-field wbs-field--float span2"><textarea id="message" name="message" class="wbs-field__input" required placeholder=" "></textarea><label for="message" class="wbs-field__label">Tell us about the job: where on the island, roughly what size, and when</label></div>
+      <label class="consent span2"><input type="checkbox" name="consent" required><span>I agree that Waiheke Backyards Solutions may use these details to contact me about this quote, in line with the New Zealand Privacy Act 2020 (see our <a href="privacy.html">privacy notice</a>).</span></label>
       <div class="span2"><button class="wbs-btn wbs-btn--primary" type="submit">Send request</button></div>
       <p class="status span2" id="status" role="status" aria-live="polite"></p>
     </form>
@@ -412,29 +435,6 @@ html.js .reveal.in{opacity:1;transform:none}
   </div>
 </footer>
 
-<script>
-(function(){
-  document.documentElement.classList.add('js');
-  var burger=document.getElementById('burger'),menu=document.getElementById('mobilemenu');
-  burger.addEventListener('click',function(){var open=menu.getAttribute('data-open')==='true';menu.setAttribute('data-open',String(!open));burger.setAttribute('aria-expanded',String(!open));burger.setAttribute('aria-label',open?'Open menu':'Close menu');});
-  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.setAttribute('data-open','false');burger.setAttribute('aria-expanded','false');});});
-  var links=document.querySelectorAll('#navlinks a'),sections=[];
-  links.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));if(s)sections.push([s,a]);});
-  if('IntersectionObserver' in window){
-    var spy=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.removeAttribute('aria-current');});sections.forEach(function(p){if(p[0]===e.target)p[1].setAttribute('aria-current','true');});}});},{rootMargin:'-40% 0px -55% 0px'});
-    sections.forEach(function(p){spy.observe(p[0]);});
-    var rev=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rev.unobserve(e.target);}});},{threshold:0.15});
-    document.querySelectorAll('.reveal').forEach(function(el){rev.observe(el);});
-  } else { document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');}); }
-  var form=document.getElementById('quote'),status=document.getElementById('status');
-  form.addEventListener('submit',function(ev){
-    var ok=true;
-    form.querySelectorAll('.wbs-field').forEach(function(f){var i=f.querySelector('input,textarea,select');if(!i)return;var bad=i.required&&!i.value.trim();if(i.type==='tel'&&i.value&&!/^\+?[\d\s()-]{7,}$/.test(i.value))bad=true;f.setAttribute('data-invalid',String(bad));if(bad)ok=false;});
-    var c=form.querySelector('input[name=consent]');if(!c.checked){ok=false;}
-    if(!ok){ev.preventDefault();status.removeAttribute('data-ok');status.textContent='Please fill in your name, phone, the job details and tick the consent box.';return;}
-    if(location.protocol==='file:'||/localhost|127\.0\.0\.1/.test(location.host)){ev.preventDefault();status.setAttribute('data-ok','true');status.textContent='Thanks. Form submission is handled by the host in production; this local preview does not send.';}
-  });
-})();
-</script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>
