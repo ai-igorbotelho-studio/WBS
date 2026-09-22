@@ -8,7 +8,9 @@
 <meta property="og:title" content="Waiheke Backyards Solutions — landscape · carpentry · build">
 <meta property="og:description" content="Build, design and renovation for Waiheke backyards. Written quotes, weather-honest timelines, 12-month workmanship warranty.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/logo/wbs-horizontal-reverse-color.png">
+<meta property="og:image" content="assets/photos/og-timber-framing.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <link rel="icon" href="assets/logo/wbs-favicon-forest.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/components.css">
@@ -66,8 +68,10 @@ h1,h2,h3{margin:0;font-weight:600}
 @media (min-width:768px){.stat b{font-size:28px;line-height:32px;letter-spacing:1.1px}}
 .stat span{display:block;margin-top:4px;font-size:14px;line-height:20px;color:var(--ink-muted)}
 .ridge{position:relative;aspect-ratio:4/3;background:var(--forest);border-radius:var(--radius-md);overflow:hidden}
-.ridge svg{position:absolute;inset:0;width:100%;height:100%}
-.ridge figcaption{position:absolute;left:24px;bottom:20px;font-family:var(--font-mono);font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--bone);opacity:.8}
+@media (min-width:1000px){.ridge{aspect-ratio:4/5}}
+.ridge img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ridge::after{content:"";position:absolute;inset:auto 0 0 0;height:96px;background:linear-gradient(to top,rgba(31,58,46,.7),rgba(31,58,46,0))}
+.ridge figcaption{position:absolute;z-index:1;left:24px;bottom:20px;font-family:var(--font-mono);font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--bone);opacity:.8}
 /* services */
 .alt{background:var(--surface-alt)}
 .cards{display:grid;gap:var(--space-6);margin-top:var(--space-8)}
@@ -95,7 +99,7 @@ h1,h2,h3{margin:0;font-weight:600}
 .reverse .lead,.reverse p{color:#a8b5af}
 .about-grid{display:grid;gap:var(--space-8);align-items:center}
 @media (min-width:900px){.about-grid{grid-template-columns:5fr 7fr;gap:var(--space-9)}}
-.portrait{width:100%;max-width:420px;aspect-ratio:1;border-radius:var(--radius-md);overflow:hidden;background:var(--timber)}
+.portrait{margin:0;width:100%;max-width:420px;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;background:var(--timber)}
 .portrait img{width:100%;height:100%;object-fit:cover}
 .team{display:grid;gap:var(--space-4);margin:var(--space-7) 0 0;padding:0;list-style:none}
 @media (min-width:600px){.team{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -203,12 +207,12 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
         <div class="stat"><b>30 days</b><span>every quote stays valid</span></div>
       </div>
     </div>
-    <figure class="ridge" aria-hidden="true">
-      <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
-        <line x1="40" y1="232" x2="360" y2="232" stroke="#F2EDE3" stroke-width="2" stroke-linecap="round"/>
-        <path d="M40 232 L106 120 L162 176 L228 72 L294 156 L360 108 L360 232 Z" fill="#F2EDE3"/>
-        <circle cx="284" cy="44" r="22" fill="#B8845A"/>
-      </svg>
+    <figure class="ridge">
+      <picture>
+        <source srcset="assets/photos/timber-framing.webp" type="image/webp">
+        <img src="assets/photos/timber-framing.jpg" alt="Timber wall framing under construction, lit by afternoon sun" width="1600" height="2400" loading="eager" fetchpriority="high">
+      </picture>
+      <figcaption>Framing · Waiheke</figcaption>
     </figure>
   </div>
 </section>
@@ -268,7 +272,7 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
 
 <section class="reverse" id="about">
   <div class="wrap about-grid">
-    <div class="portrait"><img src="assets/logo/05-profile-photo-placeholder.svg" alt="Placeholder for a portrait of Pablo Baldo, founder" width="800" height="800"></div>
+    <figure class="portrait"><picture><source srcset="assets/photos/carpentry-planer.webp" type="image/webp"><img src="assets/photos/carpentry-planer.jpg" alt="A carpenter feeding a hardwood board through a thicknesser in the workshop" width="1200" height="1800" loading="lazy"></picture></figure>
     <div>
       <span class="eyebrow">03 · About</span>
       <h2 class="h1">Pablo Baldo, founder</h2>
