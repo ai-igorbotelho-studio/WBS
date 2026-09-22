@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/components.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Waiheke Backyards Solutions","alternateName":"WBS","founder":{"@type":"Person","name":"Pablo Baldo"},"foundingDate":"2024","telephone":"+64211822723","email":"pablo.wbs@gmail.com","areaServed":{"@type":"Place","name":"Waiheke Island, Auckland, New Zealand"},"address":{"@type":"PostalAddress","addressLocality":"Waiheke Island","addressRegion":"Auckland","addressCountry":"NZ"},"priceRange":"$$","url":"[SITE URL]","sameAs":["[Instagram URL]"]}
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Waiheke Backyards Solutions","alternateName":"WBS","founder":{"@type":"Person","name":"Pablo Baldo"},"foundingDate":"2024","telephone":"+64211822723","email":"pablo.wbs@gmail.com","areaServed":{"@type":"Place","name":"Waiheke Island, Auckland, New Zealand"},"address":{"@type":"PostalAddress","addressLocality":"Waiheke Island","addressRegion":"Auckland","addressCountry":"NZ"},"priceRange":"$$"}
 </script>
 <style>
 *,*::before,*::after{box-sizing:border-box}
@@ -36,7 +36,7 @@ h1,h2,h3{margin:0;font-weight:600}
 @media (min-width:768px){.h1{font-size:40px;line-height:44px;letter-spacing:-1px}}
 .lead{font-size:18px;line-height:28px;color:var(--ink-muted);margin:var(--space-4) 0 0;max-width:640px}
 /* header */
-.header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.header{position:sticky;top:0;z-index:50;background:rgba(248,244,235,.94);background:color-mix(in srgb,var(--paper) 94%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--forest)}
 .logo img{width:40px;height:40px}
@@ -92,7 +92,7 @@ h1,h2,h3{margin:0;font-weight:600}
 /* about (reverse) */
 .reverse{background:var(--forest);color:var(--bone)}
 .reverse .eyebrow{color:#d8b08c}
-.reverse .lead,.reverse p{color:#c9d3cd}
+.reverse .lead,.reverse p{color:#a8b5af}
 .about-grid{display:grid;gap:var(--space-8);align-items:center}
 @media (min-width:900px){.about-grid{grid-template-columns:5fr 7fr;gap:var(--space-9)}}
 .portrait{width:100%;max-width:420px;aspect-ratio:1;border-radius:var(--radius-md);overflow:hidden;background:var(--timber)}
@@ -131,13 +131,10 @@ h1,h2,h3{margin:0;font-weight:600}
 .contact-list a{font-family:var(--font-mono);font-size:18px;letter-spacing:0.6px;text-decoration:none}
 form{display:grid;gap:var(--space-4);background:var(--surface-raised);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-6)}
 @media (min-width:600px){form{grid-template-columns:repeat(2,minmax(0,1fr));padding:var(--space-8)}.span2{grid-column:1/-1}}
-.field{display:flex;flex-direction:column;gap:8px}
-.field label{font-size:14px;line-height:20px;font-weight:600}
-.field input,.field select,.field textarea{min-height:48px;padding:12px 16px;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--surface-raised);color:var(--ink);font:400 16px/24px var(--font-sans);width:100%}
-.field textarea{min-height:120px;resize:vertical}
-.field .hint{font-size:14px;line-height:20px;color:var(--ink-muted)}
-.field[data-invalid="true"] input,.field[data-invalid="true"] textarea{border-color:var(--danger)}
-.field[data-invalid="true"] .hint{color:var(--danger)}
+.wbs-field__input{width:100%}
+textarea.wbs-field__input{min-height:120px;resize:vertical}
+.wbs-field[data-invalid="true"] .wbs-field__input{border-color:var(--danger)}
+.wbs-field[data-invalid="true"] .wbs-field__hint{color:var(--danger)}
 .consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:20px;color:var(--ink-muted)}
 .consent input{width:20px;height:20px;margin:2px 0 0;flex:none}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
@@ -212,7 +209,6 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
         <path d="M40 232 L106 120 L162 176 L228 72 L294 156 L360 108 L360 232 Z" fill="#F2EDE3"/>
         <circle cx="284" cy="44" r="22" fill="#B8845A"/>
       </svg>
-      <figcaption>[Hero photo of a finished deck goes here]</figcaption>
     </figure>
   </div>
 </section>
@@ -276,12 +272,12 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
     <div>
       <span class="eyebrow">03 · About</span>
       <h2 class="h1">Pablo Baldo, founder</h2>
-      <p class="lead">Pablo started Waiheke Backyards Solutions in 2024 after [N] years in landscaping, carpentry and construction, [background placeholder: where he trained and worked]. He lives on the island, quotes every job himself, and is on the tools with the team most days.</p>
+      <p class="lead">Pablo started Waiheke Backyards Solutions in 2024 after years in landscaping, carpentry and construction. He lives on the island, quotes every job himself, and is on the tools with the team most days.</p>
       <p>Outdoor work on Waiheke depends on the weather and the ferry. We plan for both, tell you when something slips, and never let a delay become a surprise.</p>
       <ul class="team">
         <li><b>Pablo Baldo</b><span>Founder · builder · quotes and site lead</span></li>
-        <li><b>[Name]</b><span>Carpenter · decks and structures</span></li>
-        <li><b>[Name]</b><span>Landscaper · retaining, paths and planting</span></li>
+        <li><b>Carpentry</b><span>Decks, structures and fit-outs</span></li>
+        <li><b>Landscaping</b><span>Retaining, paths and planting</span></li>
       </ul>
     </div>
   </div>
@@ -291,29 +287,18 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
   <div class="wrap">
     <span class="eyebrow">04 · Recent work</span>
     <h2 class="h1">Recent work across the island</h2>
-    <p class="lead">A sample of finished jobs. Photos to be supplied with client permission before launch.</p>
+    <p class="lead">A sample of the kind of jobs we do. Photos of finished work are added with each client's permission.</p>
     <div class="gallery">
-      <figure class="tile reveal"><div class="ph"></div><b>Cedar deck and pergola</b><span>Onetangi · [year]</span></figure>
-      <figure class="tile reveal"><div class="ph"></div><b>Timber retaining and steps</b><span>Oneroa · [year]</span></figure>
-      <figure class="tile reveal"><div class="ph"></div><b>Sleepout fit-out</b><span>Palm Beach · [year]</span></figure>
-      <figure class="tile reveal"><div class="ph"></div><b>Fence and gate</b><span>Surfdale · [year]</span></figure>
-      <figure class="tile reveal"><div class="ph"></div><b>Bach deck renovation</b><span>Ostend · [year]</span></figure>
-      <figure class="tile reveal"><div class="ph"></div><b>Backyard landscaping</b><span>Omiha · [year]</span></figure>
+      <figure class="tile reveal"><div class="ph"></div><b>Cedar deck and pergola</b><span>Onetangi</span></figure>
+      <figure class="tile reveal"><div class="ph"></div><b>Timber retaining and steps</b><span>Oneroa</span></figure>
+      <figure class="tile reveal"><div class="ph"></div><b>Sleepout fit-out</b><span>Palm Beach</span></figure>
+      <figure class="tile reveal"><div class="ph"></div><b>Fence and gate</b><span>Surfdale</span></figure>
+      <figure class="tile reveal"><div class="ph"></div><b>Bach deck renovation</b><span>Ostend</span></figure>
+      <figure class="tile reveal"><div class="ph"></div><b>Backyard landscaping</b><span>Omiha</span></figure>
     </div>
   </div>
 </section>
 
-<section id="reviews">
-  <div class="wrap">
-    <span class="eyebrow">05 · Clients</span>
-    <h2 class="h1">What clients say</h2>
-    <div class="quotes">
-      <blockquote class="quote reveal"><p>“Quoted on the Tuesday, started the following week, finished on the day he said.”</p><footer>[Client name · placeholder] · Onetangi</footer></blockquote>
-      <blockquote class="quote reveal"><p>“Progress photos every afternoon. We were in Auckland the whole time and never worried.”</p><footer>[Client name · placeholder] · Oneroa</footer></blockquote>
-      <blockquote class="quote reveal"><p>“The retaining wall came in on the quote. No extras, no surprises.”</p><footer>[Client name · placeholder] · Palm Beach</footer></blockquote>
-    </div>
-  </div>
-</section>
 
 <section class="alt" id="faq">
   <div class="wrap">
@@ -344,12 +329,12 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
     <form id="quote" name="quote" method="post" action="/thanks.html" data-netlify="true" netlify-honeypot="company" novalidate>
       <input type="hidden" name="form-name" value="quote">
       <p class="hp" aria-hidden="true"><label>Company <input name="company" tabindex="-1" autocomplete="off"></label></p>
-      <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
-      <div class="field"><label for="phone">Phone or WhatsApp</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required><span class="hint" id="phone-hint">NZ mobile, e.g. 021 182 2723</span></div>
-      <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email"></div>
-      <div class="field"><label for="service">What do you need?</label><select id="service" name="service"><option>Build</option><option>Design</option><option>Renovation</option><option>Not sure yet</option></select></div>
-      <div class="field span2"><label for="message">Tell us about the job</label><textarea id="message" name="message" required placeholder="Where on the island, roughly what size, and when you would like it done."></textarea></div>
-      <label class="consent span2"><input type="checkbox" name="consent" required> I agree that Waiheke Backyards Solutions may use these details to contact me about this quote, in line with the New Zealand Privacy Act 2020.</label>
+      <div class="wbs-field"><label for="name" class="wbs-field__label">Your name</label><input id="name" name="name" class="wbs-field__input" type="text" autocomplete="name" required></div>
+      <div class="wbs-field"><label for="phone" class="wbs-field__label">Phone or WhatsApp</label><input id="phone" name="phone" class="wbs-field__input" type="tel" autocomplete="tel" inputmode="tel" required><span class="wbs-field__hint" id="phone-hint">NZ mobile, e.g. 021 182 2723</span></div>
+      <div class="wbs-field"><label for="email" class="wbs-field__label">Email</label><input id="email" name="email" class="wbs-field__input" type="email" autocomplete="email"></div>
+      <div class="wbs-field"><label for="service" class="wbs-field__label">What do you need?</label><select id="service" name="service" class="wbs-field__input"><option>Build</option><option>Design</option><option>Renovation</option><option>Not sure yet</option></select></div>
+      <div class="wbs-field span2"><label for="message" class="wbs-field__label">Tell us about the job</label><textarea id="message" name="message" class="wbs-field__input" required placeholder="Where on the island, roughly what size, and when you would like it done."></textarea></div>
+      <label class="consent span2"><input type="checkbox" name="consent" required> I agree that Waiheke Backyards Solutions may use these details to contact me about this quote, in line with the New Zealand Privacy Act 2020 (see our <a href="privacy.html">privacy notice</a>).</label>
       <div class="span2"><button class="wbs-btn wbs-btn--primary" type="submit">Send request</button></div>
       <p class="status span2" id="status" role="status" aria-live="polite"></p>
     </form>
@@ -367,12 +352,10 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
       <div>
         <p class="mono"><a href="tel:+64211822723">+64 21 182 2723</a></p>
         <p><a href="mailto:pablo.wbs@gmail.com">pablo.wbs@gmail.com</a></p>
-        <p><a href="[Instagram URL]">Instagram</a> · <a href="[Google Business URL]">Google reviews</a></p>
       </div>
       <div>
-        <p><a href="[Terms & Conditions URL]">Terms &amp; conditions</a></p>
-        <p><a href="[Privacy notice URL]">Privacy notice</a></p>
-        <p>NZBN: [number] · GST: [number]</p>
+        <p><a href="terms.html">Terms &amp; conditions</a></p>
+        <p><a href="privacy.html">Privacy notice</a></p>
       </div>
     </div>
     <div class="legal">© 2026 Waiheke Backyards Solutions · Est 2024 · Waiheke</div>
@@ -395,7 +378,7 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
   var form=document.getElementById('quote'),status=document.getElementById('status');
   form.addEventListener('submit',function(ev){
     var ok=true;
-    form.querySelectorAll('.field').forEach(function(f){var i=f.querySelector('input,textarea,select');if(!i)return;var bad=i.required&&!i.value.trim();if(i.type==='tel'&&i.value&&!/^\+?[\d\s()-]{7,}$/.test(i.value))bad=true;f.setAttribute('data-invalid',String(bad));if(bad)ok=false;});
+    form.querySelectorAll('.wbs-field').forEach(function(f){var i=f.querySelector('input,textarea,select');if(!i)return;var bad=i.required&&!i.value.trim();if(i.type==='tel'&&i.value&&!/^\+?[\d\s()-]{7,}$/.test(i.value))bad=true;f.setAttribute('data-invalid',String(bad));if(bad)ok=false;});
     var c=form.querySelector('input[name=consent]');if(!c.checked){ok=false;}
     if(!ok){ev.preventDefault();status.removeAttribute('data-ok');status.textContent='Please fill in your name, phone, the job details and tick the consent box.';return;}
     if(location.protocol==='file:'||/localhost|127\.0\.0\.1/.test(location.host)){ev.preventDefault();status.setAttribute('data-ok','true');status.textContent='Thanks. Form submission is handled by the host in production; this local preview does not send.';}
