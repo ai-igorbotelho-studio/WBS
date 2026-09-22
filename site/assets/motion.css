@@ -257,11 +257,16 @@ html.js .wbs-field--float .wbs-field__label {
 .wbs-field--phone .wbs-field__input { padding-left: 118px; }
 .wbs-field--phone .wbs-field__label { left: 118px; white-space: nowrap; }
 .dial-wrap {
-  position: absolute; left: 10px; top: 16px;
-  height: 40px; width: 96px; border-right: 1px solid var(--line);
+  position: absolute; left: 10px; top: 1px; bottom: 1px;
+  width: 96px; border-right: 1px solid var(--line);
+}
+.dial__lab {
+  position: absolute; left: 8px; top: 6px;
+  font-size: 12.5px; line-height: 16px; color: var(--forest);
+  pointer-events: none;
 }
 .dial__val {
-  position: absolute; inset: 0; padding: 0 22px 0 8px;
+  position: absolute; left: 0; right: 0; top: 22px; height: 24px; padding: 0 22px 0 8px;
   display: flex; align-items: center;
   font: 500 14px/20px var(--font-mono); letter-spacing: .4px; color: var(--forest);
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%231f3a2e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 6px center;
