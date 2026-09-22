@@ -89,7 +89,7 @@
           }
         });
       },
-      { rootMargin: "-40% 0px -55% 0px" }
+      { rootMargin: "-30% 0px -50% 0px" }
     );
     spyPairs.forEach(function (pair) {
       spyObserver.observe(pair[0]);
@@ -130,4 +130,16 @@
     );
     ctaObserver.observe(hero);
   }
+})();
+
+// QA fix: hide the CTA bar while #contact is in view or a quote field has focus
+(function(){
+  var bar=document.getElementById('ctaBar'),contact=document.getElementById('contact'),form=document.getElementById('quote');
+  if(!bar)return;
+  var inContact=false,focused=false;
+  function apply(){var hide=inContact||focused;bar.classList.toggle('cta-bar--suppressed',hide);if(hide){bar.setAttribute('aria-hidden','true');bar.style.visibility='hidden';}else if(bar.getAttribute('data-visible')==='true'){bar.setAttribute('aria-hidden','false');bar.style.visibility='';}}
+  if(contact&&'IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){inContact=e.isIntersecting;apply();});},{threshold:0.05}).observe(contact);}
+  if(form){form.addEventListener('focusin',function(){focused=true;apply();});form.addEventListener('focusout',function(){setTimeout(function(){focused=form.contains(document.activeElement);apply();},0);});}
+  // QA fix: intercept submit so the prototype validates instead of navigating
+  if(form){form.addEventListener('submit',function(ev){var bad=false;form.querySelectorAll('[required]').forEach(function(i){var f=i.closest('.wbs-field');var b=!i.value.trim();if(f)f.setAttribute('data-invalid',String(b));if(b)bad=true;});if(bad){ev.preventDefault();return;}if(!form.getAttribute('action')||form.getAttribute('action').indexOf('http')!==0){ev.preventDefault();}},true);}
 })();

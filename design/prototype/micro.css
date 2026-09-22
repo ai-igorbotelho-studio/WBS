@@ -145,3 +145,5 @@ html.js .tile:hover span{transform:translateY(-4px)}
 @media (prefers-reduced-motion:reduce){
   #quote .wbs-btn[aria-busy="true"]::before{animation:none;opacity:.7}
 }
+
+.cta-bar--suppressed{visibility:hidden!important;pointer-events:none}
