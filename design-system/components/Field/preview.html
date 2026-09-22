@@ -1,0 +1,11 @@
+<!-- @dsCard group="Forms" height=220 -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Field</title></head>
+<body style="margin:0;padding:24px;background:var(--surface-alt)">
+<div id="root" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:720px"></div>
+<script>
+var r=document.getElementById('root'),W=window.WBS;
+r.appendChild(W.Field({label:'Your name',name:'name',placeholder:'Pablo Baldo',required:true}));
+r.appendChild(W.Field({label:'Phone',name:'phone',type:'tel',value:'021 000 000',error:'Enter a NZ mobile, e.g. 021 182 2723'}));
+</script>
+</body></html>

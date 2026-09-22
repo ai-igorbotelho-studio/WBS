@@ -1,7 +1,6 @@
 ---
 name: digital-agency-midia-performance-programmatic-dsp-specialist
 description: Programmatic buying. Internal specialist role within digital-agency-midia-performance (Media & Performance). Engage directly for programmatic/dsp specialist tasks, or go through digital-agency-midia-performance / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

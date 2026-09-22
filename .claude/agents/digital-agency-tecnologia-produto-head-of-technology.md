@@ -1,7 +1,6 @@
 ---
 name: digital-agency-tecnologia-produto-head-of-technology
 description: Manages the technical team. Internal specialist role within digital-agency-tecnologia-produto (Technology & Product). Engage directly for head of technology tasks, or go through digital-agency-tecnologia-produto / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

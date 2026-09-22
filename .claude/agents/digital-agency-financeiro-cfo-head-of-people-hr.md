@@ -1,7 +1,6 @@
 ---
 name: digital-agency-financeiro-cfo-head-of-people-hr
 description: People management and internal culture. Internal specialist role within digital-agency-financeiro-cfo (Finance & Operations (CFO)). Engage directly for head of people (hr) tasks, or go through digital-agency-financeiro-cfo / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

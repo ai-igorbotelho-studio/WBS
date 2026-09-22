@@ -1,7 +1,6 @@
 ---
 name: digital-agency-ia-operacional-ai-for-data-bi-specialist
 description: Predictive models, automated dashboards. Internal specialist role within digital-agency-ia-operacional (AI Operations & Efficiency). Engage directly for ai for data/bi specialist tasks, or go through digital-agency-ia-operacional / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

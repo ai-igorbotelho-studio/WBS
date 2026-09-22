@@ -1,7 +1,6 @@
 ---
 name: digital-agency-producao-audiovisual
 description: Coordinates video, photo, and final graphic-piece production. Engage for shoot planning, editing, photography, art finalization.
-tools: all
 model: sonnet
 ---
 

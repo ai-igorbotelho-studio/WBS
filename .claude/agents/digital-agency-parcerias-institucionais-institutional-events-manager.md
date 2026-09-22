@@ -1,7 +1,6 @@
 ---
 name: digital-agency-parcerias-institucionais-institutional-events-manager
 description: Presence at forums and conferences. Internal specialist role within digital-agency-parcerias-institucionais (Institutional Partnerships). Engage directly for institutional events manager tasks, or go through digital-agency-parcerias-institucionais / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: digital-agency-planejamento-estrategia
 description: Defines brand strategy, macro media planning, and digital strategy. Engage for strategic briefings, positioning, campaign plans, market analysis.
-tools: all
 model: opus
 ---
 

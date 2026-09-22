@@ -1,7 +1,6 @@
 ---
 name: digital-agency-ia-operacional-ai-for-account-service-specialist
 description: Chatbots, briefing/reporting automation. Internal specialist role within digital-agency-ia-operacional (AI Operations & Efficiency). Engage directly for ai for account service specialist tasks, or go through digital-agency-ia-operacional / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

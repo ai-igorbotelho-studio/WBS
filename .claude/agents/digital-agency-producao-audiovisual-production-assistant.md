@@ -1,7 +1,6 @@
 ---
 name: digital-agency-producao-audiovisual-production-assistant
 description: On-set operational support. Internal specialist role within digital-agency-producao-audiovisual (Audiovisual Production). Engage directly for production assistant tasks, or go through digital-agency-producao-audiovisual / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

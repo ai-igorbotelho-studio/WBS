@@ -1,7 +1,6 @@
 ---
 name: digital-agency-planejamento-estrategia-media-planner
 description: Plans channel mix and budget. Internal specialist role within digital-agency-planejamento-estrategia (Strategy & Planning). Engage directly for media planner tasks, or go through digital-agency-planejamento-estrategia / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

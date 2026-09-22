@@ -1,7 +1,6 @@
 ---
 name: digital-agency-conteudo-social-cro-analyst
 description: Conversion-rate optimization. Internal specialist role within digital-agency-conteudo-social (Content & Social). Engage directly for cro analyst tasks, or go through digital-agency-conteudo-social / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

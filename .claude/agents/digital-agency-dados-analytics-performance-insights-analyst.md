@@ -1,7 +1,6 @@
 ---
 name: digital-agency-dados-analytics-performance-insights-analyst
 description: Generates actionable insights. Internal specialist role within digital-agency-dados-analytics (Data & Analytics). Engage directly for performance/insights analyst tasks, or go through digital-agency-dados-analytics / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

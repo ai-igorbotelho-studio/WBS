@@ -1,7 +1,6 @@
 ---
 name: digital-agency-producao-audiovisual-visual-content-director-head-of-production
 description: Leads the area, reports to Creative. Internal specialist role within digital-agency-producao-audiovisual (Audiovisual Production). Engage directly for visual content director / head of production tasks, or go through digital-agency-producao-audiovisual / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: digital-agency-criacao-art-director
 description: Visual direction of pieces. Internal specialist role within digital-agency-criacao (Creative). Engage directly for art director tasks, or go through digital-agency-criacao / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

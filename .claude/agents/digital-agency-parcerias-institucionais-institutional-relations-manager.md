@@ -1,7 +1,6 @@
 ---
 name: digital-agency-parcerias-institucionais-institutional-relations-manager
 description: Relationship management with partners. Internal specialist role within digital-agency-parcerias-institucionais (Institutional Partnerships). Engage directly for institutional relations manager tasks, or go through digital-agency-parcerias-institucionais / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

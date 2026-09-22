@@ -1,7 +1,6 @@
 ---
 name: digital-agency-atendimento-client-service-director-csd
 description: Strategic relationship with key clients, retention, upsell. Internal specialist role within digital-agency-atendimento (Account Service). Engage directly for client service director (csd) tasks, or go through digital-agency-atendimento / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: digital-agency-parcerias-institucionais-co-creation-brand-alliances-analyst
 description: Partnerships between brands. Internal specialist role within digital-agency-parcerias-institucionais (Institutional Partnerships). Engage directly for co-creation & brand alliances analyst tasks, or go through digital-agency-parcerias-institucionais / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

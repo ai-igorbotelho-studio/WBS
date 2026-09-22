@@ -1,7 +1,6 @@
 ---
 name: digital-agency-impacto-socioambiental-biome-regeneration-specialist
 description: Environmental restoration projects. Internal specialist role within digital-agency-impacto-socioambiental (Socioenvironmental Impact). Engage directly for biome regeneration specialist tasks, or go through digital-agency-impacto-socioambiental / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

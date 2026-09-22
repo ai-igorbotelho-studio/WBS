@@ -1,7 +1,6 @@
 ---
 name: digital-agency-criacao-scriptwriter
 description: Scripts for video/reels/commercials. Internal specialist role within digital-agency-criacao (Creative). Engage directly for scriptwriter tasks, or go through digital-agency-criacao / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

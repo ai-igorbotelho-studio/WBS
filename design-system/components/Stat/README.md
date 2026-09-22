@@ -1,0 +1,1 @@
+A proof number: DM Mono value over a small label, used in a row of three under the hero. Provide `value` (a number or short code, e.g. "12 MO" or "30%") and `label` ("workmanship warranty"). Only state figures that are true; placeholders stay bracketed until confirmed.

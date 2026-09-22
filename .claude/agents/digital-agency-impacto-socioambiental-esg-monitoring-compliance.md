@@ -1,7 +1,6 @@
 ---
 name: digital-agency-impacto-socioambiental-esg-monitoring-compliance
 description: Tracks GRI, SASB, TCFD, and regulations. Internal specialist role within digital-agency-impacto-socioambiental (Socioenvironmental Impact). Engage directly for esg monitoring & compliance tasks, or go through digital-agency-impacto-socioambiental / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

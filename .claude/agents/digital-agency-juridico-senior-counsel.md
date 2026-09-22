@@ -1,7 +1,6 @@
 ---
 name: digital-agency-juridico-senior-counsel
 description: Complex cases, legal opinions. Internal specialist role within digital-agency-juridico (Legal). Engage directly for senior counsel tasks, or go through digital-agency-juridico / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

@@ -1,0 +1,1 @@
+The DM Mono uppercase label that sits above every title: a section number, a category, the tagline. Provide `text`; the separator between words is a middle dot. Default colour is `timber-text` (readable timber); set `muted` for ink-muted. Never longer than one line.

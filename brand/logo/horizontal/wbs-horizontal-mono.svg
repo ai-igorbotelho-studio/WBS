@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="130" viewBox="0 0 480 130">
+<defs></defs>
+<g transform="translate(24 17) scale(1.2)"><g>
+  <line x1="6" y1="62" x2="74" y2="62" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"></line>
+  <path d="M6 62 L20 38 L32 50 L46 28 L60 46 L74 36 L74 62 Z" fill="#1A1A1A"></path>
+  <circle cx="58" cy="22" r="5" fill="#1A1A1A"></circle>
+</g></g>
+<g font-family="&#39;Bricolage Grotesque&#39;, &#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif" font-weight="600" font-size="30" letter-spacing="-0.025em" fill="#1A1A1A">
+  <text x="142" y="42">Waiheke</text>
+  <text x="142" y="76">Backyards</text>
+  <text x="142" y="110">Solutions</text>
+</g>
+</svg>

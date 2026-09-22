@@ -1,7 +1,6 @@
 ---
 name: digital-agency-tecnologia-produto-devops-infrastructure
 description: Infrastructure and deployment. Internal specialist role within digital-agency-tecnologia-produto (Technology & Product). Engage directly for devops / infrastructure tasks, or go through digital-agency-tecnologia-produto / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

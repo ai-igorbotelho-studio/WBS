@@ -1,7 +1,6 @@
 ---
 name: digital-agency-ceo
 description: Master orchestrator of the agency. Receives the user's request, decides which directors (subagents) to engage, consolidates their responses, and ensures strategic coherence across areas. Use for any broad, multi-area request, or when it isn't clear which department should respond.
-tools: all
 model: opus
 ---
 

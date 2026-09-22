@@ -1,7 +1,6 @@
 ---
 name: digital-agency-tecnologia-produto-e-commerce-specialist
 description: Shopify, VTEX, etc.. Internal specialist role within digital-agency-tecnologia-produto (Technology & Product). Engage directly for e-commerce specialist tasks, or go through digital-agency-tecnologia-produto / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

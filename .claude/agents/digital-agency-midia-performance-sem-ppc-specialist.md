@@ -1,7 +1,6 @@
 ---
 name: digital-agency-midia-performance-sem-ppc-specialist
 description: Paid search. Internal specialist role within digital-agency-midia-performance (Media & Performance). Engage directly for sem/ppc specialist tasks, or go through digital-agency-midia-performance / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

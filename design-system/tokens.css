@@ -1,0 +1,18 @@
+/* WBS design tokens. Generated from design-system/tokens.json. Do not edit by hand. */
+@font-face{font-family:"Bricolage Grotesque";src:url("fonts/BricolageGrotesque-Variable.ttf") format("truetype");font-weight:200 800;font-style:normal;font-display:swap}
+@font-face{font-family:"DM Mono";src:url("fonts/DMMono-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"DM Mono";src:url("fonts/DMMono-Medium.ttf") format("truetype");font-weight:500;font-style:normal;font-display:swap}
+:root,[data-theme="light"]{--forest:#1f3a2e;--timber:#b8845a;--bone:#f2ede3;--paper:#f8f4eb;--charcoal:#1a1a1a;--coastal:#5b7a8c;--rule:#d8d3c9;--surface:var(--paper);--surface-alt:var(--bone);--surface-raised:#ffffff;--ink:var(--forest);--ink-muted:#4a5e54;--line:var(--rule);--brand:var(--forest);--on-brand:var(--bone);--accent:var(--timber);--on-accent:var(--forest);--timber-text:#8a5e3a;--focus:var(--timber);--success:#2f6b3f;--warning:#8a5e3a;--danger:#9b3a2c}
+[data-theme="dark"]{--forest:#1f3a2e;--timber:#b8845a;--bone:#f2ede3;--paper:#f8f4eb;--charcoal:#1a1a1a;--coastal:#5b7a8c;--rule:#d8d3c9;--surface:var(--forest);--surface-alt:#264537;--surface-raised:#2e5243;--ink:var(--bone);--ink-muted:#a8b5af;--line:#3f5c4f;--brand:var(--bone);--on-brand:var(--forest);--accent:var(--timber);--on-accent:var(--forest);--timber-text:#d8b08c;--focus:var(--timber);--success:#8fcf9f;--warning:#d8b08c;--danger:#e8998c}
+:root{--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:22px;--space-6:24px;--space-7:32px;--space-8:40px;--space-9:48px;--space-10:60px;--space-11:80px;--space-12:120px;--radius-sm:4px;--radius-md:6px;--radius-lg:12px;--radius-icon:18%;--radius-round:50%;--shadow-card:0 12px 28px -10px rgba(0,0,0,0.18);--shadow-inset-line:inset 0 0 0 1px rgba(31,58,46,0.08);--logo-min-digital:200px;--logo-min-print:40mm;--mark-min:24px;--mark-nav:40px;--font-sans:"Bricolage Grotesque", system-ui, "Helvetica Neue", Helvetica, sans-serif;--font-mono:"DM Mono", ui-monospace, Menlo, monospace}
+.display-xl{font-family:var(--font-sans);font-size:88px;line-height:88px;font-weight:600;letter-spacing:-2.6px}
+.display-l{font-family:var(--font-sans);font-size:56px;line-height:58px;font-weight:600;letter-spacing:-1.4px}
+.h1{font-family:var(--font-sans);font-size:40px;line-height:44px;font-weight:600;letter-spacing:-1px}
+.h2{font-family:var(--font-sans);font-size:28px;line-height:32px;font-weight:600;letter-spacing:-0.7px}
+.h3{font-family:var(--font-sans);font-size:20px;line-height:26px;font-weight:600;letter-spacing:-0.2px}
+.body-l{font-family:var(--font-sans);font-size:18px;line-height:28px;font-weight:400;letter-spacing:0px}
+.body{font-family:var(--font-sans);font-size:16px;line-height:24px;font-weight:400;letter-spacing:0px}
+.small{font-family:var(--font-sans);font-size:14px;line-height:20px;font-weight:400;letter-spacing:0px}
+.eyebrow{font-family:var(--font-mono);font-size:11px;line-height:16px;font-weight:400;letter-spacing:2.4px;text-transform:uppercase}
+.mono{font-family:var(--font-mono);font-size:16px;line-height:24px;font-weight:400;letter-spacing:0.6px;text-transform:uppercase}
+.mono-l{font-family:var(--font-mono);font-size:28px;line-height:32px;font-weight:400;letter-spacing:1.1px;text-transform:uppercase}

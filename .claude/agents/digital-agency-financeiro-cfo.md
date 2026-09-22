@@ -1,7 +1,6 @@
 ---
 name: digital-agency-financeiro-cfo
 description: Manages finance, pricing, financial contracts, and administrative operations. Engage for budgeting, project pricing, cash flow, or operational/administrative matters.
-tools: all
 model: sonnet
 ---
 

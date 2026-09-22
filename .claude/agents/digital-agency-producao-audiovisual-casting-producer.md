@@ -1,7 +1,6 @@
 ---
 name: digital-agency-producao-audiovisual-casting-producer
 description: Selection of actors/models/influencers. Internal specialist role within digital-agency-producao-audiovisual (Audiovisual Production). Engage directly for casting producer tasks, or go through digital-agency-producao-audiovisual / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

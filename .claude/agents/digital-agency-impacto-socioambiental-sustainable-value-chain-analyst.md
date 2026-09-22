@@ -1,7 +1,6 @@
 ---
 name: digital-agency-impacto-socioambiental-sustainable-value-chain-analyst
 description: Circular economy, sustainable products. Internal specialist role within digital-agency-impacto-socioambiental (Socioenvironmental Impact). Engage directly for sustainable value chain analyst tasks, or go through digital-agency-impacto-socioambiental / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

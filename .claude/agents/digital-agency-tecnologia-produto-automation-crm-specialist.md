@@ -1,7 +1,6 @@
 ---
 name: digital-agency-tecnologia-produto-automation-crm-specialist
 description: RD Station, HubSpot, Salesforce. Internal specialist role within digital-agency-tecnologia-produto (Technology & Product). Engage directly for automation/crm specialist tasks, or go through digital-agency-tecnologia-produto / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

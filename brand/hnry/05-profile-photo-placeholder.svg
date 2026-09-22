@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#B8845A"></rect>
+  <g transform="translate(280 220) scale(3)">
+    <line x1="6" y1="62" x2="74" y2="62" stroke="#1F3A2E" stroke-width="2" stroke-linecap="round"></line>
+    <path d="M6 62 L20 38 L32 50 L46 28 L60 46 L74 36 L74 62 Z" fill="#1F3A2E"></path>
+    <circle cx="58" cy="22" r="5" fill="#F2EDE3"></circle>
+  </g>
+  <text x="400" y="640" font-family="&#39;Bricolage Grotesque&#39;, sans-serif" font-weight="600" font-size="56" letter-spacing="-0.025em" fill="#1F3A2E" text-anchor="middle">Pablo Baldo</text>
+  <text x="400" y="690" font-family="&#39;DM Mono&#39;, monospace" font-weight="400" font-size="20" letter-spacing="4" fill="#1F3A2E" text-anchor="middle">FOUNDER · WBS</text>
+</svg>

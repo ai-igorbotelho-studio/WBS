@@ -1,7 +1,6 @@
 ---
 name: digital-agency-parcerias-institucionais-strategic-partnerships-analyst
 description: Opportunity mapping. Internal specialist role within digital-agency-parcerias-institucionais (Institutional Partnerships). Engage directly for strategic partnerships analyst tasks, or go through digital-agency-parcerias-institucionais / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

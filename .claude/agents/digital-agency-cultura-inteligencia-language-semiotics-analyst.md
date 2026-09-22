@@ -1,7 +1,6 @@
 ---
 name: digital-agency-cultura-inteligencia-language-semiotics-analyst
 description: Slang, dialects, regional language. Internal specialist role within digital-agency-cultura-inteligencia (Culture & Cultural Intelligence). Engage directly for language & semiotics analyst tasks, or go through digital-agency-cultura-inteligencia / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

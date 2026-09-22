@@ -1,7 +1,6 @@
 ---
 name: digital-agency-ia-operacional-internal-digital-transformation-manager
 description: Drives internal process change. Internal specialist role within digital-agency-ia-operacional (AI Operations & Efficiency). Engage directly for internal digital transformation manager tasks, or go through digital-agency-ia-operacional / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

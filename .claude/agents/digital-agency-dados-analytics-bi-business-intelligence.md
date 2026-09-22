@@ -1,7 +1,6 @@
 ---
 name: digital-agency-dados-analytics-bi-business-intelligence
 description: Dashboards and data visualization. Internal specialist role within digital-agency-dados-analytics (Data & Analytics). Engage directly for bi (business intelligence) tasks, or go through digital-agency-dados-analytics / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

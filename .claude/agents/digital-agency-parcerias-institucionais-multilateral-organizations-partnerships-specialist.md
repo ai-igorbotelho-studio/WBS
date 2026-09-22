@@ -1,7 +1,6 @@
 ---
 name: digital-agency-parcerias-institucionais-multilateral-organizations-partnerships-specialist
 description: UN, IDB, World Bank. Internal specialist role within digital-agency-parcerias-institucionais (Institutional Partnerships). Engage directly for multilateral organizations partnerships specialist tasks, or go through digital-agency-parcerias-institucionais / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

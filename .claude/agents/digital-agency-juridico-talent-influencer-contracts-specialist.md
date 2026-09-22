@@ -1,7 +1,6 @@
 ---
 name: digital-agency-juridico-talent-influencer-contracts-specialist
 description: Contracts with talent. Internal specialist role within digital-agency-juridico (Legal). Engage directly for talent/influencer contracts specialist tasks, or go through digital-agency-juridico / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

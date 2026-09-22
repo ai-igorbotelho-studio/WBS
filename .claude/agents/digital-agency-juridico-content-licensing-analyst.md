@@ -1,7 +1,6 @@
 ---
 name: digital-agency-juridico-content-licensing-analyst
 description: Stock imagery, fonts, software. Internal specialist role within digital-agency-juridico (Legal). Engage directly for content licensing analyst tasks, or go through digital-agency-juridico / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

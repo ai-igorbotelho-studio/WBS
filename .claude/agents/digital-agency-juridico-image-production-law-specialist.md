@@ -1,7 +1,6 @@
 ---
 name: digital-agency-juridico-image-production-law-specialist
 description: Image rights, minors, filming. Internal specialist role within digital-agency-juridico (Legal). Engage directly for image & production law specialist tasks, or go through digital-agency-juridico / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: digital-agency-impacto-socioambiental-blue-economy-specialist
 description: Ocean/marine-resource economy. Internal specialist role within digital-agency-impacto-socioambiental (Socioenvironmental Impact). Engage directly for blue economy specialist tasks, or go through digital-agency-impacto-socioambiental / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: digital-agency-producao-audiovisual-layout-artist
 description: Layout of printed/digital materials. Internal specialist role within digital-agency-producao-audiovisual (Audiovisual Production). Engage directly for layout artist tasks, or go through digital-agency-producao-audiovisual / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

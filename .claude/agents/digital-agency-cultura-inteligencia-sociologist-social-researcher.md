@@ -1,7 +1,6 @@
 ---
 name: digital-agency-cultura-inteligencia-sociologist-social-researcher
 description: In-depth social analysis. Internal specialist role within digital-agency-cultura-inteligencia (Culture & Cultural Intelligence). Engage directly for sociologist / social researcher tasks, or go through digital-agency-cultura-inteligencia / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

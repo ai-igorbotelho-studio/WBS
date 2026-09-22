@@ -1,7 +1,6 @@
 ---
 name: digital-agency-planejamento-estrategia-digital-strategist
 description: Defines the brand's digital presence strategy. Internal specialist role within digital-agency-planejamento-estrategia (Strategy & Planning). Engage directly for digital strategist tasks, or go through digital-agency-planejamento-estrategia / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

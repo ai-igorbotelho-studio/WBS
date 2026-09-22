@@ -1,0 +1,49 @@
+<!-- @dsCard height=300 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WBS</title>
+<style>
+  html,body{margin:0;height:100%}
+  body{background:var(--surface);color:var(--ink);font-family:var(--font-sans);overflow:hidden}
+  .cover{position:relative;height:300px;overflow:hidden}
+  .art{position:absolute;top:0;left:480px;width:480px;height:300px;overflow:hidden}
+  .art svg{display:block;width:520px;height:300px}
+  .forest{fill:var(--forest)} .bone{fill:var(--surface-alt)} .timber{fill:var(--timber)} .coastal{fill:var(--coastal)}
+  .tile{rx:6px}
+  .rule{stroke:var(--line);stroke-width:1}
+  .words{position:absolute;left:40px;bottom:40px;max-width:440px}
+  .name{margin:0;font-size:120px;line-height:.92;font-weight:600;letter-spacing:-3.6px;color:var(--ink)}
+  .tag{margin:16px 0 0 4px;font-family:var(--font-mono);font-size:13px;line-height:20px;letter-spacing:2.4px;text-transform:uppercase;color:var(--ink-muted)}
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 520 300" width="520" height="300">
+<!--
+  blocks      forest 200×300 bled off the top and right edges (primary, 60%) · bone (surface-alt) 160×176 · timber 96×96 (accent, 10%) · coastal 48×24 once (optional colour, kept small) — about 45% of 960×300
+  arrangement one tall forest slab on the right with a bone tile and a timber tile stepping down from it like terraced backyard levels, gutters space-6 (24px)
+  pattern     the ridgeline: from the mark itself and "landscape · carpentry · build" — one hairline profile of the mark's hill path crossing the bone tile, plus the horizon rule at the tile's base; three rules, not a field
+  scales      sides in space-6/space-8 multiples (96, 160, 200); gutters space-6; corners radius-md (6px); the rule is the line token at 1px
+-->
+<rect class="forest tile" x="320" y="-8" width="220" height="316" rx="6"/>
+<rect class="bone tile" x="136" y="100" width="160" height="176" rx="6"/>
+<rect class="timber tile" x="16" y="180" width="96" height="96" rx="6"/>
+<rect class="coastal tile" x="16" y="132" width="48" height="24" rx="6"/>
+<line class="rule" x1="136" y1="236" x2="296" y2="236"/>
+<path d="M136 236 L168 180 L196 208 L228 156 L260 196 L296 172" fill="none" class="rule"/>
+<circle class="timber" cx="256" cy="140" r="8"/>
+<path d="M352 230 L392 168 L424 200 L464 136 L500 186 L540 152 L540 230 Z" class="bone"/>
+<line x1="352" y1="230" x2="540" y2="230" stroke="var(--bone)" stroke-width="2" stroke-linecap="round"/>
+<circle class="timber" cx="494" cy="112" r="12"/>
+</svg>
+</div>
+<div class="words">
+<h1 class="name">WBS</h1>
+<p class="tag">Landscape · Carpentry · Build</p>
+</div>
+</div>
+</body>
+</html>

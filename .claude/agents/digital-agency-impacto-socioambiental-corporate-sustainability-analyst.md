@@ -1,7 +1,6 @@
 ---
 name: digital-agency-impacto-socioambiental-corporate-sustainability-analyst
 description: Internal metrics and reporting. Internal specialist role within digital-agency-impacto-socioambiental (Socioenvironmental Impact). Engage directly for corporate sustainability analyst tasks, or go through digital-agency-impacto-socioambiental / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

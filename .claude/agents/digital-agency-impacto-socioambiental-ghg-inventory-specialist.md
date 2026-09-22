@@ -1,7 +1,6 @@
 ---
 name: digital-agency-impacto-socioambiental-ghg-inventory-specialist
 description: Carbon footprint (greenhouse gases). Internal specialist role within digital-agency-impacto-socioambiental (Socioenvironmental Impact). Engage directly for ghg inventory specialist tasks, or go through digital-agency-impacto-socioambiental / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

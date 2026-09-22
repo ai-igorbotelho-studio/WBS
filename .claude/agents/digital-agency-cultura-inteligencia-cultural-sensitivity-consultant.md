@@ -1,7 +1,6 @@
 ---
 name: digital-agency-cultura-inteligencia-cultural-sensitivity-consultant
 description: Pre-launch review for cultural blunders. Internal specialist role within digital-agency-cultura-inteligencia (Culture & Cultural Intelligence). Engage directly for cultural sensitivity consultant tasks, or go through digital-agency-cultura-inteligencia / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

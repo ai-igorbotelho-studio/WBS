@@ -1,7 +1,6 @@
 ---
 name: digital-agency-juridico-contracts-manager
 description: Contract management with clients/vendors. Internal specialist role within digital-agency-juridico (Legal). Engage directly for contracts manager tasks, or go through digital-agency-juridico / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

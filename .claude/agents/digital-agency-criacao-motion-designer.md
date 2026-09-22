@@ -1,7 +1,6 @@
 ---
 name: digital-agency-criacao-motion-designer
 description: Animations and motion pieces. Internal specialist role within digital-agency-criacao (Creative). Engage directly for motion designer tasks, or go through digital-agency-criacao / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

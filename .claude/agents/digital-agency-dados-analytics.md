@@ -1,7 +1,6 @@
 ---
 name: digital-agency-dados-analytics
 description: Analyzes performance data, builds dashboards, and generates insights. Engage for reports, KPI analysis, predictive modeling.
-tools: all
 model: sonnet
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: digital-agency-financeiro-cfo-cfo
 description: Overall financial strategy. Internal specialist role within digital-agency-financeiro-cfo (Finance & Operations (CFO)). Engage directly for cfo tasks, or go through digital-agency-financeiro-cfo / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

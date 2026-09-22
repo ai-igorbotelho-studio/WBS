@@ -1,7 +1,6 @@
 ---
 name: digital-agency-parcerias-institucionais-associations-federations-relations-specialist
 description: Sector-level liaison. Internal specialist role within digital-agency-parcerias-institucionais (Institutional Partnerships). Engage directly for associations & federations relations specialist tasks, or go through digital-agency-parcerias-institucionais / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

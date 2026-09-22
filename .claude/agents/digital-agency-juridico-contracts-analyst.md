@@ -1,7 +1,6 @@
 ---
 name: digital-agency-juridico-contracts-analyst
 description: Contract drafting and review. Internal specialist role within digital-agency-juridico (Legal). Engage directly for contracts analyst tasks, or go through digital-agency-juridico / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

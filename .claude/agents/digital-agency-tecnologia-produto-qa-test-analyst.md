@@ -1,7 +1,6 @@
 ---
 name: digital-agency-tecnologia-produto-qa-test-analyst
 description: Software quality assurance. Internal specialist role within digital-agency-tecnologia-produto (Technology & Product). Engage directly for qa / test analyst tasks, or go through digital-agency-tecnologia-produto / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

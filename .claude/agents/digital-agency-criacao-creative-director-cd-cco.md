@@ -1,7 +1,6 @@
 ---
 name: digital-agency-criacao-creative-director-cd-cco
 description: Overall creative vision, approves concepts. Internal specialist role within digital-agency-criacao (Creative). Engage directly for creative director (cd/cco) tasks, or go through digital-agency-criacao / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

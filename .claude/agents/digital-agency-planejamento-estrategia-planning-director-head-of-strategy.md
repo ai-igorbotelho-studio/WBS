@@ -1,7 +1,6 @@
 ---
 name: digital-agency-planejamento-estrategia-planning-director-head-of-strategy
 description: Macro strategic vision, directs all plans. Internal specialist role within digital-agency-planejamento-estrategia (Strategy & Planning). Engage directly for planning director / head of strategy tasks, or go through digital-agency-planejamento-estrategia / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

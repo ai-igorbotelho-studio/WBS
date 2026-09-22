@@ -1,7 +1,6 @@
 ---
 name: digital-agency-producao-audiovisual-director-of-photography-dop
 description: Image direction on shoots. Internal specialist role within digital-agency-producao-audiovisual (Audiovisual Production). Engage directly for director of photography (dop) tasks, or go through digital-agency-producao-audiovisual / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

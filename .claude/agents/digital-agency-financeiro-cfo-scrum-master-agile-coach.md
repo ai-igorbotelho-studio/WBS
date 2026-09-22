@@ -1,7 +1,6 @@
 ---
 name: digital-agency-financeiro-cfo-scrum-master-agile-coach
 description: Facilitates agile methodologies. Internal specialist role within digital-agency-financeiro-cfo (Finance & Operations (CFO)). Engage directly for scrum master / agile coach tasks, or go through digital-agency-financeiro-cfo / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

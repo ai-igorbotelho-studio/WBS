@@ -1,7 +1,6 @@
 ---
 name: digital-agency-juridico-naming-rights-specialist
 description: Evaluation and negotiation of naming sponsorships. Internal specialist role within digital-agency-juridico (Legal). Engage directly for naming rights specialist tasks, or go through digital-agency-juridico / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: digital-agency-criacao-graphic-digital-designer
 description: Graphic and digital pieces. Internal specialist role within digital-agency-criacao (Creative). Engage directly for graphic/digital designer tasks, or go through digital-agency-criacao / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: digital-agency-ia-operacional-tool-cost-roi-analyst
 description: Measures return on every AI/tool. Internal specialist role within digital-agency-ia-operacional (AI Operations & Efficiency). Engage directly for tool cost & roi analyst tasks, or go through digital-agency-ia-operacional / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

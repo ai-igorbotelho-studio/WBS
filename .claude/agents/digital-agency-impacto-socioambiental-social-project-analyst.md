@@ -1,7 +1,6 @@
 ---
 name: digital-agency-impacto-socioambiental-social-project-analyst
 description: Execution and monitoring of social projects. Internal specialist role within digital-agency-impacto-socioambiental (Socioenvironmental Impact). Engage directly for social project analyst tasks, or go through digital-agency-impacto-socioambiental / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: digital-agency-producao-audiovisual-graphic-producer
 description: Finalization and prepress of graphic pieces. Internal specialist role within digital-agency-producao-audiovisual (Audiovisual Production). Engage directly for graphic producer tasks, or go through digital-agency-producao-audiovisual / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

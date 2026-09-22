@@ -1,7 +1,6 @@
 ---
 name: digital-agency-cultura-inteligencia-sociocultural-trends-analyst
 description: Trendspotting. Internal specialist role within digital-agency-cultura-inteligencia (Culture & Cultural Intelligence). Engage directly for sociocultural trends analyst tasks, or go through digital-agency-cultura-inteligencia / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 
