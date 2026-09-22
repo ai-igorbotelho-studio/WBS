@@ -257,12 +257,12 @@ html.js .wbs-field--float .wbs-field__label {
 .wbs-field--phone .wbs-field__input { padding-left: 118px; }
 .wbs-field--phone .wbs-field__label { left: 118px; white-space: nowrap; }
 .dial-wrap {
-  position: absolute; left: 10px; top: 1px; bottom: 1px;
+  position: absolute; left: 10px; top: 1px; height: 54px;
   width: 96px; border-right: 1px solid var(--line);
 }
 .dial__lab {
   position: absolute; left: 8px; top: 6px;
-  font-size: 12.5px; line-height: 16px; color: var(--forest);
+  font-size: 12.5px; line-height: 16px; font-weight: 600; color: var(--forest);
   pointer-events: none;
 }
 .dial__val {
