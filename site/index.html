@@ -7,7 +7,7 @@
 <meta name="description" content="Decks, fences, retaining walls, small builds and renovations on Waiheke Island. Pablo Baldo and team quote in writing, build to spec and warrant workmanship for 12 months.">
 <link rel="canonical" href="https://waiheke-backyards-solutions.netlify.app/">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<meta name="theme-color" content="#1f3a2e">
+<meta name="theme-color" content="#1f3a2e"> <!-- /* check-tokens: allow */ -->
 <meta name="author" content="Waiheke Backyards Solutions">
 <meta name="geo.region" content="NZ-AUK">
 <meta name="geo.placename" content="Waiheke Island">
@@ -28,6 +28,8 @@
 <meta name="twitter:description" content="Decks, fences, retaining walls, sleepouts and renovations on Waiheke Island. Written quotes and a 12-month workmanship warranty.">
 <meta name="twitter:image" content="https://waiheke-backyards-solutions.netlify.app/assets/photos/og-image.jpg">
 <link rel="icon" href="assets/logo/wbs-favicon-forest.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/BricolageGrotesque-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/photos/timber-framing.jpg" as="image" fetchpriority="high">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/components.css">
 <link rel="stylesheet" href="assets/motion.css">
@@ -36,7 +38,7 @@
 </script>
 <style>
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--surface);color:var(--ink);font:400 16px/24px var(--font-sans);overflow-x:hidden}
 img,svg{display:block;max-width:100%}
@@ -55,22 +57,71 @@ h1,h2,h3{margin:0;font-weight:600}
 @media (min-width:768px){.h1{font-size:40px;line-height:44px;letter-spacing:-1px}}
 .lead{font-size:18px;line-height:28px;color:var(--ink-muted);margin:var(--space-4) 0 0;max-width:640px}
 /* header */
-.header{position:sticky;top:0;z-index:50;background:rgba(248,244,235,.94);background:color-mix(in srgb,var(--paper) 94%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+.header{position:sticky;top:0;z-index:75;background:rgba(248,244,235,.94);background:color-mix(in srgb,var(--paper) 94%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;position:relative;z-index:100}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--forest)}
-.logo img{width:40px;height:40px}
+.logo img{width:40px;height:40px;flex:none}
 .logo b{display:block;font-size:15px;line-height:15px;letter-spacing:-0.3px}
 .nav-links{display:none;gap:var(--space-7);margin:0;padding:0;list-style:none}
 .nav-links a{text-decoration:none;color:var(--ink);font-weight:500;padding:8px 0;border-bottom:2px solid transparent}
 .nav-links a[aria-current="true"]{border-color:var(--timber)}
 .nav-cta{display:none}
-.burger{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--surface-raised);color:var(--ink);cursor:pointer}
-.mobile-menu{display:none;border-top:1px solid var(--line);padding-top:16px;padding-bottom:24px}
-.mobile-menu[data-open="true"]{display:block}
-.mobile-menu ul{list-style:none;margin:0 0 16px;padding:0;display:flex;flex-direction:column}
-.mobile-menu a:not(.wbs-btn){display:block;padding:12px 0;font-size:18px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line)}
-.mobile-menu .wbs-btn{width:100%}
-@media (min-width:900px){.nav-links{display:flex}.nav-cta{display:inline-flex}.burger,.mobile-menu{display:none!important}}
+/* burger trigger, <900px, X-morph via 3 independent bars */
+.burger{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--surface-raised);color:var(--ink);cursor:pointer;flex:none}
+.burger:hover{border-color:var(--accent)}
+.burger:active .bar{background:var(--accent)}
+.burger svg{width:20px;height:20px}
+.burger .bar{transform-origin:center;transition:transform var(--motion-fast) var(--ease-firm),opacity var(--motion-fast) var(--ease-firm)}
+.burger[aria-expanded="true"] .bar1{transform:translate(0,5px) rotate(45deg)}
+.burger[aria-expanded="true"] .bar2{opacity:0;transform:scaleX(0)}
+.burger[aria-expanded="true"] .bar3{transform:translate(0,-5px) rotate(-45deg)}
+@media (prefers-reduced-motion:reduce){
+  .burger .bar{transition:opacity 80ms linear}
+  .burger[aria-expanded="true"] .bar1,.burger[aria-expanded="true"] .bar3{transform:none;opacity:0}
+  .burger[aria-expanded="true"] .bar2{transform:none}
+}
+/* scrim */
+.drawer-scrim{position:fixed;inset:0;z-index:120;background:var(--scrim);opacity:0;pointer-events:none;transition:opacity var(--motion-fast) var(--ease-firm)}
+.drawer-scrim[data-open="true"]{opacity:1;pointer-events:auto}
+@media (prefers-reduced-motion:reduce){.drawer-scrim{transition:none}}
+/* drawer, off-canvas right, <900px */
+.mobile-menu{position:fixed;top:0;right:0;bottom:0;z-index:121;will-change:transform;width:var(--drawer-width);max-width:100vw;background:var(--surface);border-left:1px solid var(--line);display:flex;flex-direction:column;transform:translateX(100%);visibility:hidden;transition:transform var(--motion-fast) var(--ease-firm),visibility 0s linear var(--motion-fast);padding-top:max(16px,env(safe-area-inset-top));padding-bottom:max(16px,env(safe-area-inset-bottom));padding-left:24px;padding-right:calc(24px + env(safe-area-inset-right));overflow-y:auto}
+.mobile-menu[data-open="true"]{transform:translateX(0);visibility:visible;transition:transform var(--motion-fast) var(--ease-firm)}
+@media (prefers-reduced-motion:reduce){.mobile-menu{transition:none}}
+html:not(.js) .mobile-menu{visibility:visible}
+html:not(.js) .drawer-close,html:not(.js) .drawer-scrim{display:none}
+html:not(.js) .drawer-head{display:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:16px}
+.drawer-close{width:44px;height:44px;flex:none;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--surface-raised);color:var(--ink);cursor:pointer}
+.drawer-close:hover{border-color:var(--accent)}
+.mobile-menu ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.mobile-menu li{border-bottom:1px solid var(--line)}
+.mobile-menu a:not(.wbs-btn){display:flex;align-items:center;min-height:48px;padding:0 4px;font-size:18px;text-decoration:none;color:var(--ink);border-left:3px solid transparent}
+.mobile-menu a:not(.wbs-btn):hover{background:var(--surface-alt)}
+.mobile-menu a[aria-current="true"]{border-left-color:var(--drawer-current-marker);font-weight:600}
+.drawer-actions{border-top:1px solid var(--line);margin-top:16px;padding-top:16px;display:flex;flex-direction:column;gap:12px}
+.drawer-actions .wbs-btn{width:100%}
+.drawer-whatsapp{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--ink-muted);text-decoration:none;font-size:16px}
+.drawer-whatsapp:hover{color:var(--ink)}
+@media (max-height:480px){
+  .mobile-menu{display:grid;grid-template-rows:auto 1fr auto}
+  .drawer-head{position:sticky;top:0;background:var(--surface);z-index:1}
+  .drawer-links{overflow-y:auto}
+  .drawer-actions{position:sticky;bottom:0;background:var(--surface)}
+}
+/* 900–1099: condensed full bar, no hamburger */
+@media (min-width:900px){
+  .nav-links{display:flex;gap:var(--nav-condensed-gap);font-size:var(--nav-condensed-fontsize)}
+  .nav-cta{display:inline-flex}
+  .burger,.mobile-menu,.drawer-scrim{display:none!important}
+}
+/* >=1100: comfortable spacing */
+@media (min-width:1100px){
+  .nav-links{gap:var(--space-6);font-size:16px}
+}
+html:not(.js) .burger{display:none}
+html:not(.js) .mobile-menu{display:block;position:static;transform:none;width:auto;border:0;padding:16px 0 24px;overflow:visible}
+@media (min-width:900px){html:not(.js) .mobile-menu{display:none}}
 /* hero */
 .hero{position:relative;padding:var(--space-9) 0 var(--space-9);background:var(--surface);overflow:hidden}
 @media (min-width:768px){.hero{padding:var(--space-12) 0 var(--space-11)}}
@@ -86,10 +137,13 @@ h1,h2,h3{margin:0;font-weight:600}
 @media (min-width:768px){.stat b{font-size:28px;line-height:32px;letter-spacing:1.1px}}
 .stat > span{display:block;margin-top:4px;font-size:14px;line-height:20px;color:var(--ink-muted)}
 .stat b .cnt{display:inline;font:inherit}
-.ridge{position:relative;aspect-ratio:4/3;background:var(--forest);border-radius:var(--radius-md);overflow:hidden}
+.ridge{position:relative;aspect-ratio:4/3;background:var(--forest);border-radius:var(--radius-md);overflow:hidden;isolation:isolate}
 @media (min-width:1000px){.ridge{aspect-ratio:4/5}}
-.ridge img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ridge::after{content:"";position:absolute;inset:auto 0 0 0;height:96px;background:linear-gradient(to top,rgba(31,58,46,.7),rgba(31,58,46,0))}
+.ridge img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.ridge .duo{position:absolute;inset:0}
+.ridge .duo::before{content:"";position:absolute;inset:0;background:var(--forest);mix-blend-mode:lighten}
+.ridge .duo::after{content:"";position:absolute;inset:0;background:var(--timber);mix-blend-mode:multiply}
+.ridge::after{content:"";position:absolute;inset:auto 0 0 0;height:96px;background:linear-gradient(to top,rgba(31,58,46,.7),rgba(31,58,46,0));z-index:1}
 .ridge figcaption{position:absolute;z-index:1;left:24px;bottom:20px;font-family:var(--font-mono);font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--bone);opacity:.8}
 /* services */
 .alt{background:var(--surface-alt)}
@@ -97,8 +151,8 @@ h1,h2,h3{margin:0;font-weight:600}
 @media (min-width:768px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .card{background:var(--surface-raised);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-6);display:flex;flex-direction:column;gap:12px}
 @media (min-width:1000px){.card{padding:var(--space-8)}}
-.card h3{font-size:24px;line-height:28px;letter-spacing:-0.5px}
-@media (min-width:1000px){.card h3{font-size:28px;line-height:32px;letter-spacing:-0.7px}}
+.card .unit-title,.step .unit-title{font-size:24px;line-height:28px;letter-spacing:-0.5px;margin:0}
+@media (min-width:1000px){.card .unit-title,.step .unit-title{font-size:28px;line-height:32px;letter-spacing:-0.7px}}
 .card p{margin:0;color:var(--ink-muted)}
 .card ul{margin:4px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
 .card li{display:flex;gap:10px;align-items:flex-start}
@@ -116,12 +170,12 @@ h1,h2,h3{margin:0;font-weight:600}
 .step__photo--pending .small{font-family:var(--font-mono);font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--ink-muted)}
 .step__body{padding:var(--space-6);display:flex;flex-direction:column}
 .step .num{font-family:var(--font-mono);font-size:11px;letter-spacing:2.4px;color:var(--timber-text)}
-.step h3{font-size:20px;line-height:26px;margin-top:12px}
+.step .unit-title{margin-top:12px}
 .step p{margin:8px 0 0;color:var(--ink-muted)}
 /* about (reverse) */
 .reverse{background:var(--forest);color:var(--bone)}
-.reverse .eyebrow{color:#d8b08c}
-.reverse .lead,.reverse p{color:#a8b5af}
+.reverse .eyebrow{color:var(--timber-text)}
+.reverse .lead,.reverse p{color:var(--ink-muted)}
 .founder{display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)}
 .avatar{flex:none;width:72px;height:72px;border-radius:50%;overflow:hidden;background:var(--timber);box-shadow:0 0 0 2px var(--timber)}
 .avatar img{width:100%;height:100%;object-fit:cover;display:block}
@@ -133,20 +187,14 @@ h1,h2,h3{margin:0;font-weight:600}
 .portrait img{width:100%;height:100%;object-fit:cover}
 .team{display:grid;gap:var(--space-4);margin:var(--space-7) 0 0;padding:0;list-style:none}
 @media (min-width:600px){.team{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.team li{padding-top:12px;border-top:1px solid #3f5c4f}
+.team li{padding-top:12px;border-top:1px solid var(--line)}
 .team b{display:block;font-size:16px}
-.team span{font-size:14px;line-height:20px;color:#a8b5af}
+.team span{font-size:14px;line-height:20px;color:var(--ink-muted)}
 /* portfolio */
 .gallery{display:grid;gap:var(--space-4);margin-top:var(--space-8)}
 @media (min-width:600px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:1000px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-6)}}
 .tile{position:relative;aspect-ratio:4/3;border-radius:var(--radius-md);overflow:hidden;background:var(--bone);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end;padding:16px}
-.tile--photo{border:0}
-.tile--photo picture{display:contents}
-.tile--photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.tile--photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(31,58,46,.85) 0,rgba(31,58,46,.15) 55%,transparent)}
-.tile--photo b{color:var(--bone)}
-.tile--photo span{color:#d8b08c}
 .tile--duo{border:0;isolation:isolate}
 .tile--duo picture{display:contents}
 .tile--duo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
@@ -155,16 +203,10 @@ h1,h2,h3{margin:0;font-weight:600}
 .tile--duo .cap{position:absolute;inset:auto 0 0 0;padding:16px;background:linear-gradient(to top,rgba(31,58,46,.88) 0,rgba(31,58,46,.55) 55%,transparent);z-index:1}
 .tile--duo .cap b,.tile--duo .cap span{display:block;position:static}
 .tile--duo b{color:var(--bone)}
-.tile--duo span{color:#d8b08c;margin-top:4px}
+.tile.tile--duo span{color:var(--timber-text);margin-top:4px}
 .tile .ph{position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 22px,rgba(31,58,46,.06) 22px 23px)}
 .tile b{position:relative;font-size:18px;line-height:24px}
 .tile span{position:relative;font-family:var(--font-mono);font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--ink-muted);margin-top:4px}
-/* quotes */
-.quotes{display:grid;gap:var(--space-6);margin-top:var(--space-8)}
-@media (min-width:900px){.quotes{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.quote{margin:0;padding:var(--space-6);background:var(--surface-raised);border:1px solid var(--line);border-radius:var(--radius-md)}
-.quote p{margin:0;font-size:18px;line-height:28px}
-.quote footer{margin-top:16px;font-family:var(--font-mono);font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--ink-muted)}
 /* faq */
 .faq{margin-top:var(--space-8);border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line)}
@@ -174,6 +216,7 @@ h1,h2,h3{margin:0;font-weight:600}
 .faq details[open] summary::after{content:"–"}
 .faq details p{margin:0 0 20px;color:var(--ink-muted);max-width:720px}
 /* contact */
+#contact{border-top:2px solid var(--paper-stock-rule)}
 .contact-grid{display:grid;gap:var(--space-8)}
 @media (min-width:900px){.contact-grid{grid-template-columns:5fr 7fr;gap:var(--space-9)}}
 .contact-list{margin:var(--space-7) 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
@@ -193,10 +236,10 @@ textarea.wbs-field__input{min-height:120px;resize:vertical}
 footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 var(--space-7)}
 .foot{display:grid;gap:var(--space-7)}
 @media (min-width:768px){.foot{grid-template-columns:2fr 1fr 1fr}}
-.foot p{margin:8px 0 0;color:#a8b5af;font-size:14px;line-height:20px}
+.foot p{margin:8px 0 0;color:var(--ink-muted);font-size:14px;line-height:20px}
 .foot a{color:var(--bone)}
 .foot .mono{font-family:var(--font-mono);letter-spacing:0.6px}
-.legal{margin-top:var(--space-7);padding-top:var(--space-4);border-top:1px solid #3f5c4f;font-family:var(--font-mono);font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:#a8b5af}
+.legal{margin-top:var(--space-7);padding-top:var(--space-4);border-top:1px solid var(--line);font-family:var(--font-mono);font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--ink-muted)}
 </style>
 </head>
 <body>
@@ -216,10 +259,22 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
     </ul>
     <a class="wbs-btn wbs-btn--primary nav-cta" href="#contact">Get a quote</a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="mobilemenu" aria-label="Open menu" id="burger">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <path class="bar bar1" d="M4 7h16"/><path class="bar bar2" d="M4 12h16"/><path class="bar bar3" d="M4 17h16"/>
+      </svg>
     </button>
   </div>
-  <nav class="wrap mobile-menu" id="mobilemenu" data-open="false" aria-label="Mobile">
+</header>
+
+<div class="drawer-scrim" id="drawerScrim" data-open="false" aria-hidden="true"></div>
+<div class="mobile-menu" id="mobilemenu" data-open="false" role="dialog" aria-modal="true" aria-label="Main menu">
+  <div class="drawer-head">
+    <span class="mono" style="font-size:14px">Menu</span>
+    <button type="button" class="drawer-close" aria-label="Close menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+    </button>
+  </div>
+  <div class="drawer-links">
     <ul>
       <li><a href="#services">Services</a></li>
       <li><a href="#process">How we work</a></li>
@@ -227,9 +282,12 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
       <li><a href="#work">Recent work</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
+  </div>
+  <div class="drawer-actions">
     <a class="wbs-btn wbs-btn--primary" href="#contact">Get a quote</a>
-  </nav>
-</header>
+    <a class="drawer-whatsapp" href="https://wa.me/64211822723">WhatsApp</a>
+  </div>
+</div>
 
 <div class="cta-bar" id="ctaBar" data-visible="false" aria-hidden="true">
   <a class="wbs-btn wbs-btn--primary" href="#contact">Get a quote</a>
@@ -248,8 +306,8 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
       </div>
       <div class="stats" aria-label="At a glance">
         <div class="stat"><b>Est 2024</b><span>Waiheke Island, Auckland</span></div>
-        <div class="stat"><b><span class="cnt" data-count="12">12</span> mo</b><span>workmanship warranty</span></div>
-        <div class="stat"><b><span class="cnt" data-count="30">30</span> days</b><span>every quote stays valid</span></div>
+        <div class="stat"><b><span class="cnt">12</span> mo</b><span>workmanship warranty</span></div>
+        <div class="stat"><b><span class="cnt">30</span> days</b><span>every quote stays valid</span></div>
       </div>
     </div>
     <figure class="ridge">
@@ -257,6 +315,7 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
         <source srcset="assets/photos/timber-framing.webp" type="image/webp">
         <img src="assets/photos/timber-framing.jpg" alt="Timber wall framing under construction, lit by afternoon sun" width="1600" height="2400" loading="eager" fetchpriority="high">
       </picture>
+      <div class="duo" aria-hidden="true"></div>
       <figcaption>Framing · Waiheke</figcaption>
     </figure>
   </div>
@@ -270,7 +329,7 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
     <div class="cards">
       <article class="card reveal" data-stagger="0">
         <div class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M5 20V12l4-3 4 3 4-3 4 3v8M12 20v-5"/></svg></div>
-        <h3>Landscape</h3>
+        <h3 class="unit-title">Landscape</h3>
         <p>Ground work that makes a sloping Waiheke section usable and dry.</p>
         <ul>
           <li>Timber retaining walls, steps and terraces</li>
@@ -280,7 +339,7 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
       </article>
       <article class="card reveal" data-stagger="1">
         <div class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 10-10-3-3L5 16l-1 4zM13 7l3 3M3 4h5M3 8h3"/></svg></div>
-        <h3>Carpentry</h3>
+        <h3 class="unit-title">Carpentry</h3>
         <p>Outdoor timber work built to handle salt air and winter rain.</p>
         <ul>
           <li>Decks, pergolas and outdoor rooms</li>
@@ -290,7 +349,7 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
       </article>
       <article class="card reveal" data-stagger="2">
         <div class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-6 7 6v12M9 21v-6h6v6"/></svg></div>
-        <h3>Build</h3>
+        <h3 class="unit-title">Build</h3>
         <p>Small builds and renovations, from the framing up.</p>
         <ul>
           <li>Sleepouts, sheds and studio fit-outs</li>
@@ -303,7 +362,7 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
 </section>
 
 <div class="wrap" aria-hidden="true">
-  <svg class="ridgeline" viewBox="0 0 600 24" preserveAspectRatio="none"><path d="M0 18 L80 6 L160 20 L240 4 L320 16 L400 8 L480 20 L560 6 L600 14"/></svg>
+  <svg class="ridgeline" viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0 18 L80 6 L160 20 L240 4 L320 16 L400 8 L480 20 L560 6 L600 14"/><circle class="tick ridgeline-lit" data-i="0" cx="100" cy="12" r="2"/><circle class="tick ridgeline-lit" data-i="1" cx="300" cy="12" r="2"/><circle class="tick ridgeline-lit" data-i="2" cx="500" cy="12" r="2"/></svg>
 </div>
 
 <section id="process">
@@ -313,18 +372,16 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
     <div class="steps-wrap">
       <div class="rail" aria-hidden="true"><span class="rail__fill"></span></div>
       <div class="steps">
-        <article class="step reveal" data-stagger="0"><figure class="step__photo"><picture><source srcset="assets/photos/step-01-site-visit.webp" type="image/webp"><img src="assets/photos/step-01-site-visit.jpg" alt="Builder with a tape measure at a timber door frame, client in the background" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 01</span><h3>Site visit</h3><p>We walk the site with you, take levels and photos, and talk through what is possible and what it will cost.</p></div></article>
-        <article class="step reveal" data-stagger="1"><figure class="step__photo"><picture><source srcset="assets/photos/step-02-written-quote.webp" type="image/webp"><img src="assets/photos/step-02-written-quote.jpg" alt="Clipboard and pencil on a workbench beside a tape measure and hand tools" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 02</span><h3>Written quote</h3><p>An itemised quote, valid for 30 days. A 30% deposit confirms the booking and reserves materials.</p></div></article>
-        <article class="step reveal" data-stagger="2"><figure class="step__photo"><picture><source srcset="assets/photos/step-03-the-build.webp" type="image/webp"><img src="assets/photos/step-03-the-build.jpg" alt="Gloved hand driving a screw into a hinge on pine timber" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 03</span><h3>The build</h3><p>Our own team on site with progress photos on WhatsApp. Any change of scope is quoted and agreed in writing first.</p></div></article>
-        <article class="step reveal" data-stagger="3"><figure class="step__photo"><picture><source srcset="assets/photos/step-04-handover.webp" type="image/webp"><img src="assets/photos/step-04-handover.jpg" alt="Handing over a set of keys at the end of a job" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 04</span><h3>Handover</h3><p>A final walk-through together, the balance invoiced on completion, and 12 months of workmanship warranty.</p></div></article>
+        <article class="step reveal" data-stagger="0"><figure class="step__photo"><picture><source srcset="assets/photos/step-01-site-visit.webp" type="image/webp"><img src="assets/photos/step-01-site-visit.jpg" alt="Builder with a tape measure at a timber door frame, client in the background" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 01</span><h3 class="unit-title">Site visit</h3><p>We walk the site with you, take levels and photos, and talk through what is possible and what it will cost.</p></div></article>
+        <article class="step reveal" data-stagger="1"><figure class="step__photo"><picture><source srcset="assets/photos/step-02-written-quote.webp" type="image/webp"><img src="assets/photos/step-02-written-quote.jpg" alt="Clipboard and pencil on a workbench beside a tape measure and hand tools" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 02</span><h3 class="unit-title">Written quote</h3><p>An itemised quote, valid for 30 days. A 30% deposit confirms the booking and reserves materials.</p></div></article>
+        <article class="step reveal" data-stagger="2"><figure class="step__photo"><picture><source srcset="assets/photos/step-03-the-build.webp" type="image/webp"><img src="assets/photos/step-03-the-build.jpg" alt="Gloved hand driving a screw into a hinge on pine timber" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 03</span><h3 class="unit-title">The build</h3><p>Our own team on site with progress photos on WhatsApp. Any change of scope is quoted and agreed in writing first.</p></div></article>
+        <article class="step reveal" data-stagger="3"><figure class="step__photo"><picture><source srcset="assets/photos/step-04-handover.webp" type="image/webp"><img src="assets/photos/step-04-handover.jpg" alt="Handing over a set of keys at the end of a job" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 04</span><h3 class="unit-title">Handover</h3><p>A final walk-through together, the balance invoiced on completion, and 12 months of workmanship warranty.</p></div></article>
       </div>
     </div>
   </div>
 </section>
 
-<div class="marquee" aria-hidden="true"><div class="marquee__track"><span>Landscape · Carpentry · Build · Waiheke &nbsp;</span><span>Landscape · Carpentry · Build · Waiheke &nbsp;</span></div></div>
-
-<section class="reverse" id="about">
+<section class="reverse" id="about" data-theme="dark">
   <div class="wrap about-grid">
     <figure class="portrait"><picture><source srcset="assets/photos/carpentry-planer.webp" type="image/webp"><img src="assets/photos/carpentry-planer.jpg" alt="A carpenter feeding a hardwood board through a thicknesser in the workshop" width="1200" height="1800" loading="lazy"></picture></figure>
     <div>
@@ -345,7 +402,7 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
 </section>
 
 <div class="wrap" aria-hidden="true">
-  <svg class="ridgeline" viewBox="0 0 600 24" preserveAspectRatio="none"><path d="M0 10 L70 20 L150 6 L230 18 L310 4 L390 16 L470 8 L540 20 L600 12"/></svg>
+  <svg class="ridgeline" viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0 10 L70 20 L150 6 L230 18 L310 4 L390 16 L470 8 L540 20 L600 12"/><circle class="tick ridgeline-lit" data-i="0" cx="100" cy="12" r="2"/><circle class="tick ridgeline-lit" data-i="1" cx="300" cy="12" r="2"/><circle class="tick ridgeline-lit" data-i="2" cx="500" cy="12" r="2"/></svg>
 </div>
 
 <section class="alt" id="work">
@@ -361,18 +418,15 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
     </div>
     <div class="gallery">
     <!-- Stock photos via Pexels (free licence, no attribution required), served through Netlify Image CDN. Replace with client photos as they arrive. -->
-      <figure class="tile reveal tile--duo" data-cat="Carpentry"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F10847167%2Fpexels-photo-10847167.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F10847167%2Fpexels-photo-10847167.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F10847167%2Fpexels-photo-10847167.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Wooden deck with a pergola overlooking a garden" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Cedar deck and pergola</b><span>Onetangi · Carpentry</span></div></figure>
-      <figure class="tile reveal tile--duo" data-cat="Landscape"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F34532537%2Fpexels-photo-34532537.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F34532537%2Fpexels-photo-34532537.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F34532537%2Fpexels-photo-34532537.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Garden walkway with timber steps and benches" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Timber retaining and steps</b><span>Oneroa · Landscape</span></div></figure>
-      <figure class="tile reveal tile--duo" data-cat="Build"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F4406335%2Fpexels-photo-4406335.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F4406335%2Fpexels-photo-4406335.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F4406335%2Fpexels-photo-4406335.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Small wooden cabin on a hillside" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Sleepout fit-out</b><span>Palm Beach · Build</span></div></figure>
-      <figure class="tile reveal tile--duo" data-cat="Carpentry"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F259888%2Fpexels-photo-259888.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F259888%2Fpexels-photo-259888.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F259888%2Fpexels-photo-259888.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Timber gate and fence in a grassy paddock" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Fence and gate</b><span>Surfdale · Carpentry</span></div></figure>
-      <figure class="tile reveal tile--duo" data-cat="Carpentry"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F33326592%2Fpexels-photo-33326592.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F33326592%2Fpexels-photo-33326592.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F33326592%2Fpexels-photo-33326592.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Coastal timber deck overlooking the sea" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Bach deck renovation</b><span>Ostend · Carpentry</span></div></figure>
-      <figure class="tile reveal tile--duo" data-cat="Landscape"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F7174111%2Fpexels-photo-7174111.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F7174111%2Fpexels-photo-7174111.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F7174111%2Fpexels-photo-7174111.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Garden path through planting beside a gazebo" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Backyard landscaping</b><span>Omiha · Landscape</span></div></figure>
+      <figure class="tile reveal tile--duo" data-theme="dark" data-cat="Carpentry"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F10847167%2Fpexels-photo-10847167.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F10847167%2Fpexels-photo-10847167.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F10847167%2Fpexels-photo-10847167.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Wooden deck with a pergola overlooking a garden" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Cedar deck and pergola</b><span>Onetangi · Carpentry</span></div></figure>
+      <figure class="tile reveal tile--duo" data-theme="dark" data-cat="Landscape"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F34532537%2Fpexels-photo-34532537.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F34532537%2Fpexels-photo-34532537.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F34532537%2Fpexels-photo-34532537.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Garden walkway with timber steps and benches" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Timber retaining and steps</b><span>Oneroa · Landscape</span></div></figure>
+      <figure class="tile reveal tile--duo" data-theme="dark" data-cat="Build"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F4406335%2Fpexels-photo-4406335.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F4406335%2Fpexels-photo-4406335.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F4406335%2Fpexels-photo-4406335.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Small wooden cabin on a hillside" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Sleepout fit-out</b><span>Palm Beach · Build</span></div></figure>
+      <figure class="tile reveal tile--duo" data-theme="dark" data-cat="Carpentry"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F259888%2Fpexels-photo-259888.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F259888%2Fpexels-photo-259888.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F259888%2Fpexels-photo-259888.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Timber gate and fence in a grassy paddock" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Fence and gate</b><span>Surfdale · Carpentry</span></div></figure>
+      <figure class="tile reveal tile--duo" data-theme="dark" data-cat="Carpentry"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F33326592%2Fpexels-photo-33326592.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F33326592%2Fpexels-photo-33326592.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F33326592%2Fpexels-photo-33326592.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Coastal timber deck overlooking the sea" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Bach deck renovation</b><span>Ostend · Carpentry</span></div></figure>
+      <figure class="tile reveal tile--duo" data-theme="dark" data-cat="Landscape"><img src="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F7174111%2Fpexels-photo-7174111.jpeg&w=800&h=600&fit=cover&q=72" srcset="/.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F7174111%2Fpexels-photo-7174111.jpeg&w=800&h=600&fit=cover&q=72 800w, /.netlify/images?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F7174111%2Fpexels-photo-7174111.jpeg&w=1200&h=900&fit=cover&q=72 1200w" sizes="(min-width:1000px) 33vw, (min-width:600px) 50vw, 100vw" alt="Garden path through planting beside a gazebo" width="800" height="600" loading="lazy" decoding="async"><div class="cap"><b>Backyard landscaping</b><span>Omiha · Landscape</span></div></figure>
     </div>
   </div>
 </section>
-
-<div class="marquee" aria-hidden="true"><div class="marquee__track"><span>Landscape · Carpentry · Build · Waiheke &nbsp;</span><span>Landscape · Carpentry · Build · Waiheke &nbsp;</span></div></div>
-
 
 <section class="alt" id="faq">
   <div class="wrap">
@@ -416,7 +470,11 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
 </section>
 </main>
 
-<footer class="site">
+<div class="wrap" aria-hidden="true">
+  <svg class="ridgeline ridgeline--closing" viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0 14 L60 4 L140 18 L220 8 L300 20 L380 6 L460 16 L540 4 L600 12"/><circle class="tick ridgeline-lit" data-i="0" cx="100" cy="12" r="2"/><circle class="tick ridgeline-lit" data-i="1" cx="300" cy="12" r="2"/><circle class="tick ridgeline-lit" data-i="2" cx="500" cy="12" r="2"/></svg>
+</div>
+
+<footer class="site" data-theme="dark">
   <div class="wrap">
     <div class="foot">
       <div>

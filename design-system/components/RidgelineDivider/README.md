@@ -1,0 +1,6 @@
+The 3-point ridgeline motif used as a structural section divider (services→process, about→work, closing band — three instances maximum per page, per `design-system/README.md` § Iconography and the Head decision of 2026-09-22). Consumer provides `{lit: boolean[3]}`, cumulative left-to-right state (e.g. `[true, true, false]` once the visitor has scrolled past the first two dividers). The component renders the ridge-profile SVG (hairline stroke, `line` colour, no sun disc, no wordmark — never the logo lockup) plus 3 small (4px) tick markers along the path:
+
+- unlit tick: `line` at 40% opacity.
+- lit tick: `ridgeline-lit` (timber) fill + 1px `forest` stroke, applied as one CSS class (`.bone-outline` in bone, per Head decision 2026-09-22 #4 — "defined as a pair in one CSS class" so the 3:1 floor on bone never depends on remembering the outline separately).
+
+Always `aria-hidden="true"` (decorative, per README § Iconography). No-JS / `prefers-reduced-motion`: all three ticks render already in their final passed-in `lit` state — there is no animation to reduce, the component never defers the lit state to a scroll listener itself (that orchestration, if any, is the consumer's job; this component is a pure render of whatever `lit` array it's given).

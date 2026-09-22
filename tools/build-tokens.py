@@ -14,11 +14,20 @@ for i,th in enumerate(themes):
     sel=':root,[data-theme="%s"]'%th if i==0 else '[data-theme="%s"]'%th
     out.append(sel+'{'+';'.join('--%s:%s'%(k['name'],v(k,th)) for k in t['color']['tokens'])+'}')
 rest=[]
+def rv(val):
+    return 'var(--'+val[1:-1]+')' if isinstance(val,str) and val.startswith('{') else val
 for fam in ('spacing','radius','shadow','logo'):
     for k in t.get(fam,{}).get('tokens',[]):
-        val=k['value']; rest.append('--%s:%s'%(k['name'],val if isinstance(val,str) else val[themes[0]]))
+        val=k['value']; rest.append('--%s:%s'%(k['name'],rv(val) if isinstance(val,str) else val[themes[0]]))
+for k in t.get('layout',{}).get('tokens',[]):
+    val=k['value']; rest.append('--%s:%s'%(k['name'],rv(val) if isinstance(val,str) else val[themes[0]]))
+for sub in ('durations','easings'):
+    for k in t.get('motion',{}).get(sub,[]):
+        val=k['value']; rest.append('--%s:%s'%(k['name'],rv(val) if isinstance(val,str) else val[themes[0]]))
 for key,fam in t['type']['families'].items(): rest.append('--font-%s:%s'%(key,fam))
 out.append(':root{'+';'.join(rest)+'}')
+out.append('.bone-outline{box-shadow:0 0 0 1px var(--forest)}')
+out.append('[data-theme="dark"] .bone-outline{box-shadow:none}')
 for g in t['type']['groups']:
     for s in g['styles']:
         out.append('.%s{font-family:var(--font-%s);font-size:%s;line-height:%s;font-weight:%s;letter-spacing:%s%s}'%(s['name'],g['family'],s['fontSize'],s['lineHeight'],s['fontWeight'],s['letterSpacing'],';text-transform:uppercase' if g['family']=='mono' else ''))
