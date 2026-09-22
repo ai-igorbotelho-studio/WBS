@@ -61,16 +61,12 @@
       revealObserver.observe(el);
     });
   } else {
-    // No IntersectionObserver support: never hide content, show as-is.
     reveals.forEach(function (el) {
       el.classList.add("in");
     });
   }
 
-  /* ---------------------------------------------------------------------
-   * Scroll-spy: highlight the nav link for the section in view.
-   * IntersectionObserver only, no scroll listener.
-   * ------------------------------------------------------------------- */
+  /* Scroll-spy: highlight the nav link for the section in view. */
   var navLinks = document.querySelectorAll("#navlinks a");
   var spyPairs = [];
   navLinks.forEach(function (a) {
@@ -100,11 +96,7 @@
     });
   }
 
-  /* ---------------------------------------------------------------------
-   * Header shrink after 80px of scroll.
-   * Uses a 1px sentinel placed 80px below the top of the document and an
-   * IntersectionObserver, so there is no continuous scroll listener.
-   * ------------------------------------------------------------------- */
+  /* Header shrink after 80px scroll, via a sentinel + IntersectionObserver. */
   var header = document.getElementById("siteHeader");
   if (hasIO && header) {
     var headerSentinel = document.createElement("div");
@@ -121,11 +113,8 @@
     headerObserver.observe(headerSentinel);
   }
 
-  /* ---------------------------------------------------------------------
-   * Sticky mobile CTA bar: appears once the hero has scrolled out of view.
-   * Observes the hero section itself, again avoiding a scroll listener.
-   * Hidden by CSS above 900px viewport (desktop keeps the header CTA).
-   * ------------------------------------------------------------------- */
+  /* Sticky mobile CTA bar: shown once the hero scrolls out of view.
+     Hidden by CSS above 900px viewport (desktop keeps the header CTA). */
   var hero = document.getElementById("top");
   var ctaBar = document.getElementById("ctaBar");
   if (hasIO && hero && ctaBar) {
