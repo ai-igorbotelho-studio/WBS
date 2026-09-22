@@ -125,12 +125,12 @@ html.js .ridgeline path {
 }
 
 /* ------------------------------------------------------------------ */
-/* Process — connecting progress rail */
+/* Process — connecting progress rail (horizontal bar above the step cards, desktop only) */
 .steps-wrap { position: relative; }
 .rail {
-  position: absolute;
-  left: 22px; top: 0; bottom: 0;
-  width: 2px;
+  position: relative;
+  height: 2px;
+  margin: 0 0 var(--space-6);
   background: var(--line);
   display: none;
 }
@@ -138,8 +138,8 @@ html.js .ridgeline path {
 .rail__fill {
   position: absolute; inset: 0;
   background: var(--timber);
-  transform: scaleY(var(--fill, 0));
-  transform-origin: top;
+  transform: scaleX(var(--fill, 0));
+  transform-origin: left;
 }
 html.js .rail__fill {
   transition: transform var(--motion-base) var(--ease-steady);
@@ -337,7 +337,7 @@ html.js .wbs-btn.is-rippling::after {
   html.js .ridge img { transform: none; }
   .ridgeline path { stroke-dashoffset: 0; animation: none; }
   html.js .cards .card { transform: none; }
-  .rail__fill { transform: scaleY(1); }
+  .rail__fill { transform: scaleX(1); }
   html.js .portrait img { clip-path: inset(0 0 0% 0); }
   html.js .avatar .ring circle { stroke-dashoffset: 0; }
   html.js .tile--duo img { filter: grayscale(0) contrast(1); }
