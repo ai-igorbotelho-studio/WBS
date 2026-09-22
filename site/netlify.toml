@@ -1,6 +1,9 @@
 [build]
   publish = "."
 
+[images]
+  remote_images = ["https://images\\.pexels\\.com/.*"]
+
 [[headers]]
   for = "/*"
   [headers.values]
