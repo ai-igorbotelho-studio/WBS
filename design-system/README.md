@@ -42,6 +42,35 @@ Line icons at 1.5px stroke, 20 or 24px, inline SVG in `currentColor`. The mark i
 
 Exception, recorded 2026-09-22: a **ridge profile derived from the mark** (the hill path alone, hairline stroke, no sun disc, no wordmark) may be used as a structural section divider, at most three times per page, always decorative (`aria-hidden`). It is a motif drawn from the mark, never the lockup itself.
 
+## Motion
+
+Motion is a first-class token family (v2), alongside colour/spacing/typography — not a convention documented only in prose. `design-system/tokens.json` → `motion.durations` (`motion-instant` 0ms, `motion-fast` 150ms, `motion-base` 500ms, `motion-slow` 700ms, `motion-slower` 900ms) and `motion.easings` (`ease-steady`, `ease-firm`, `ease-linear`, `ease-out-soft`) are emitted by `tools/build-tokens.py` into `:root` of both `tokens.css` files as `--motion-*`/`--ease-*`. `site/assets/motion.css` (frontend-owned) consumes these variables — it no longer declares them, since `tokens.css` loads first. Any new duration/easing value goes in `tokens.json`, never as a fresh `--motion-*`/`--ease-*` declared inline in a stylesheet.
+
+## `.bone-outline` utility
+
+The "double a forest-fill element with a 1px forest outline on bone, nothing on forest" pattern used to be three separate one-offs. It is now a single utility class, emitted both in `tokens.css` (`:root`/`[data-theme="dark"]` rule pair, so the site gets it without loading the component bundle) and duplicated in `components/bundle.css` for bundle-only consumers:
+
+```css
+.bone-outline{ box-shadow: 0 0 0 1px var(--forest); }
+[data-theme="dark"] .bone-outline{ box-shadow: none; }
+```
+
+Three uses, do not add a fourth without reviewing this class first:
+1. Keyboard focus ring on bone (focus/inputs), doubling the 2px `focus` ring with a 1px forest inner line.
+2. `ridgeline-lit` ticks on bone (`RidgelineDivider` component), so the timber tick clears the 3:1 large-graphic floor on bone.
+3. Any future chip/marker sitting on timber solid fill in the bone theme — reuse this class, don't mint a new one.
+
 ## Components
 
-`components/bundle.js` defines `window.WBS`, plain functions returning DOM elements with no framework: `Button`, `Card`, `Field`, `Eyebrow`, `Stat`. Each README says what the consumer provides.
+`components/bundle.js` defines `window.WBS`, plain functions returning DOM elements with no framework: `Button`, `Card`, `Field`, `Eyebrow`, `Stat`, `Nav`, `Chip`, `RidgelineDivider`, `Quote`. Each component folder's README says what the consumer provides vs. what the component decides; `components/preview.html` renders all nine side by side in both themes (no Storybook installed — deferred, see `docs/04-design-system-v2-plan.md` §6).
+
+- **Nav** — the off-canvas drawer + trigger from `06-navigation-spec.md`/`09-ui-spec-v3.md` §1: dialog semantics, focus trap, `Escape`/scrim-click/toggle close, focus restoration, `inert` on background, iOS-safe scroll lock, all built in.
+- **Chip** — the gallery filter chip, formalized as a component with zero visual change.
+- **RidgelineDivider** — the 3-point ridgeline motif, consumer supplies cumulative `lit` state; `aria-hidden`, max 3 per page.
+- **Quote** — a single attributed testimonial; returns `null` if `text` is empty, so a placeholder can never ship by accident.
+
+## Changelog
+
+**v2** (this pass): new colour tokens `scrim`, `ridgeline-lit`, `drawer-current-marker`, `paper-stock-rule`; new `layout` family (`drawer-width`, `nav-condensed-gap`, `nav-condensed-fontsize`, `header-height-compact`); new `motion` family (durations/easings) migrated from `motion.css` into the token pipeline; `.bone-outline` utility; `Nav`, `Chip`, `RidgelineDivider`, `Quote` components; `tools/check-tokens.py` and `tools/check-contrast.py` added. No existing token value changed; `#d8b08c`/`#a8b5af`/`#3f5c4f` hardcoded in `index.html` are flagged by `check-tokens.py` for `frontend-multistack` to replace with `var(--timber-text)`/`var(--ink-muted)`/`var(--line)` — not fixed in this pass (out of design-system scope).
+
+**v1**: initial token set (color, type, spacing, radius, shadow, logo) and `Button`/`Card`/`Field`/`Eyebrow`/`Stat` components.

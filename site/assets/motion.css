@@ -4,18 +4,8 @@
    prefers-reduced-motion zeroes every duration/transform and shows final state. */
 
 :root {
-  /* Durations */
-  --motion-instant: 0ms;
-  --motion-fast: 150ms;
-  --motion-base: 500ms;
-  --motion-slow: 700ms;
-  --motion-slower: 900ms;
-
-  /* Easings */
-  --ease-steady: cubic-bezier(0.22, 0.61, 0.36, 1);
-  --ease-firm: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-linear: linear;
-  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Durations and easings (--motion-*, --ease-*) now live in tokens.css,
+     generated from design-system/tokens.json (motion family, v2). */
 
   /* Reveal / stagger */
   --reveal-distance: 16px;
