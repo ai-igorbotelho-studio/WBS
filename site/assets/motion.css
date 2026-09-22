@@ -203,7 +203,8 @@ html.js .gallery .tile.is-hidden {
   opacity: 0;
   transform: scale(.96);
   pointer-events: none;
-  transition: opacity var(--motion-base) var(--ease-out-soft), transform var(--motion-base) var(--ease-out-soft);
+  visibility: hidden;
+  transition: opacity var(--motion-base) var(--ease-out-soft), transform var(--motion-base) var(--ease-out-soft), visibility 0s linear var(--motion-base);
 }
 html.js .gallery .tile.is-hidden { display: flex; } /* keep in flow for FLIP measurement */
 
