@@ -90,6 +90,7 @@ document.documentElement.classList.add('js');
     if (!ctaBar) return;
     var hide = inContact || fieldFocused;
     ctaBar.classList.toggle('cta-bar--suppressed', hide);
+    ctaBar.toggleAttribute('inert', hide || ctaBar.getAttribute('data-visible') !== 'true');
     if (hide) {
       ctaBar.setAttribute('aria-hidden', 'true');
       ctaBar.style.visibility = 'hidden';
@@ -103,6 +104,7 @@ document.documentElement.classList.add('js');
       entries.forEach(function (entry) {
         var visible = !entry.isIntersecting && entry.boundingClientRect.top < 0;
         ctaBar.setAttribute('data-visible', String(visible));
+        ctaBar.toggleAttribute('inert', !visible);
         applyCtaBar();
       });
     }, { threshold: 0 });
@@ -127,11 +129,8 @@ document.documentElement.classList.add('js');
   if (display) {
     var words = display.querySelectorAll('.w');
     words.forEach(function (w, i) { w.style.setProperty('--i', Math.min(i, 6)); });
-    window.addEventListener('load', function () {
-      requestAnimationFrame(function () { display.classList.add('w-in'); });
-    });
-    // fallback in case load already fired
-    if (document.readyState === 'complete') display.classList.add('w-in');
+    // reveal on first paint after parse, never gated on window load (LCP text)
+    requestAnimationFrame(function () { requestAnimationFrame(function () { display.classList.add('w-in'); }); });
   }
 
   /* ---------------- Hero photo parallax-lite ---------------- */

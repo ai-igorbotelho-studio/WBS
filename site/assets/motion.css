@@ -74,8 +74,9 @@ html.js .nav-links a::after {
   border-top: 1px solid var(--line);
   transform: translateY(100%);
 }
-html.js .cta-bar { transition: transform var(--motion-slow) var(--ease-steady); }
-html.js .cta-bar[data-visible="true"] { transform: none; }
+html.js .cta-bar { transition: transform var(--motion-slow) var(--ease-steady), visibility 0s linear var(--motion-slow); visibility: hidden; }
+html.js .cta-bar[data-visible="true"] { transform: none; visibility: visible; transition-delay: 0s; }
+.cta-bar:not([data-visible="true"]) { visibility: hidden; }
 .cta-bar--suppressed { visibility: hidden !important; pointer-events: none; }
 @media (min-width: 900px) { .cta-bar { display: none; } }
 .cta-bar .wbs-btn { width: 100%; }
@@ -188,7 +189,7 @@ html.js .tile--duo .cap {
 /* Category filter chips */
 .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--space-6); }
 .chip {
-  min-height: 44px; padding: 8px 16px; border-radius: 999px;
+  min-height: 44px; padding: 8px 16px; border-radius: var(--radius-md);
   border: 1px solid var(--line); background: var(--surface-raised);
   color: var(--ink); font: 500 14px/20px var(--font-sans); cursor: pointer;
 }
