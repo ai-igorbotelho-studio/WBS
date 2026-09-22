@@ -140,6 +140,7 @@ form{display:grid;gap:var(--space-4);background:var(--surface-raised);border:1px
 .field[data-invalid="true"] .hint{color:var(--danger)}
 .consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:20px;color:var(--ink-muted)}
 .consent input{width:20px;height:20px;margin:2px 0 0;flex:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .status{font-size:14px;line-height:20px;min-height:20px}
 .status[data-ok="true"]{color:var(--success)}
 /* footer */
@@ -340,7 +341,9 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
         <li><a href="https://wa.me/64211822723">WhatsApp</a></li>
       </ul>
     </div>
-    <form id="quote" action="[FORM ENDPOINT]" method="post" novalidate>
+    <form id="quote" name="quote" method="post" action="/thanks.html" data-netlify="true" netlify-honeypot="company" novalidate>
+      <input type="hidden" name="form-name" value="quote">
+      <p class="hp" aria-hidden="true"><label>Company <input name="company" tabindex="-1" autocomplete="off"></label></p>
       <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
       <div class="field"><label for="phone">Phone or WhatsApp</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required><span class="hint" id="phone-hint">NZ mobile, e.g. 021 182 2723</span></div>
       <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email"></div>
@@ -395,7 +398,7 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
     form.querySelectorAll('.field').forEach(function(f){var i=f.querySelector('input,textarea,select');if(!i)return;var bad=i.required&&!i.value.trim();if(i.type==='tel'&&i.value&&!/^\+?[\d\s()-]{7,}$/.test(i.value))bad=true;f.setAttribute('data-invalid',String(bad));if(bad)ok=false;});
     var c=form.querySelector('input[name=consent]');if(!c.checked){ok=false;}
     if(!ok){ev.preventDefault();status.removeAttribute('data-ok');status.textContent='Please fill in your name, phone, the job details and tick the consent box.';return;}
-    if(form.getAttribute('action').indexOf('[')===0){ev.preventDefault();status.setAttribute('data-ok','true');status.textContent='Thanks. This preview has no form endpoint yet; in production your request goes to Pablo.';}
+    if(location.protocol==='file:'||/localhost|127\.0\.0\.1/.test(location.host)){ev.preventDefault();status.setAttribute('data-ok','true');status.textContent='Thanks. Form submission is handled by the host in production; this local preview does not send.';}
   });
 })();
 </script>
