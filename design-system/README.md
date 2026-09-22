@@ -40,6 +40,8 @@ A 4px base with the guide's own stops (22, 60, 120). Cards pad `space-8` on desk
 
 Line icons at 1.5px stroke, 20 or 24px, inline SVG in `currentColor`. The mark is not an icon: use it only as a logo. No emoji.
 
+Exception, recorded 2026-09-22: a **ridge profile derived from the mark** (the hill path alone, hairline stroke, no sun disc, no wordmark) may be used as a structural section divider, at most three times per page, always decorative (`aria-hidden`). It is a motif drawn from the mark, never the lockup itself.
+
 ## Components
 
 `components/bundle.js` defines `window.WBS`, plain functions returning DOM elements with no framework: `Button`, `Card`, `Field`, `Eyebrow`, `Stat`. Each README says what the consumer provides.

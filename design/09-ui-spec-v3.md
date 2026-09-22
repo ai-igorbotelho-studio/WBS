@@ -100,3 +100,18 @@ Hero/gallery duotone filter values are **not new tokens** — same recipe, reuse
 - **Ridgeline tick on bone needs an outline** to hit 3:1 — a second render pass per tick (small cost, no new token), named because two other places (focus ring, timber-text) already needed the same "double it on bone" fix; this is now a repeating pattern the design-system-engineer should treat as one utility, not three one-offs.
 - **Cutting both marquees vs. creative-direction's "keep one" hedge**: this spec resolves in favor of experience-v3's fuller cut (zero) because the ridgeline 3-point motif now does the "connective tissue" job the marquee was awkwardly sharing; flagging the disagreement between the two v3 docs explicitly for the Head to confirm before merge.
 - **Testimonial copy dependency**: §4.6 blocks on real copy from Pablo; recommend shipping without it (delete `.quote` CSS) rather than slip a placeholder, if copy isn't ready by the design gate.
+
+---
+
+## Head decisions after design audit (2026-09-22)
+
+These settle the audit's findings and override any conflicting line in 06–09.
+
+1. **Marquee**: both strips are removed (experience-v3 wins over creative-direction's "keep one"). The tagline already lives in the hero eyebrow and the nav.
+2. **Ridgeline as motif**: allowed. The divider is a derived ridge profile, not the logo lockup; `design-system/README.md` § Iconography is amended to say so. Three instances maximum (services→process, about→work, closing band), always `aria-hidden`.
+3. **Testimonial**: default is *no quote section*. The dormant `.quote` CSS is deleted in this pass. Owner for a real testimonial: Igor (client liaison), no deadline; when copy arrives it ships as its own change. Creative-direction v3 "Add 2" is withdrawn.
+4. **`ridgeline-lit`** is defined as a pair in one CSS class: fill `accent` + 1px `forest` stroke on ticks and the lit path, so the 3:1 floor on bone never depends on the implementer remembering an outline.
+5. **Hero duotone**: no headline or eyebrow text sits on the photo (two-column layout at ≥1000px, stacked below it on phones). The only text on the image is the mono caption, on the existing bottom gradient `rgba(31,58,46,.7→0)`; measured ≥ 7:1. No further scrim needed.
+6. **`paper-stock-rule`** is its own token, not `line`: 2px top rule in `accent` (timber) on `#contact`, documented as semantic ("the surface you write on"). `line` stays decorative.
+7. **Type tokens**: `h3` usage in `tokens.json` no longer names process steps; steps use `h2` (card title). Design-system engineer updates the token file in the v2 bump.
+8. About portrait wipe and avatar ring: reduced-motion rule restated here explicitly — both render in their final state with no transition.
