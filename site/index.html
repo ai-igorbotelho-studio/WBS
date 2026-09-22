@@ -103,6 +103,10 @@ h1,h2,h3{margin:0;font-weight:600}
 .reverse{background:var(--forest);color:var(--bone)}
 .reverse .eyebrow{color:#d8b08c}
 .reverse .lead,.reverse p{color:#a8b5af}
+.founder{display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)}
+.avatar{flex:none;width:72px;height:72px;border-radius:50%;overflow:hidden;background:var(--timber);box-shadow:0 0 0 2px var(--timber)}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+@media (min-width:768px){.avatar{width:88px;height:88px}}
 .about-grid{display:grid;gap:var(--space-8);align-items:center}
 @media (min-width:900px){.about-grid{grid-template-columns:5fr 7fr;gap:var(--space-9)}}
 .portrait{margin:0;width:100%;max-width:420px;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;background:var(--timber)}
@@ -297,7 +301,10 @@ html.js .reveal.in{opacity:1;transform:none}
     <figure class="portrait"><picture><source srcset="assets/photos/carpentry-planer.webp" type="image/webp"><img src="assets/photos/carpentry-planer.jpg" alt="A carpenter feeding a hardwood board through a thicknesser in the workshop" width="1200" height="1800" loading="lazy"></picture></figure>
     <div>
       <span class="eyebrow">03 · About</span>
-      <h2 class="h1">Pablo Baldo, founder</h2>
+      <div class="founder">
+        <picture class="avatar"><source srcset="assets/photos/pablo-baldo-160.webp 1x, assets/photos/pablo-baldo-320.webp 2x" type="image/webp"><img src="assets/photos/pablo-baldo-160.jpg" srcset="assets/photos/pablo-baldo-320.jpg 2x" alt="Pablo Baldo" width="160" height="160" loading="lazy"></picture>
+        <h2 class="h1">Pablo Baldo, founder</h2>
+      </div>
       <p class="lead">Pablo started Waiheke Backyards Solutions in 2024 after years in landscaping, carpentry and construction. He lives on the island, quotes every job himself, and is on the tools with the team most days.</p>
       <p>Outdoor work on Waiheke depends on the weather and the ferry. We plan for both, tell you when something slips, and never let a delay become a surprise.</p>
       <ul class="team">
