@@ -14,8 +14,6 @@
 
   /* New caps */
   --parallax-max: 12px;
-  --tilt-max: 4deg;
-  --magnetic-max: 4px;
 }
 
 /* ------------------------------------------------------------------ */
@@ -101,13 +99,14 @@ html.js .ridgeline path {
 }
 @keyframes wbs-draw { to { stroke-dashoffset: 0; } }
 
+/* Ridgeline tick markers — cumulative lit state, 3 per divider, 3 dividers max on page */
+.ridgeline .tick { fill: var(--line); fill-opacity: .4; stroke: none; }
+.ridgeline .tick.ridgeline-lit { fill: var(--ridgeline-lit); fill-opacity: 1; stroke: var(--forest); stroke-width: 1; }
+html.js .ridgeline .tick { transition: fill var(--motion-base) var(--ease-steady), fill-opacity var(--motion-base) var(--ease-steady); }
+
 /* ------------------------------------------------------------------ */
-/* Services cards — tilt-lite (desktop, pointer:fine only) */
+/* Services cards — plain hover surface-swap, no tilt */
 @media (hover: hover) and (pointer: fine) {
-  html.js .cards .card {
-    transform: perspective(600px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
-    transition: transform var(--motion-fast) var(--ease-firm);
-  }
   html.js .cards .card .icon {
     transition: transform var(--motion-fast) var(--ease-firm);
   }
@@ -288,56 +287,9 @@ html.js #quote .wbs-btn[data-state="loading"]::before {
 @keyframes wbs-spin { to { transform: rotate(360deg); } }
 
 /* ------------------------------------------------------------------ */
-/* Footer / cross-section — marquee */
-.marquee {
-  overflow: hidden;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 14px 0;
-  background: var(--surface-alt);
-}
-.marquee__track {
-  display: flex;
-  width: max-content;
-  gap: 48px;
-  white-space: nowrap;
-  font: 400 14px/20px var(--font-mono);
-  letter-spacing: 2.4px;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  opacity: .6;
-}
-html.js .marquee__track {
-  animation: wbs-marquee 24s linear infinite;
-}
-@keyframes wbs-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-/* Magnetic-lite + ripple on buttons */
-.wbs-btn { position: relative; overflow: hidden; }
-html.js .wbs-btn {
-  transform: translate(var(--mx, 0px), var(--my, 0px));
-}
-@media (hover: hover) and (pointer: fine) {
-  html.js .wbs-btn { transition: transform var(--motion-fast) var(--ease-firm), background var(--motion-fast), color var(--motion-fast), border-color var(--motion-fast); }
-}
-.wbs-btn::after {
-  content: "";
-  position: absolute;
-  left: var(--x, 50%); top: var(--y, 50%);
-  width: 8px; height: 8px;
-  background: currentColor;
-  opacity: 0;
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  pointer-events: none;
-}
-html.js .wbs-btn.is-rippling::after {
-  animation: wbs-ripple var(--motion-fast) var(--ease-out-soft);
-}
-@keyframes wbs-ripple {
-  from { opacity: .35; transform: translate(-50%, -50%) scale(1); }
-  to { opacity: 0; transform: translate(-50%, -50%) scale(22); }
-}
+/* Buttons — CSS-only active state (ripple/magnetic-lite cut, see 09-ui-spec-v3 §4) */
+.wbs-btn:active { background: var(--accent-hover); }
+.wbs-btn--ghost:active { background: var(--surface-alt); }
 
 /* ------------------------------------------------------------------ */
 /* Reduced motion: zero everything, show final state */
@@ -346,7 +298,7 @@ html.js .wbs-btn.is-rippling::after {
     --motion-instant: 0ms; --motion-fast: 0ms; --motion-base: 0ms;
     --motion-slow: 0ms; --motion-slower: 0ms;
     --reveal-distance: 0px; --stagger-step: 0ms;
-    --parallax-max: 0px; --tilt-max: 0deg; --magnetic-max: 0px;
+    --parallax-max: 0px;
   }
   *, *::before, *::after { animation-duration: 0ms !important; animation-iteration-count: 1 !important; transition-duration: 0ms !important; }
 
@@ -354,16 +306,14 @@ html.js .wbs-btn.is-rippling::after {
   html.js .display .w { clip-path: inset(0 0 0% 0); }
   html.js .ridge img { transform: none; }
   .ridgeline path { stroke-dashoffset: 0; animation: none; }
-  html.js .cards .card { transform: none; }
   .rail__fill { transform: scaleX(1); }
   html.js .portrait img { clip-path: inset(0 0 0% 0); }
   html.js .avatar .ring circle { stroke-dashoffset: 0; }
   html.js .tile--duo img { filter: grayscale(0) contrast(1); }
   html.js .tile--duo .cap { transform: none; opacity: 1; }
   html.js .gallery .tile { transition: none; }
-  .marquee__track { animation: none; }
-  html.js .wbs-btn { transform: none; }
-  .wbs-btn.is-rippling::after { animation: none; opacity: 0; }
   .faq .panel[data-open="true"] { grid-template-rows: 1fr; }
   .cta-bar { transition: none; }
+  .ridgeline .tick { fill: var(--ridgeline-lit); fill-opacity: 1; stroke: var(--forest); stroke-width: 1; }
+  .drawer, .drawer-scrim { transition: none !important; }
 }
