@@ -154,9 +154,9 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
 .foot .mono{font-family:var(--font-mono);letter-spacing:0.6px}
 .legal{margin-top:var(--space-7);padding-top:var(--space-4);border-top:1px solid #3f5c4f;font-family:var(--font-mono);font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:#a8b5af}
 /* reveal */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
-.reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+html.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+html.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html.js .reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
@@ -369,6 +369,7 @@ footer.site{background:var(--forest);color:var(--bone);padding:var(--space-9) 0 
 
 <script>
 (function(){
+  document.documentElement.classList.add('js');
   var burger=document.getElementById('burger'),menu=document.getElementById('mobilemenu');
   burger.addEventListener('click',function(){var open=menu.getAttribute('data-open')==='true';menu.setAttribute('data-open',String(!open));burger.setAttribute('aria-expanded',String(!open));burger.setAttribute('aria-label',open?'Open menu':'Close menu');});
   menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.setAttribute('data-open','false');burger.setAttribute('aria-expanded','false');});});
