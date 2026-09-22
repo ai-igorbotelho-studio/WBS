@@ -255,7 +255,7 @@ html.js .wbs-field--float .wbs-field__label {
 
 /* Phone: dial-code prefix (ISO + code, mono, no flags) */
 .wbs-field--phone .wbs-field__input { padding-left: 118px; }
-.wbs-field--phone .wbs-field__label { left: 118px; }
+.wbs-field--phone .wbs-field__label { left: 118px; white-space: nowrap; }
 .dial {
   position: absolute; left: 10px; top: 16px;
   height: 40px; padding: 0 22px 0 8px;
