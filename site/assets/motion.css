@@ -253,6 +253,20 @@ html.js .wbs-field--float .wbs-field__label {
 }
 .wbs-field--float textarea.wbs-field__input { padding-top: 26px; }
 
+/* Phone: dial-code prefix (ISO + code, mono, no flags) */
+.wbs-field--phone .wbs-field__input { padding-left: 118px; }
+.wbs-field--phone .wbs-field__label { left: 118px; white-space: nowrap; }
+.dial {
+  position: absolute; left: 10px; top: 16px;
+  height: 40px; padding: 0 22px 0 8px;
+  border: 0; border-right: 1px solid var(--line); border-radius: 0;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%231f3a2e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 4px center;
+  font: 500 14px/20px var(--font-mono); letter-spacing: .4px; color: var(--forest);
+  -webkit-appearance: none; appearance: none; cursor: pointer;
+}
+.dial:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; box-shadow: 0 0 0 1px var(--forest); border-radius: var(--radius-sm); }
+.dial option { font-family: var(--font-mono); }
+
 /* Submit button loading/success */
 #quote .wbs-btn[data-state] { position: relative; }
 #quote .wbs-btn[data-state="loading"] { pointer-events: none; }

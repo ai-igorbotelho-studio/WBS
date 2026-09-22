@@ -317,6 +317,14 @@ document.documentElement.classList.add('js');
 
   /* ---------------- Contact form: validation + loading/success state ---------------- */
   var form = document.getElementById('quote'), status = document.getElementById('status');
+  var dial = document.getElementById('dial'), phoneHint = document.getElementById('phone-hint');
+  if (dial && phoneHint) {
+    dial.addEventListener('change', function () {
+      var o = dial.options[dial.selectedIndex];
+      phoneHint.textContent = o.getAttribute('data-hint') || '';
+      var ph = document.getElementById('phone'); if (ph) ph.focus();
+    });
+  }
   if (form && status) {
     form.addEventListener('submit', function (ev) {
       var ok = true;
@@ -324,7 +332,7 @@ document.documentElement.classList.add('js');
         var i = f.querySelector('input,textarea,select');
         if (!i) return;
         var bad = i.required && !i.value.trim();
-        if (i.type === 'tel' && i.value && !/^\+?[\d\s()-]{7,}$/.test(i.value)) bad = true;
+        if (i.type === 'tel' && i.value) { var digits = i.value.replace(/\D/g, ''); if (digits.length < 6 || digits.length > 13) bad = true; }
         f.setAttribute('data-invalid', String(bad));
         if (bad) ok = false;
       });
