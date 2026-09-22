@@ -1,0 +1,349 @@
+/* WBS motion.css — tokens + all effect rules from design/05-experience-boost.md.
+   Everything that hides content before revealing it is scoped under html.js,
+   so a no-JS visitor always sees final-state content immediately.
+   prefers-reduced-motion zeroes every duration/transform and shows final state. */
+
+:root {
+  /* Durations */
+  --motion-instant: 0ms;
+  --motion-fast: 150ms;
+  --motion-base: 500ms;
+  --motion-slow: 700ms;
+  --motion-slower: 900ms;
+
+  /* Easings */
+  --ease-steady: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-firm: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-linear: linear;
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Reveal / stagger */
+  --reveal-distance: 16px;
+  --stagger-step: 80ms;
+  --stagger-step-max: 6;
+
+  /* New caps */
+  --parallax-max: 12px;
+  --tilt-max: 4deg;
+  --magnetic-max: 4px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Reveal + stagger */
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+  transition: opacity var(--motion-base) var(--ease-steady),
+              transform var(--motion-base) var(--ease-steady);
+  transition-delay: calc(var(--stagger-step) * var(--i, 0));
+}
+html.js .reveal.in { opacity: 1; transform: none; }
+html.js .stagger > :nth-child(n + 7) { --i: var(--stagger-step-max); }
+
+/* Header */
+.header {
+  transition: padding var(--motion-slow) var(--ease-firm),
+              background-color var(--motion-slow) var(--ease-firm),
+              box-shadow var(--motion-slow) var(--ease-firm);
+}
+html.js .header[data-shrunk="true"] {
+  padding-block: 4px;
+  box-shadow: 0 1px 0 var(--line);
+}
+
+/* Nav underline draw — CSS-only, keyed off aria-current already set by scroll-spy JS */
+.nav-links a { position: relative; }
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: var(--timber);
+  clip-path: inset(0 100% 0 0);
+}
+html.js .nav-links a::after {
+  transition: clip-path var(--motion-fast) var(--ease-firm);
+}
+.nav-links a[aria-current="true"]::after { clip-path: inset(0 0 0 0); }
+
+/* CTA bar */
+.cta-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  display: flex; padding: 12px 16px;
+  background: var(--surface-raised);
+  border-top: 1px solid var(--line);
+  transform: translateY(100%);
+}
+html.js .cta-bar { transition: transform var(--motion-slow) var(--ease-steady); }
+html.js .cta-bar[data-visible="true"] { transform: none; }
+.cta-bar--suppressed { visibility: hidden !important; pointer-events: none; }
+@media (min-width: 900px) { .cta-bar { display: none; } }
+.cta-bar .wbs-btn { width: 100%; }
+
+/* ------------------------------------------------------------------ */
+/* Hero word-reveal — static markup, spans already in HTML */
+html.js .display .w {
+  display: inline-block;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path var(--motion-base) var(--ease-steady);
+  transition-delay: calc(var(--stagger-step) * var(--i, 0));
+}
+html.js .display.w-in .w { clip-path: inset(0 0 0% 0); }
+
+/* Hero photo parallax-lite (rAF-driven translateY via inline custom property) */
+html.js .ridge img { transform: translateY(var(--parallax-y, 0px)); will-change: transform; }
+
+/* Stat counters have no extra CSS; textContent is written directly */
+
+/* ------------------------------------------------------------------ */
+/* Ridgeline divider — inline SVG stroke draw on load, pure CSS */
+.ridgeline { display: block; width: 100%; height: 24px; color: var(--line); }
+.ridgeline path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+}
+html.js .ridgeline path {
+  animation: wbs-draw var(--motion-slower) var(--ease-steady) forwards;
+}
+@keyframes wbs-draw { to { stroke-dashoffset: 0; } }
+
+/* ------------------------------------------------------------------ */
+/* Services cards — tilt-lite (desktop, pointer:fine only) */
+@media (hover: hover) and (pointer: fine) {
+  html.js .cards .card {
+    transform: perspective(600px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    transition: transform var(--motion-fast) var(--ease-firm);
+  }
+  html.js .cards .card .icon {
+    transition: transform var(--motion-fast) var(--ease-firm);
+  }
+  html.js .cards .card:hover .icon { transform: translateY(-2px); }
+}
+
+/* ------------------------------------------------------------------ */
+/* Process — connecting progress rail */
+.steps-wrap { position: relative; }
+.rail {
+  position: absolute;
+  left: 22px; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--line);
+  display: none;
+}
+@media (min-width: 1100px) { .rail { display: block; } }
+.rail__fill {
+  position: absolute; inset: 0;
+  background: var(--timber);
+  transform: scaleY(var(--fill, 0));
+  transform-origin: top;
+}
+html.js .rail__fill {
+  transition: transform var(--motion-base) var(--ease-steady);
+}
+
+/* ------------------------------------------------------------------ */
+/* About — portrait wipe + avatar ring, one choreographed "beat" */
+html.js .portrait img {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path var(--motion-base) var(--ease-steady);
+}
+html.js .about-in .portrait img { clip-path: inset(0 0 0% 0); }
+
+.avatar { position: relative; }
+.avatar .ring { position: absolute; inset: -3px; overflow: visible; }
+.avatar .ring circle {
+  fill: none; stroke: var(--timber); stroke-width: 2;
+  stroke-dasharray: 264; stroke-dashoffset: 264;
+}
+html.js .about-in .avatar .ring circle {
+  transition: stroke-dashoffset var(--motion-base) var(--ease-steady);
+  stroke-dashoffset: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Recent work — duotone-to-colour hover, caption rise */
+html.js .tile--duo img {
+  filter: grayscale(1) contrast(1.05);
+  transition: filter var(--motion-base) var(--ease-firm);
+}
+html.js .tile--duo .cap {
+  transform: translateY(8px);
+  opacity: .92;
+  transition: transform var(--motion-base) var(--ease-firm), opacity var(--motion-base) var(--ease-firm);
+}
+@media (hover: hover) and (pointer: fine) {
+  html.js .tile--duo:hover img,
+  html.js .tile--duo:focus-within img { filter: grayscale(0) contrast(1); }
+  html.js .tile--duo:hover .cap,
+  html.js .tile--duo:focus-within .cap { transform: none; opacity: 1; }
+}
+@media (hover: none) {
+  html.js .tile--duo img { filter: grayscale(0) contrast(1); }
+  html.js .tile--duo .cap { transform: none; opacity: 1; }
+}
+
+/* Category filter chips */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--space-6); }
+.chip {
+  min-height: 44px; padding: 8px 16px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--surface-raised);
+  color: var(--ink); font: 500 14px/20px var(--font-sans); cursor: pointer;
+}
+.chip[aria-pressed="true"] { background: var(--forest); color: var(--bone); border-color: var(--forest); }
+html.js .chip { transition: background var(--motion-fast) var(--ease-firm), color var(--motion-fast) var(--ease-firm); }
+
+html.js .gallery { position: relative; }
+html.js .gallery .tile { transition: transform var(--motion-base) var(--ease-out-soft); }
+html.js .gallery .tile[hidden],
+html.js .gallery .tile.is-hidden {
+  opacity: 0;
+  transform: scale(.96);
+  pointer-events: none;
+  transition: opacity var(--motion-base) var(--ease-out-soft), transform var(--motion-base) var(--ease-out-soft);
+}
+html.js .gallery .tile.is-hidden { display: flex; } /* keep in flow for FLIP measurement */
+
+/* ------------------------------------------------------------------ */
+/* FAQ — enhanced button + grid-rows panel (built by site.js) */
+.faq .q-btn {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 44px;
+  padding: 20px 0;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 600;
+}
+.faq .q-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.faq .q-btn::after { content: "+"; font-family: var(--font-mono); color: var(--timber-text); flex: none; }
+.faq .q-btn[aria-expanded="true"]::after { content: "\2013"; }
+html.js .faq .q-btn::after { transition: transform var(--motion-fast) var(--ease-out-soft); }
+.faq .panel { display: grid; grid-template-rows: 0fr; overflow: hidden; }
+html.js .faq .panel { transition: grid-template-rows var(--motion-base) var(--ease-steady); }
+.faq .panel[data-open="true"] { grid-template-rows: 1fr; }
+.faq .panel > div { min-height: 0; overflow: hidden; }
+.faq .panel p { margin: 0 0 20px; color: var(--ink-muted); max-width: 720px; }
+
+/* ------------------------------------------------------------------ */
+/* Contact form — floating labels */
+.wbs-field--float { position: relative; }
+.wbs-field--float .wbs-field__input { padding-top: 22px; padding-bottom: 8px; }
+.wbs-field--float .wbs-field__label {
+  position: absolute; left: 16px; top: 14px;
+  font-size: 16px; line-height: 20px; color: var(--ink-muted);
+  pointer-events: none; transform-origin: left top;
+}
+html.js .wbs-field--float .wbs-field__label {
+  transition: transform var(--motion-fast) var(--ease-firm), color var(--motion-fast) var(--ease-firm);
+}
+.wbs-field--float .wbs-field__input:focus + .wbs-field__label,
+.wbs-field--float .wbs-field__input:not(:placeholder-shown) + .wbs-field__label {
+  transform: translateY(-8px) scale(.78);
+  color: var(--forest);
+}
+.wbs-field--float textarea.wbs-field__input { padding-top: 26px; }
+
+/* Submit button loading/success */
+#quote .wbs-btn[data-state] { position: relative; }
+#quote .wbs-btn[data-state="loading"] { pointer-events: none; }
+#quote .wbs-btn[data-state="loading"]::before {
+  content: ""; display: inline-block; width: 14px; height: 14px; margin-right: 8px;
+  border-radius: 50%; border: 2px solid currentColor; border-top-color: transparent;
+  vertical-align: -2px;
+}
+html.js #quote .wbs-btn[data-state="loading"]::before {
+  animation: wbs-spin 900ms linear infinite;
+}
+#quote .wbs-btn[data-state="success"]::before {
+  content: "\2713"; margin-right: 8px;
+}
+@keyframes wbs-spin { to { transform: rotate(360deg); } }
+
+/* ------------------------------------------------------------------ */
+/* Footer / cross-section — marquee */
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+  background: var(--surface-alt);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 48px;
+  white-space: nowrap;
+  font: 400 14px/20px var(--font-mono);
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  opacity: .6;
+}
+html.js .marquee__track {
+  animation: wbs-marquee 24s linear infinite;
+}
+@keyframes wbs-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Magnetic-lite + ripple on buttons */
+.wbs-btn { position: relative; overflow: hidden; }
+html.js .wbs-btn {
+  transform: translate(var(--mx, 0px), var(--my, 0px));
+}
+@media (hover: hover) and (pointer: fine) {
+  html.js .wbs-btn { transition: transform var(--motion-fast) var(--ease-firm), background var(--motion-fast), color var(--motion-fast), border-color var(--motion-fast); }
+}
+.wbs-btn::after {
+  content: "";
+  position: absolute;
+  left: var(--x, 50%); top: var(--y, 50%);
+  width: 8px; height: 8px;
+  background: currentColor;
+  opacity: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: none;
+}
+html.js .wbs-btn.is-rippling::after {
+  animation: wbs-ripple var(--motion-fast) var(--ease-out-soft);
+}
+@keyframes wbs-ripple {
+  from { opacity: .35; transform: translate(-50%, -50%) scale(1); }
+  to { opacity: 0; transform: translate(-50%, -50%) scale(22); }
+}
+
+/* ------------------------------------------------------------------ */
+/* Reduced motion: zero everything, show final state */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-instant: 0ms; --motion-fast: 0ms; --motion-base: 0ms;
+    --motion-slow: 0ms; --motion-slower: 0ms;
+    --reveal-distance: 0px; --stagger-step: 0ms;
+    --parallax-max: 0px; --tilt-max: 0deg; --magnetic-max: 0px;
+  }
+  *, *::before, *::after { animation-duration: 0ms !important; animation-iteration-count: 1 !important; transition-duration: 0ms !important; }
+
+  html.js .reveal { opacity: 1; transform: none; }
+  html.js .display .w { clip-path: inset(0 0 0% 0); }
+  html.js .ridge img { transform: none; }
+  .ridgeline path { stroke-dashoffset: 0; animation: none; }
+  html.js .cards .card { transform: none; }
+  .rail__fill { transform: scaleY(1); }
+  html.js .portrait img { clip-path: inset(0 0 0% 0); }
+  html.js .avatar .ring circle { stroke-dashoffset: 0; }
+  html.js .tile--duo img { filter: grayscale(0) contrast(1); }
+  html.js .tile--duo .cap { transform: none; opacity: 1; }
+  html.js .gallery .tile { transition: none; }
+  .marquee__track { animation: none; }
+  html.js .wbs-btn { transform: none; }
+  .wbs-btn.is-rippling::after { animation: none; opacity: 0; }
+  .faq .panel[data-open="true"] { grid-template-rows: 1fr; }
+  .cta-bar { transition: none; }
+}
