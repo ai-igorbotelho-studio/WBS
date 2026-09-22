@@ -68,3 +68,8 @@ Recommend testing #2 or #3 as the `display-xl` line; both carry geography and a 
 - **Duotone hero vs. photographic honesty:** duotone reads more "designed," but Pablo's early real photos are strong on their own; forcing duotone on the *only* two real assets risks looking like we're hiding thin content behind a filter. Mitigation: duotone only where the photo sits directly beside brand-colour chrome (hero panel, about portrait); anything standalone in the portfolio stays full-colour per guide.
 - **Second Forest reversal vs. rhythm fatigue:** two reversals help pacing but risk making Forest feel heavy if overused on a still-short one-pager; keep the second reversal narrow (a band, not a full section) rather than doubling the about-section treatment.
 - **New headline vs. current copy investment:** the rest of v1's copy (process, FAQ) already earns its NZ-English, fact-forward voice; only the hero headline is weak. Rewriting just that line is low-risk; rewriting more risks diluting copy that's already working.
+
+
+---
+
+> **Head decision (2026-09-22):** where this document conflicts with `design/04-ui-spec-v2.md` § "Head decisions after design audit", the UI spec wins (closing band padding, overlay, button size, sticky bar hiding, copy).

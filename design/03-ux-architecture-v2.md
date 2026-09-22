@@ -151,3 +151,8 @@ Rule: only the hero gets a lead sentence over 30 words; every other lead is a si
 - **WhatsApp kept out of hero vs. matching the island homeowner's channel preference:** the fastest-reacting audience (island homeowner) would prefer WhatsApp as prominent as the form, but hero CTA count is capped at two per Hick's law; WhatsApp is demoted to secondary placement (contact block + sticky bar) rather than competing with "Get a quote" for primary hero weight.
 - **Proof restricted to hero-only canonical placement vs. reinforcing trust lower on page:** repeating the three real numbers in Process/FAQ risks diluting them into decoration; keeping them singular to the hero keeps them scannable as the page's one fact-block, at the cost of not re-anchoring trust right before the contact form.
 - **No accordion exclusivity in FAQ vs. shorter page height:** allowing multiple open FAQ items keeps interaction simple and native but can make the FAQ section long if a visitor opens all five; accepted since native `<details>` has no built-in exclusivity without JS, and adding JS here would violate the "native, free, instant" principle already set in experience-vision.
+
+
+---
+
+> **Head decision (2026-09-22):** where this document conflicts with `design/04-ui-spec-v2.md` § "Head decisions after design audit", the UI spec wins (closing band padding, overlay, button size, sticky bar hiding, copy).

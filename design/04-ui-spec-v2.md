@@ -133,3 +133,19 @@ All pairings above reuse tokens.json-verified contrast ratios (10.6:1–11.2:1 i
 - Trade-off — card-hover token vs. "no new colour" discipline: creative-direction crit flags flat hierarchy; a hover-only tone step is the minimal new surface needed to satisfy "hover confirms interactivity" (experience-vision) without inventing a shadow language the tokens forbid. Scoped to hover state only, never a resting-state colour.
 - Trade-off — ridgeline divider vs. build cost: reserving the motif to two locations (process, closing band) keeps it distinctive without turning every hairline into custom SVG work, balancing creative-direction's "make the mark structural" against implementation cost named in creative-direction §7.
 - Trade-off — mobile card bullet collapse vs. content parity: hiding bullets by default below 600px trades initial scan completeness for vertical space; content is never removed, only deferred behind a tap, and remains in the DOM for AT/no-JS users (always expanded without JS).
+
+
+---
+
+## Head decisions after design audit (2026-09-22)
+
+Resolved by the Head; these override any conflicting line above.
+
+1. **Closing Forest band height**: padding `space-8` (40px) top and bottom on desktop, `space-7` (32px) on phones. It is a band, not a section: one line of `h2` plus one CTA, no cards. Creative direction and UI spec now agree on this number.
+2. **`tile-overlay`**: not a uniform translucent overlay. Text sits on a solid-to-transparent gradient `linear-gradient(to top, rgba(31,58,46,.88) 0, rgba(31,58,46,.55) 40%, transparent 70%)`; the bottom 40% is opaque enough that `bone` on it reads ≥ 7:1 whatever the photo. This is what v1 already ships in `.tile--photo::after`.
+3. **`card-hover`**: fixed at `#33594a` (Forest theme only; Bone theme keeps `surface-raised`). `bone` on it reads 7.8:1. No further verification needed.
+4. **Primary button label**: minimum 18px at weight 600 so `on-accent` on `accent` (3.8:1) qualifies as large text. Ghost and brand buttons may stay at 16px.
+5. **Sticky mobile bar**: hidden state uses `visibility:hidden` and `aria-hidden="true"`, not opacity alone; the bar is `display:none` while any `#quote` field has focus (`focusin`/`focusout`), and when `#contact` is in view.
+6. **Compact header**: the nav CTA keeps a 44px minimum height inside the 52px header (4px padding top and bottom).
+7. **Copy**: headline stays "Backyards built with care."; CTAs stay "Get a quote" / "See recent work". The alternatives in creative direction §4 go to a later A/B once analytics exist.
+8. **Service card touch target**: the whole card header (icon + title) toggles the list; minimum 44px tall.
