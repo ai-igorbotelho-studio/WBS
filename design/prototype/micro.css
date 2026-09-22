@@ -1,0 +1,147 @@
+/* WBS micro-interactions
+   Hover as information disclosure (see design/02-experience-vision.md §1,§2):
+   no 3D, no custom cursor. Every effect below has a focus-visible and/or
+   touch/keyboard equivalent, and every duration collapses under
+   prefers-reduced-motion because the aliases below resolve to 0ms there.
+
+   Token bridge: this file is the only place --dur-*/--ease-* aliases are
+   declared. They read from design/prototype/motion-tokens.css when present
+   (--motion-fast/base, --ease-steady/firm) and fall back to sane constants
+   when it is not (e.g. if this file is ever linked standalone). */
+:root{
+  --dur-fast:var(--motion-fast,120ms);
+  --dur-base:var(--motion-base,220ms);
+  --ease-out:var(--ease-steady,cubic-bezier(0.22,0.61,0.36,1));
+  --ease-standard:var(--ease-firm,cubic-bezier(0.4,0,0.2,1));
+}
+@media (prefers-reduced-motion:reduce){
+  :root{--dur-fast:0ms;--dur-base:0ms}
+}
+
+/* ----------------------------------------------------------------------
+   Buttons — feedback is background darken (--accent-hover, already in
+   components.css) PLUS a 1px lift, never colour alone. :active settles
+   back down so press feels grounded. */
+.wbs-btn{
+  transition:transform var(--dur-fast) var(--ease-out),
+             background var(--dur-fast) var(--ease-out),
+             color var(--dur-fast) var(--ease-out),
+             border-color var(--dur-fast) var(--ease-out),
+             filter var(--dur-fast) var(--ease-out);
+}
+.wbs-btn:hover,
+.wbs-btn:focus-visible{transform:translateY(-1px)}
+.wbs-btn:active{transform:translateY(0)}
+.wbs-btn--ghost:hover,
+.wbs-btn--ghost:focus-visible{border-color:var(--accent-hover)}
+.wbs-btn--brand:hover,
+.wbs-btn--brand:focus-visible{filter:brightness(.92);opacity:1}
+@media (prefers-reduced-motion:reduce){
+  .wbs-btn:hover,.wbs-btn:focus-visible,.wbs-btn:active{transform:none}
+}
+
+/* ----------------------------------------------------------------------
+   Service cards — deliverable list is a hover/focus/tap disclosure.
+   Gated by html.js: with JS the list starts collapsed and micro.js makes
+   the card focusable + toggleable (aria-expanded); WITHOUT JS the list is
+   never hidden (no html.js class, rule below never applies), so content
+   is never gated behind an interaction a no-JS visitor cannot reach. */
+html.js .card ul{
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transition:max-height var(--dur-base) var(--ease-standard),
+             opacity var(--dur-fast) var(--ease-out);
+}
+html.js .card:hover ul,
+html.js .card:focus-within ul,
+html.js .card[aria-expanded="true"] ul{
+  max-height:320px;
+  opacity:1;
+}
+html.js .card[data-toggle="true"]{cursor:pointer}
+html.js .card:focus-visible{
+  outline:2px solid var(--focus);
+  outline-offset:2px;
+  box-shadow:0 0 0 1px var(--forest);
+}
+@media (prefers-reduced-motion:reduce){
+  html.js .card ul{transition:none}
+}
+
+/* ----------------------------------------------------------------------
+   Recent work tiles — caption rises slightly on hover. Decorative only
+   (caption text is already visible at rest), so per the experience
+   vision this stays a desktop-only hover enhancement that never gates
+   content; no keyboard equivalent is required. */
+html.js .tile b,
+html.js .tile span{
+  transition:transform var(--dur-fast) var(--ease-out);
+}
+html.js .tile:hover b,
+html.js .tile:hover span{transform:translateY(-4px)}
+@media (prefers-reduced-motion:reduce){
+  html.js .tile b,html.js .tile span{transition:none}
+  html.js .tile:hover b,html.js .tile:hover span{transform:none}
+}
+
+/* ----------------------------------------------------------------------
+   FAQ — native <details>/<summary> already works with zero JS/CSS (see
+   experience vision: "no change needed" under reduced motion). This
+   layer only adds a rotate on the existing +/- glyph and, via micro.js,
+   an animated height when motion is allowed. If micro.js does not run,
+   or motion is reduced, <details> falls back to its instant native
+   toggle — never broken, never hidden. */
+.faq details summary::after{
+  display:inline-block;
+  transition:transform var(--dur-fast) var(--ease-out);
+}
+.faq details[open] summary::after{transform:rotate(45deg)}
+@media (prefers-reduced-motion:reduce){
+  .faq details summary::after{transition:none}
+}
+
+/* ----------------------------------------------------------------------
+   Form — label reinforces on focus (keyboard-equivalent by nature, since
+   :focus-within fires on Tab as much as click), error hint gets an icon
+   alongside its existing red border/text (icon is supplemental, never
+   the sole signal). */
+.wbs-field__label{
+  transition:color var(--dur-fast) var(--ease-out);
+}
+.wbs-field:focus-within .wbs-field__label{
+  color:var(--accent-hover,var(--timber-text));
+}
+.wbs-field[data-invalid="true"] .wbs-field__hint::before{
+  content:"\26A0  ";
+}
+.wbs-field[data-invalid="true"] .wbs-field__label::after{
+  content:" *";
+  color:var(--danger);
+}
+
+/* Submit button — sending (aria-busy, spinner) and success (check) states.
+   Text label itself is swapped by micro.js, so screen readers announce
+   both the aria-busy state and the new label; the spinner/check glyphs
+   below are aria-hidden decoration layered via ::before. */
+#quote .wbs-btn[aria-busy="true"]{pointer-events:none}
+#quote .wbs-btn[aria-busy="true"]::before{
+  content:"";
+  display:inline-block;
+  width:14px;height:14px;
+  margin-right:var(--space-2,8px);
+  border-radius:50%;
+  border:2px solid currentColor;
+  border-top-color:transparent;
+  animation:wbs-spin calc(var(--dur-base) * 3) linear infinite;
+}
+#quote .wbs-btn.is-success::before{
+  content:"\2713";
+  margin-right:var(--space-2,8px);
+  animation:none;
+  border:none;
+}
+@keyframes wbs-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){
+  #quote .wbs-btn[aria-busy="true"]::before{animation:none;opacity:.7}
+}
