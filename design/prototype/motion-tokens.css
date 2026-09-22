@@ -1,0 +1,118 @@
+/* WBS motion tokens
+   "Moves like a well-run job site: steady, deliberate, nothing rushed, nothing wasted."
+   All motion is gated behind html.js and zeroed under prefers-reduced-motion.
+   No motion ships to no-JS or reduced-motion visitors; content is visible either way. */
+
+:root {
+  /* Durations — short list, used exactly, never invented ad hoc */
+  --motion-instant: 0ms;   /* state flips with no tween: focus ring, details/summary symbol */
+  --motion-fast: 150ms;    /* hover/press feedback: card surface swap, nav underline */
+  --motion-base: 500ms;    /* reveal fade/rise: matches the existing site/index.html value */
+  --motion-slow: 700ms;    /* header compact transition, cta-bar entrance: a room settling, not snapping */
+
+  /* Easings — named, no unnamed bezier soup elsewhere in the codebase */
+  --ease-steady: cubic-bezier(0.22, 0.61, 0.36, 1);   /* deliberate deceleration: reveals, cta-bar */
+  --ease-firm: cubic-bezier(0.4, 0, 0.2, 1);           /* standard ease-in-out: header compact, hover */
+  --ease-linear: linear;                                /* opacity-only crossfades where direction is neutral */
+
+  /* Reveal distance — one small travel, never a swoop */
+  --reveal-distance: 16px;
+
+  /* Stagger — the "step by step" rhythm for sequences (Process steps, Services cards) */
+  --stagger-step: 80ms;
+  --stagger-step-max: 6; /* do not stagger more than 6 siblings; beyond that, reveal together */
+}
+
+/* ----------------------------------------------------------------------
+   Utility classes consumed by scroll.js (reveal, stagger) and micro.js
+   (header--compact, cta-bar--visible). All scoped under html.js so a
+   no-JS visitor sees final-state content immediately, with zero motion. */
+
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+  transition: opacity var(--motion-base) var(--ease-steady),
+              transform var(--motion-base) var(--ease-steady);
+}
+
+html.js .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger: direct children of a .stagger container get an incremental
+   transition-delay, driven by scroll.js setting nothing more than the
+   .in class per child in DOM order. Capped at --stagger-step-max children
+   worth of delay so a long list (e.g. 6+ portfolio tiles) doesn't make the
+   last item wait almost a second — beyond the cap, items share the max delay. */
+html.js .stagger > * {
+  transition-delay: calc(var(--stagger-step) * var(--i, 0));
+}
+html.js .stagger > :nth-child(n + 7) {
+  transition-delay: calc(var(--stagger-step) * var(--stagger-step-max));
+}
+
+/* Header: sticky compact state on scroll, a firm not-bouncy settle */
+.header {
+  transition: padding var(--motion-slow) var(--ease-firm),
+              background-color var(--motion-slow) var(--ease-firm),
+              box-shadow var(--motion-slow) var(--ease-firm);
+}
+
+html.js .header--compact {
+  padding-block: var(--space-4, 8px);
+  box-shadow: 0 1px 0 var(--line, rgba(0, 0, 0, 0.12));
+}
+
+/* CTA bar: mobile sticky call-to-action, rises once and stays — never
+   re-triggers on scroll direction changes (no hide/show flicker). */
+.cta-bar {
+  transform: translateY(100%);
+  transition: transform var(--motion-slow) var(--ease-steady);
+}
+
+html.js .cta-bar--visible {
+  transform: none;
+}
+
+/* Hover feedback: fast, not a "reveal" — confirms interactivity, no travel */
+html.js .card,
+html.js .nav a {
+  transition: background-color var(--motion-fast) var(--ease-firm),
+              border-color var(--motion-fast) var(--ease-firm),
+              color var(--motion-fast) var(--ease-firm);
+}
+
+/* ----------------------------------------------------------------------
+   Reduced motion: every duration collapses to zero, every transform is
+   cleared. This block is not an afterthought — it is the same content,
+   delivered instantly, for any visitor who has asked for it. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-instant: 0ms;
+    --motion-fast: 0ms;
+    --motion-base: 0ms;
+    --motion-slow: 0ms;
+    --reveal-distance: 0px;
+    --stagger-step: 0ms;
+  }
+
+  html.js .reveal,
+  html.js .stagger > *,
+  .header,
+  .cta-bar,
+  html.js .card,
+  html.js .nav a {
+    transition: none !important;
+    transition-delay: 0ms !important;
+  }
+
+  html.js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .cta-bar {
+    transform: none;
+  }
+}
