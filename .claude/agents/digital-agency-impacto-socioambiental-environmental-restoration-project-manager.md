@@ -1,7 +1,6 @@
 ---
 name: digital-agency-impacto-socioambiental-environmental-restoration-project-manager
 description: Field project execution. Internal specialist role within digital-agency-impacto-socioambiental (Socioenvironmental Impact). Engage directly for environmental restoration project manager tasks, or go through digital-agency-impacto-socioambiental / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: digital-agency-producao-audiovisual-video-editor
 description: Editing and assembly. Internal specialist role within digital-agency-producao-audiovisual (Audiovisual Production). Engage directly for video editor tasks, or go through digital-agency-producao-audiovisual / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

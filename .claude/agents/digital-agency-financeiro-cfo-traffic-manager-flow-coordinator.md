@@ -1,7 +1,6 @@
 ---
 name: digital-agency-financeiro-cfo-traffic-manager-flow-coordinator
 description: Organizes flow between creative, media, and account service. Internal specialist role within digital-agency-financeiro-cfo (Finance & Operations (CFO)). Engage directly for traffic manager / flow coordinator tasks, or go through digital-agency-financeiro-cfo / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: digital-agency-cultura-inteligencia-cultural-diversity-representation-specialist
 description: Representation in campaigns. Internal specialist role within digital-agency-cultura-inteligencia (Culture & Cultural Intelligence). Engage directly for cultural diversity & representation specialist tasks, or go through digital-agency-cultura-inteligencia / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

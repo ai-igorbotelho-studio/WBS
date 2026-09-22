@@ -1,7 +1,6 @@
 ---
 name: digital-agency-criacao-illustrator
 description: Original illustrations. Internal specialist role within digital-agency-criacao (Creative). Engage directly for illustrator tasks, or go through digital-agency-criacao / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

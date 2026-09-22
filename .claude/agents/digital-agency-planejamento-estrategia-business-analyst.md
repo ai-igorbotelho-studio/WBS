@@ -1,7 +1,6 @@
 ---
 name: digital-agency-planejamento-estrategia-business-analyst
 description: Analyzes business data to inform strategy. Internal specialist role within digital-agency-planejamento-estrategia (Strategy & Planning). Engage directly for business analyst tasks, or go through digital-agency-planejamento-estrategia / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

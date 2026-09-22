@@ -1,7 +1,6 @@
 ---
 name: digital-agency-criacao
 description: Develops creative concepts, copy, design, and art direction. Engage for campaign ideation, advertising copywriting, visual concepts, UI/UX.
-tools: all
 model: opus
 ---
 

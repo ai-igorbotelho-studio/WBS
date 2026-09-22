@@ -1,7 +1,6 @@
 ---
 name: digital-agency-producao-audiovisual-drone-operator
 description: Aerial capture. Internal specialist role within digital-agency-producao-audiovisual (Audiovisual Production). Engage directly for drone operator tasks, or go through digital-agency-producao-audiovisual / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

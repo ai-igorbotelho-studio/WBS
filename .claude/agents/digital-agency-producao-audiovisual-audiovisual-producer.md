@@ -1,7 +1,6 @@
 ---
 name: digital-agency-producao-audiovisual-audiovisual-producer
 description: Production logistics (location, crew, schedule). Internal specialist role within digital-agency-producao-audiovisual (Audiovisual Production). Engage directly for audiovisual producer tasks, or go through digital-agency-producao-audiovisual / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

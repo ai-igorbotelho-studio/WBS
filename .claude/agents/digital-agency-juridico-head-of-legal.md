@@ -1,7 +1,6 @@
 ---
 name: digital-agency-juridico-head-of-legal
 description: Overall legal strategy. Internal specialist role within digital-agency-juridico (Legal). Engage directly for head of legal tasks, or go through digital-agency-juridico / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

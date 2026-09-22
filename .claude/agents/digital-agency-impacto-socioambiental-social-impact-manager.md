@@ -1,7 +1,6 @@
 ---
 name: digital-agency-impacto-socioambiental-social-impact-manager
 description: Social impact projects. Internal specialist role within digital-agency-impacto-socioambiental (Socioenvironmental Impact). Engage directly for social impact manager tasks, or go through digital-agency-impacto-socioambiental / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

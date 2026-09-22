@@ -1,7 +1,6 @@
 ---
 name: digital-agency-criacao-senior-copywriter-copy-lead
 description: Oversight of the copy line. Internal specialist role within digital-agency-criacao (Creative). Engage directly for senior copywriter / copy lead tasks, or go through digital-agency-criacao / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

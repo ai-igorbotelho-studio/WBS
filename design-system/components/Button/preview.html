@@ -1,0 +1,12 @@
+<!-- @dsCard group="Actions" height=96 -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Button</title></head>
+<body style="margin:0;padding:24px;background:var(--surface);display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+<div id="root" style="display:flex;gap:16px;flex-wrap:wrap"></div>
+<script>
+var r=document.getElementById('root'),W=window.WBS;
+r.appendChild(W.Button({label:'Get a quote',variant:'primary'}));
+r.appendChild(W.Button({label:'Call +64 21 182 2723',variant:'brand',href:'tel:+64211822723'}));
+r.appendChild(W.Button({label:'See recent work',variant:'ghost'}));
+</script>
+</body></html>

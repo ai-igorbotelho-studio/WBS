@@ -1,7 +1,6 @@
 ---
 name: digital-agency-planejamento-estrategia-content-planner
 description: Defines the strategic editorial line. Internal specialist role within digital-agency-planejamento-estrategia (Strategy & Planning). Engage directly for content planner tasks, or go through digital-agency-planejamento-estrategia / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

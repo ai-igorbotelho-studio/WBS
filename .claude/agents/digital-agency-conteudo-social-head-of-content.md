@@ -1,7 +1,6 @@
 ---
 name: digital-agency-conteudo-social-head-of-content
 description: Overall editorial strategy. Internal specialist role within digital-agency-conteudo-social (Content & Social). Engage directly for head of content tasks, or go through digital-agency-conteudo-social / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

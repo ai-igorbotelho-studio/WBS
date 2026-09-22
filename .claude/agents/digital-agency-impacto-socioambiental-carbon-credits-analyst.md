@@ -1,7 +1,6 @@
 ---
 name: digital-agency-impacto-socioambiental-carbon-credits-analyst
 description: Carbon market. Internal specialist role within digital-agency-impacto-socioambiental (Socioenvironmental Impact). Engage directly for carbon credits analyst tasks, or go through digital-agency-impacto-socioambiental / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

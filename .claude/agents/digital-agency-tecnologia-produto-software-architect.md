@@ -1,7 +1,6 @@
 ---
 name: digital-agency-tecnologia-produto-software-architect
 description: Architecture for in-house systems/products. Internal specialist role within digital-agency-tecnologia-produto (Technology & Product). Engage directly for software architect tasks, or go through digital-agency-tecnologia-produto / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: digital-agency-conteudo-social-social-media-community-manager
 description: Manages social channels and community. Internal specialist role within digital-agency-conteudo-social (Content & Social). Engage directly for social media / community manager tasks, or go through digital-agency-conteudo-social / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

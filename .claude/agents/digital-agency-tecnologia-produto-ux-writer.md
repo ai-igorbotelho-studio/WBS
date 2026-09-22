@@ -1,7 +1,6 @@
 ---
 name: digital-agency-tecnologia-produto-ux-writer
 description: Microcopy and product content. Internal specialist role within digital-agency-tecnologia-produto (Technology & Product). Engage directly for ux writer tasks, or go through digital-agency-tecnologia-produto / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

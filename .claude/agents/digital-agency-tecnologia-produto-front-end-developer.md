@@ -1,7 +1,6 @@
 ---
 name: digital-agency-tecnologia-produto-front-end-developer
 description: Web interface and experience. Internal specialist role within digital-agency-tecnologia-produto (Technology & Product). Engage directly for front-end developer tasks, or go through digital-agency-tecnologia-produto / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

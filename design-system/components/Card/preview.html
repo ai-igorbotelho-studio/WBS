@@ -1,0 +1,11 @@
+<!-- @dsCard group="Content" height=300 -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Card</title></head>
+<body style="margin:0;padding:24px;background:var(--surface)">
+<div id="root" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:760px"></div>
+<script>
+var r=document.getElementById('root'),W=window.WBS;
+r.appendChild(W.Card({eyebrow:'01 · Carpentry',title:'Decks & outdoor structures',body:'Cedar and pine decks, pergolas and screens built to handle the coast.',items:['Site measure and fixed quote','Council-compliant framing','12-month workmanship warranty']}));
+r.appendChild(W.Card({raised:true,eyebrow:'02 · Landscape',title:'Retaining & planting',body:'Timber retaining walls, steps, paths and planting that suits the island.'}));
+</script>
+</body></html>

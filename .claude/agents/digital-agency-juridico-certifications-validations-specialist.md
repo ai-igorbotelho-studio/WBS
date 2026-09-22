@@ -1,7 +1,6 @@
 ---
 name: digital-agency-juridico-certifications-validations-specialist
 description: Seals and sector compliance. Internal specialist role within digital-agency-juridico (Legal). Engage directly for certifications & validations specialist tasks, or go through digital-agency-juridico / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: digital-agency-dados-analytics-data-analyst
 description: Data analysis and reporting. Internal specialist role within digital-agency-dados-analytics (Data & Analytics). Engage directly for data analyst tasks, or go through digital-agency-dados-analytics / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

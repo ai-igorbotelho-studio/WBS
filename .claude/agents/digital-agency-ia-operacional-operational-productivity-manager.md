@@ -1,7 +1,6 @@
 ---
 name: digital-agency-ia-operacional-operational-productivity-manager
 description: Tracks efficiency KPIs per squad. Internal specialist role within digital-agency-ia-operacional (AI Operations & Efficiency). Engage directly for operational productivity manager tasks, or go through digital-agency-ia-operacional / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: digital-agency-ia-operacional-head-of-ai-and-automation
 description: Leads AI implementation across the agency. Internal specialist role within digital-agency-ia-operacional (AI Operations & Efficiency). Engage directly for head of ai and automation tasks, or go through digital-agency-ia-operacional / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

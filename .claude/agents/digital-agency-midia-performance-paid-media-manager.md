@@ -1,7 +1,6 @@
 ---
 name: digital-agency-midia-performance-paid-media-manager
 description: Tactical campaign management. Internal specialist role within digital-agency-midia-performance (Media & Performance). Engage directly for paid media manager tasks, or go through digital-agency-midia-performance / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

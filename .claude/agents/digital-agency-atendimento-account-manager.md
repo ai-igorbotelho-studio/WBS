@@ -1,7 +1,6 @@
 ---
 name: digital-agency-atendimento-account-manager
 description: Day-to-day account management, expectation alignment. Internal specialist role within digital-agency-atendimento (Account Service). Engage directly for account manager tasks, or go through digital-agency-atendimento / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

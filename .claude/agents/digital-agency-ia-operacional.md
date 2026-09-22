@@ -1,7 +1,6 @@
 ---
 name: digital-agency-ia-operacional
 description: Implements AI and automation across all agency areas to cut cost, save time, and increase margin. Engage to automate processes, build generative-AI workflows, measure tool ROI, and for any "how do I automate/optimize X with AI" request.
-tools: all
 model: opus
 ---
 

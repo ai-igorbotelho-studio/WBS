@@ -1,7 +1,6 @@
 ---
 name: digital-agency-tecnologia-produto-back-end-developer
 description: Server-side logic and databases. Internal specialist role within digital-agency-tecnologia-produto (Technology & Product). Engage directly for back-end developer tasks, or go through digital-agency-tecnologia-produto / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

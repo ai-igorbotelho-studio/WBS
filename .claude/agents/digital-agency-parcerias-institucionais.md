@@ -1,7 +1,6 @@
 ---
 name: digital-agency-parcerias-institucionais
 description: Develops partnerships with companies, governments, NGOs, and multilateral organizations. Engage for sponsorship prospecting, grants/RFPs, agreements, or strategic brand alliances.
-tools: all
 model: sonnet
 ---
 

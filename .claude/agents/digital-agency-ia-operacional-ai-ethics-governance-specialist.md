@@ -1,7 +1,6 @@
 ---
 name: digital-agency-ia-operacional-ai-ethics-governance-specialist
 description: Responsible use, bias mitigation. Internal specialist role within digital-agency-ia-operacional (AI Operations & Efficiency). Engage directly for ai ethics & governance specialist tasks, or go through digital-agency-ia-operacional / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

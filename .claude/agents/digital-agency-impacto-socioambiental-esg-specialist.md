@@ -1,7 +1,6 @@
 ---
 name: digital-agency-impacto-socioambiental-esg-specialist
 description: Environmental governance, reports, compliance. Internal specialist role within digital-agency-impacto-socioambiental (Socioenvironmental Impact). Engage directly for esg specialist tasks, or go through digital-agency-impacto-socioambiental / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

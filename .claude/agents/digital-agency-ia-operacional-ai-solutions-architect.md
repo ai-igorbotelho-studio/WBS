@@ -1,7 +1,6 @@
 ---
 name: digital-agency-ia-operacional-ai-solutions-architect
 description: Designs where/how to apply AI in each area. Internal specialist role within digital-agency-ia-operacional (AI Operations & Efficiency). Engage directly for ai solutions architect tasks, or go through digital-agency-ia-operacional / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

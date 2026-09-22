@@ -1,7 +1,6 @@
 ---
 name: digital-agency-parcerias-institucionais-government-relations-specialist
 description: Liaison with government. Internal specialist role within digital-agency-parcerias-institucionais (Institutional Partnerships). Engage directly for government relations specialist tasks, or go through digital-agency-parcerias-institucionais / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

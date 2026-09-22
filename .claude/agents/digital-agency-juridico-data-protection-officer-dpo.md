@@ -1,7 +1,6 @@
 ---
 name: digital-agency-juridico-data-protection-officer-dpo
 description: LGPD/GDPR. Internal specialist role within digital-agency-juridico (Legal). Engage directly for data protection officer (dpo) tasks, or go through digital-agency-juridico / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

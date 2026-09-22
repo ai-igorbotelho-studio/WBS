@@ -1,7 +1,6 @@
 ---
 name: digital-agency-midia-performance-media-director
 description: Overall media investment strategy. Internal specialist role within digital-agency-midia-performance (Media & Performance). Engage directly for media director tasks, or go through digital-agency-midia-performance / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

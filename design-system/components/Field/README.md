@@ -1,0 +1,1 @@
+A labelled input or textarea for the quote form. Provide `label`, `name`, and optionally `type`, `placeholder`, `hint` or `error` (an error turns the border and hint to danger and sets aria-invalid). The label is always visible, never a placeholder alone. Inputs are 48px tall on a white ground with a rule border and the timber focus ring.

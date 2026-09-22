@@ -1,7 +1,6 @@
 ---
 name: digital-agency-conteudo-social-growth-hacker-growth-manager
 description: Experimentation for organic growth. Internal specialist role within digital-agency-conteudo-social (Content & Social). Engage directly for growth hacker / growth manager tasks, or go through digital-agency-conteudo-social / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

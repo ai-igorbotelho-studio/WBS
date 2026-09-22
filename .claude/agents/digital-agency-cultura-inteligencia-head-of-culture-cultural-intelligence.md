@@ -1,7 +1,6 @@
 ---
 name: digital-agency-cultura-inteligencia-head-of-culture-cultural-intelligence
 description: Leads cultural monitoring. Internal specialist role within digital-agency-cultura-inteligencia (Culture & Cultural Intelligence). Engage directly for head of culture / cultural intelligence tasks, or go through digital-agency-cultura-inteligencia / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

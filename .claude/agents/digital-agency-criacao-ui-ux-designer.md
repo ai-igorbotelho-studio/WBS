@@ -1,7 +1,6 @@
 ---
 name: digital-agency-criacao-ui-ux-designer
 description: Interfaces and user experience. Internal specialist role within digital-agency-criacao (Creative). Engage directly for ui/ux designer tasks, or go through digital-agency-criacao / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

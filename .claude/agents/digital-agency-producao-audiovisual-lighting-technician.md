@@ -1,7 +1,6 @@
 ---
 name: digital-agency-producao-audiovisual-lighting-technician
 description: On-set lighting. Internal specialist role within digital-agency-producao-audiovisual (Audiovisual Production). Engage directly for lighting technician tasks, or go through digital-agency-producao-audiovisual / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

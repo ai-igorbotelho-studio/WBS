@@ -1,7 +1,6 @@
 ---
 name: digital-agency-criacao-performance-creative
 description: Creates variations for A/B testing in paid media. Internal specialist role within digital-agency-criacao (Creative). Engage directly for performance creative tasks, or go through digital-agency-criacao / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

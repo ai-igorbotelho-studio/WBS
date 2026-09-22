@@ -1,7 +1,6 @@
 ---
 name: digital-agency-atendimento-account-executive
 description: Operational execution, briefing collection, follow-up. Internal specialist role within digital-agency-atendimento (Account Service). Engage directly for account executive tasks, or go through digital-agency-atendimento / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

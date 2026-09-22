@@ -1,7 +1,6 @@
 ---
 name: digital-agency-juridico-advertising-compliance-specialist
 description: CONAR, ANPD/LGPD. Internal specialist role within digital-agency-juridico (Legal). Engage directly for advertising compliance specialist tasks, or go through digital-agency-juridico / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

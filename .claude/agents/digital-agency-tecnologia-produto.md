@@ -1,7 +1,6 @@
 ---
 name: digital-agency-tecnologia-produto
 description: Develops websites, systems, integrations, and digital products. Engage for web development, CMS, e-commerce, CRM, technical infrastructure.
-tools: all
 model: opus
 ---
 

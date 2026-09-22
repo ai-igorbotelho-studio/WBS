@@ -1,7 +1,6 @@
 ---
 name: digital-agency-conteudo-social
 description: Manages social media, editorial content, and organic SEO/CRO. Engage for editorial calendars, posts, community management, content optimization.
-tools: all
 model: sonnet
 ---
 

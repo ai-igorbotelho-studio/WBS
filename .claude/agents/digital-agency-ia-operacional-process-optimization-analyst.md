@@ -1,7 +1,6 @@
 ---
 name: digital-agency-ia-operacional-process-optimization-analyst
 description: Maps time/cost bottlenecks. Internal specialist role within digital-agency-ia-operacional (AI Operations & Efficiency). Engage directly for process optimization analyst tasks, or go through digital-agency-ia-operacional / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

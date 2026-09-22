@@ -1,7 +1,6 @@
 ---
 name: digital-agency-juridico
 description: Evaluates contracts, copyright, naming rights, certifications, and image/production law. Engage for any legal risk, contract review, image usage, intellectual property, or regulatory compliance issue.
-tools: all
 model: opus
 ---
 

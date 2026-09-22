@@ -1,7 +1,6 @@
 ---
 name: digital-agency-tecnologia-produto-full-stack-developer
 description: Both fronts. Internal specialist role within digital-agency-tecnologia-produto (Technology & Product). Engage directly for full stack developer tasks, or go through digital-agency-tecnologia-produto / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

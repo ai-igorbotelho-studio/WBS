@@ -1,7 +1,6 @@
 ---
 name: digital-agency-juridico-copyright-specialist
 description: Copyright, image rights, music, scores. Internal specialist role within digital-agency-juridico (Legal). Engage directly for copyright specialist tasks, or go through digital-agency-juridico / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

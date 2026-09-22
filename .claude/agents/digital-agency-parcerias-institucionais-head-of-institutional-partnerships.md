@@ -1,7 +1,6 @@
 ---
 name: digital-agency-parcerias-institucionais-head-of-institutional-partnerships
 description: Partnership strategy. Internal specialist role within digital-agency-parcerias-institucionais (Institutional Partnerships). Engage directly for head of institutional partnerships tasks, or go through digital-agency-parcerias-institucionais / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

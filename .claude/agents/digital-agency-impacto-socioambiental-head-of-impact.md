@@ -1,7 +1,6 @@
 ---
 name: digital-agency-impacto-socioambiental-head-of-impact
 description: Defines the agency's and clients' ESG/impact strategy. Internal specialist role within digital-agency-impacto-socioambiental (Socioenvironmental Impact). Engage directly for head of impact tasks, or go through digital-agency-impacto-socioambiental / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

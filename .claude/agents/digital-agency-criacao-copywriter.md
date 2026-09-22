@@ -1,7 +1,6 @@
 ---
 name: digital-agency-criacao-copywriter
 description: Advertising copy. Internal specialist role within digital-agency-criacao (Creative). Engage directly for copywriter tasks, or go through digital-agency-criacao / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

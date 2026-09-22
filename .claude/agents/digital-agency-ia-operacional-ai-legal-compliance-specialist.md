@@ -1,7 +1,6 @@
 ---
 name: digital-agency-ia-operacional-ai-legal-compliance-specialist
 description: Automated contract review. Internal specialist role within digital-agency-ia-operacional (AI Operations & Efficiency). Engage directly for ai legal/compliance specialist tasks, or go through digital-agency-ia-operacional / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

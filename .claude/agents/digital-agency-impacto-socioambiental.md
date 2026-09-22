@@ -1,7 +1,6 @@
 ---
 name: digital-agency-impacto-socioambiental
 description: Covers sustainability, biome regeneration, bioeconomy, social impact, green/blue economy, and carbon markets. Engage for any ESG, sustainability, impact-communication, or socioenvironmental-risk assessment request.
-tools: all
 model: opus
 ---
 

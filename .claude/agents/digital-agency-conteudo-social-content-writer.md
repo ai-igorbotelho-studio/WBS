@@ -1,7 +1,6 @@
 ---
 name: digital-agency-conteudo-social-content-writer
 description: Editorial/blog copy production. Internal specialist role within digital-agency-conteudo-social (Content & Social). Engage directly for content writer tasks, or go through digital-agency-conteudo-social / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

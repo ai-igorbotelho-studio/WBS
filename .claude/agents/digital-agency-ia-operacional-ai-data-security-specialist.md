@@ -1,7 +1,6 @@
 ---
 name: digital-agency-ia-operacional-ai-data-security-specialist
 description: Protects data used in models. Internal specialist role within digital-agency-ia-operacional (AI Operations & Efficiency). Engage directly for ai data security specialist tasks, or go through digital-agency-ia-operacional / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

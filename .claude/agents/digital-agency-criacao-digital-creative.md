@@ -1,7 +1,6 @@
 ---
 name: digital-agency-criacao-digital-creative
 description: Conceives campaign big ideas. Internal specialist role within digital-agency-criacao (Creative). Engage directly for digital creative tasks, or go through digital-agency-criacao / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

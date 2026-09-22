@@ -1,7 +1,6 @@
 ---
 name: digital-agency-midia-performance
 description: Plans and executes paid media (social ads, Google Ads, programmatic). Engage for paid campaigns, budget optimization, media performance reports.
-tools: all
 model: sonnet
 ---
 

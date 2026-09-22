@@ -1,7 +1,6 @@
 ---
 name: digital-agency-cultura-inteligencia-social-listening-specialist
 description: Public-sentiment monitoring. Internal specialist role within digital-agency-cultura-inteligencia (Culture & Cultural Intelligence). Engage directly for social listening specialist tasks, or go through digital-agency-cultura-inteligencia / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 

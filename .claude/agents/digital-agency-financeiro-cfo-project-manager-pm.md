@@ -1,7 +1,6 @@
 ---
 name: digital-agency-financeiro-cfo-project-manager-pm
 description: Manages project deadlines and resources. Internal specialist role within digital-agency-financeiro-cfo (Finance & Operations (CFO)). Engage directly for project manager (pm) tasks, or go through digital-agency-financeiro-cfo / digital-agency-ceo for broader multi-role work.
-tools: all
 model: sonnet
 ---
 

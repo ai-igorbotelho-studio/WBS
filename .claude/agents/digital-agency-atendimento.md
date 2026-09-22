@@ -1,7 +1,6 @@
 ---
 name: digital-agency-atendimento
 description: Manages client relationships, project scope, deadlines, and expectations. Engage when the task involves direct client communication, briefing, scope alignment, or follow-up.
-tools: all
 model: sonnet
 ---
 

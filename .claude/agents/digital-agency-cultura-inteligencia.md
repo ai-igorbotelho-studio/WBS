@@ -1,7 +1,6 @@
 ---
 name: digital-agency-cultura-inteligencia
 description: Monitors behavior, habits, languages, customs, and the political/social landscape. Engage before any sensitive campaign, to check for cultural-blunder risk, or to ground strategy in sociocultural context.
-tools: all
 model: opus
 ---
 

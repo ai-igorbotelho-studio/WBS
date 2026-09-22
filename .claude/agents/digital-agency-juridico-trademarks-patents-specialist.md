@@ -1,7 +1,6 @@
 ---
 name: digital-agency-juridico-trademarks-patents-specialist
 description: Brand registration and protection. Internal specialist role within digital-agency-juridico (Legal). Engage directly for trademarks & patents specialist tasks, or go through digital-agency-juridico / digital-agency-ceo for broader multi-role work.
-tools: all
 model: opus
 ---
 
