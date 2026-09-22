@@ -89,7 +89,13 @@ h1,h2,h3{margin:0;font-weight:600}
 .steps{counter-reset:step;display:grid;gap:var(--space-6);margin-top:var(--space-8)}
 @media (min-width:768px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:1100px){.steps{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.step{padding-top:var(--space-4);border-top:1px solid var(--line)}
+.step{background:var(--surface-raised);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column}
+.step__photo{margin:0;aspect-ratio:4/3;background:var(--surface-alt);border-bottom:1px solid var(--line)}
+.step__photo picture{display:contents}
+.step__photo img{width:100%;height:100%;object-fit:cover;display:block}
+.step__photo--pending{display:grid;place-items:center;background:repeating-linear-gradient(135deg,var(--surface-alt) 0 22px,rgba(31,58,46,.06) 22px 23px)}
+.step__photo--pending .small{font-family:var(--font-mono);font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--ink-muted)}
+.step__body{padding:var(--space-6);display:flex;flex-direction:column}
 .step .num{font-family:var(--font-mono);font-size:11px;letter-spacing:2.4px;color:var(--timber-text)}
 .step h3{font-size:20px;line-height:26px;margin-top:12px}
 .step p{margin:8px 0 0;color:var(--ink-muted)}
@@ -97,6 +103,10 @@ h1,h2,h3{margin:0;font-weight:600}
 .reverse{background:var(--forest);color:var(--bone)}
 .reverse .eyebrow{color:#d8b08c}
 .reverse .lead,.reverse p{color:#a8b5af}
+.founder{display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4)}
+.avatar{flex:none;width:72px;height:72px;border-radius:50%;overflow:hidden;background:var(--timber);box-shadow:0 0 0 2px var(--timber)}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+@media (min-width:768px){.avatar{width:88px;height:88px}}
 .about-grid{display:grid;gap:var(--space-8);align-items:center}
 @media (min-width:900px){.about-grid{grid-template-columns:5fr 7fr;gap:var(--space-9)}}
 .portrait{margin:0;width:100%;max-width:420px;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;background:var(--timber)}
@@ -118,6 +128,15 @@ h1,h2,h3{margin:0;font-weight:600}
 .tile--photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(31,58,46,.85) 0,rgba(31,58,46,.15) 55%,transparent)}
 .tile--photo b{color:var(--bone)}
 .tile--photo span{color:#d8b08c}
+.tile--duo{border:0;isolation:isolate}
+.tile--duo picture{display:contents}
+.tile--duo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.tile--duo::before{content:"";position:absolute;inset:0;background:var(--forest);mix-blend-mode:lighten}
+.tile--duo::after{content:"";position:absolute;inset:0;background:var(--timber);mix-blend-mode:multiply}
+.tile--duo .cap{position:absolute;inset:auto 0 0 0;padding:16px;background:linear-gradient(to top,rgba(31,58,46,.88) 0,rgba(31,58,46,.55) 55%,transparent);z-index:1}
+.tile--duo .cap b,.tile--duo .cap span{display:block;position:static}
+.tile--duo b{color:var(--bone)}
+.tile--duo span{color:#d8b08c;margin-top:4px}
 .tile .ph{position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 22px,rgba(31,58,46,.06) 22px 23px)}
 .tile b{position:relative;font-size:18px;line-height:24px}
 .tile span{position:relative;font-family:var(--font-mono);font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--ink-muted);margin-top:4px}
@@ -269,10 +288,10 @@ html.js .reveal.in{opacity:1;transform:none}
     <span class="eyebrow">02 · How we work</span>
     <h2 class="h1">Four steps, no surprises</h2>
     <div class="steps">
-      <div class="step reveal"><span class="num">STEP 01</span><h3>Site visit</h3><p>We walk the site with you, take levels and photos, and talk through what is possible and what it will cost.</p></div>
-      <div class="step reveal"><span class="num">STEP 02</span><h3>Written quote</h3><p>An itemised quote, valid for 30 days. A 30% deposit confirms the booking and reserves materials.</p></div>
-      <div class="step reveal"><span class="num">STEP 03</span><h3>The build</h3><p>Our own team on site with progress photos on WhatsApp. Any change of scope is quoted and agreed in writing first.</p></div>
-      <div class="step reveal"><span class="num">STEP 04</span><h3>Handover</h3><p>A final walk-through together, the balance invoiced on completion, and 12 months of workmanship warranty.</p></div>
+      <article class="step reveal"><figure class="step__photo"><picture><source srcset="assets/photos/step-01-site-visit.webp" type="image/webp"><img src="assets/photos/step-01-site-visit.jpg" alt="Builder with a tape measure at a timber door frame, client in the background" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 01</span><h3>Site visit</h3><p>We walk the site with you, take levels and photos, and talk through what is possible and what it will cost.</p></div></article>
+      <article class="step reveal"><figure class="step__photo"><picture><source srcset="assets/photos/step-02-written-quote.webp" type="image/webp"><img src="assets/photos/step-02-written-quote.jpg" alt="Clipboard and pencil on a workbench beside a tape measure and hand tools" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 02</span><h3>Written quote</h3><p>An itemised quote, valid for 30 days. A 30% deposit confirms the booking and reserves materials.</p></div></article>
+      <article class="step reveal"><figure class="step__photo"><picture><source srcset="assets/photos/step-03-the-build.webp" type="image/webp"><img src="assets/photos/step-03-the-build.jpg" alt="Gloved hand driving a screw into a hinge on pine timber" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 03</span><h3>The build</h3><p>Our own team on site with progress photos on WhatsApp. Any change of scope is quoted and agreed in writing first.</p></div></article>
+      <article class="step reveal"><figure class="step__photo"><picture><source srcset="assets/photos/step-04-handover.webp" type="image/webp"><img src="assets/photos/step-04-handover.jpg" alt="Handing over a set of keys at the end of a job" width="800" height="600" loading="lazy"></picture></figure><div class="step__body"><span class="num">STEP 04</span><h3>Handover</h3><p>A final walk-through together, the balance invoiced on completion, and 12 months of workmanship warranty.</p></div></article>
     </div>
   </div>
 </section>
@@ -282,7 +301,10 @@ html.js .reveal.in{opacity:1;transform:none}
     <figure class="portrait"><picture><source srcset="assets/photos/carpentry-planer.webp" type="image/webp"><img src="assets/photos/carpentry-planer.jpg" alt="A carpenter feeding a hardwood board through a thicknesser in the workshop" width="1200" height="1800" loading="lazy"></picture></figure>
     <div>
       <span class="eyebrow">03 · About</span>
-      <h2 class="h1">Pablo Baldo, founder</h2>
+      <div class="founder">
+        <picture class="avatar"><source srcset="assets/photos/pablo-baldo-160.webp 1x, assets/photos/pablo-baldo-320.webp 2x" type="image/webp"><img src="assets/photos/pablo-baldo-160.jpg" srcset="assets/photos/pablo-baldo-320.jpg 2x" alt="Pablo Baldo" width="160" height="160" loading="lazy"></picture>
+        <h2 class="h1">Pablo Baldo, founder</h2>
+      </div>
       <p class="lead">Pablo started Waiheke Backyards Solutions in 2024 after years in landscaping, carpentry and construction. He lives on the island, quotes every job himself, and is on the tools with the team most days.</p>
       <p>Outdoor work on Waiheke depends on the weather and the ferry. We plan for both, tell you when something slips, and never let a delay become a surprise.</p>
       <ul class="team">
