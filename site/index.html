@@ -100,6 +100,7 @@ h1,h2,h3{margin:0;font-weight:600}
 .about-grid{display:grid;gap:var(--space-8);align-items:center}
 @media (min-width:900px){.about-grid{grid-template-columns:5fr 7fr;gap:var(--space-9)}}
 .portrait{margin:0;width:100%;max-width:420px;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;background:var(--timber)}
+.portrait picture{display:contents}
 .portrait img{width:100%;height:100%;object-fit:cover}
 .team{display:grid;gap:var(--space-4);margin:var(--space-7) 0 0;padding:0;list-style:none}
 @media (min-width:600px){.team{grid-template-columns:repeat(3,minmax(0,1fr))}}
