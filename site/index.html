@@ -28,6 +28,8 @@
 <meta name="twitter:description" content="Decks, fences, retaining walls, sleepouts and renovations on Waiheke Island. Written quotes and a 12-month workmanship warranty.">
 <meta name="twitter:image" content="https://waiheke-backyards-solutions.netlify.app/assets/photos/og-image.jpg">
 <link rel="icon" href="assets/logo/wbs-favicon-forest.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/BricolageGrotesque-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/photos/timber-framing.jpg" as="image" fetchpriority="high">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/components.css">
 <link rel="stylesheet" href="assets/motion.css">
@@ -79,11 +81,11 @@ h1,h2,h3{margin:0;font-weight:600}
   .burger[aria-expanded="true"] .bar2{transform:none}
 }
 /* scrim */
-.drawer-scrim{position:fixed;inset:0;z-index:70;background:var(--scrim);opacity:0;pointer-events:none;transition:opacity var(--motion-fast) var(--ease-firm)}
+.drawer-scrim{position:fixed;inset:0;z-index:120;background:var(--scrim);opacity:0;pointer-events:none;transition:opacity var(--motion-fast) var(--ease-firm)}
 .drawer-scrim[data-open="true"]{opacity:1;pointer-events:auto}
 @media (prefers-reduced-motion:reduce){.drawer-scrim{transition:none}}
 /* drawer, off-canvas right, <900px */
-.mobile-menu{position:fixed;top:0;right:0;bottom:0;z-index:71;width:var(--drawer-width);max-width:100vw;background:var(--surface);border-left:1px solid var(--line);display:flex;flex-direction:column;transform:translateX(100%);visibility:hidden;transition:transform var(--motion-fast) var(--ease-firm),visibility 0s linear var(--motion-fast);padding-top:calc(72px + max(16px,env(safe-area-inset-top)));padding-bottom:max(16px,env(safe-area-inset-bottom));padding-left:24px;padding-right:calc(24px + env(safe-area-inset-right));overflow-y:auto}
+.mobile-menu{position:fixed;top:0;right:0;bottom:0;z-index:121;will-change:transform;width:var(--drawer-width);max-width:100vw;background:var(--surface);border-left:1px solid var(--line);display:flex;flex-direction:column;transform:translateX(100%);visibility:hidden;transition:transform var(--motion-fast) var(--ease-firm),visibility 0s linear var(--motion-fast);padding-top:max(16px,env(safe-area-inset-top));padding-bottom:max(16px,env(safe-area-inset-bottom));padding-left:24px;padding-right:calc(24px + env(safe-area-inset-right));overflow-y:auto}
 .mobile-menu[data-open="true"]{transform:translateX(0);visibility:visible;transition:transform var(--motion-fast) var(--ease-firm)}
 @media (prefers-reduced-motion:reduce){.mobile-menu{transition:none}}
 html:not(.js) .mobile-menu{visibility:visible}

@@ -49,8 +49,8 @@ document.documentElement.classList.add('js');
       burger.setAttribute('aria-expanded', 'true');
       burger.setAttribute('aria-label', 'Close menu');
       if (scrim) scrim.setAttribute('data-open', 'true');
-      if (main) main.setAttribute('inert', '');
-      if (foot) foot.setAttribute('inert', '');
+      // inert on the next frame so style recalc does not share the scroll-lock layout frame
+      requestAnimationFrame(function () { if (drawer.getAttribute('data-open') !== 'true') return; if (main) main.setAttribute('inert', ''); if (foot) foot.setAttribute('inert', ''); });
       setDrawerOpen(true);
       document.addEventListener('keydown', trap, true);
       var f = focusables();
