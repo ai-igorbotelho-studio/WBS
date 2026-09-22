@@ -322,6 +322,7 @@ document.documentElement.classList.add('js');
     dial.addEventListener('change', function () {
       var o = dial.options[dial.selectedIndex];
       phoneHint.textContent = o.getAttribute('data-hint') || '';
+      var v = document.querySelector('.dial__val'); if (v) v.textContent = o.getAttribute('data-cc') + ' ' + o.getAttribute('data-code');
       var ph = document.getElementById('phone'); if (ph) ph.focus();
     });
   }
