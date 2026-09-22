@@ -1,0 +1,5 @@
+# Root config so Netlify builds this repo with no dashboard settings.
+# The site lives in site/; site/netlify.toml carries the headers.
+[build]
+  base = "site"
+  publish = "."
