@@ -62,8 +62,7 @@ document.documentElement.classList.add('js');
       burger.setAttribute('aria-expanded', 'false');
       burger.setAttribute('aria-label', 'Open menu');
       if (scrim) scrim.setAttribute('data-open', 'false');
-      if (main) main.removeAttribute('inert');
-      if (foot) foot.removeAttribute('inert');
+      requestAnimationFrame(function () { if (main) main.removeAttribute('inert'); if (foot) foot.removeAttribute('inert'); });
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
@@ -253,7 +252,8 @@ document.documentElement.classList.add('js');
           var idx = stepNodes.indexOf(entry.target);
           if (idx > maxIdx) {
             maxIdx = idx;
-            railFill.style.setProperty('--fill', String((maxIdx + 1) / stepNodes.length));
+            var fillV = String((maxIdx + 1) / stepNodes.length);
+            requestAnimationFrame(function () { railFill.style.setProperty('--fill', fillV); });
           }
         }
       });

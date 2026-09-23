@@ -10,6 +10,8 @@ def v(tok,th):
 out=['/* WBS design tokens. Generated from design-system/tokens.json by tools/build-tokens.py. Do not edit by hand. */']
 for f in t['type']['fonts']:
     out.append('@font-face{font-family:"%s";src:url("fonts/%s") format("woff2");font-weight:%s;font-style:%s;font-display:swap}'%(f['family'],f['file'].split('/')[-1],f['weight'],f.get('style','normal')))
+for fb in t['type'].get('fallbacks',[]):
+    out.append('@font-face{font-family:"%s";src:%s;size-adjust:%s;ascent-override:%s;descent-override:%s;line-gap-override:%s}'%(fb['family'],','.join('local("%s")'%l for l in (fb['local'] if isinstance(fb['local'],list) else [fb['local']])),fb['sizeAdjust'],fb['ascentOverride'],fb['descentOverride'],fb['lineGapOverride']))
 for i,th in enumerate(themes):
     sel=':root,[data-theme="%s"]'%th if i==0 else '[data-theme="%s"]'%th
     out.append(sel+'{'+';'.join('--%s:%s'%(k['name'],v(k,th)) for k in t['color']['tokens'])+'}')
