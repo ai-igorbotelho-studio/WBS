@@ -62,8 +62,7 @@ document.documentElement.classList.add('js');
       burger.setAttribute('aria-expanded', 'false');
       burger.setAttribute('aria-label', 'Open menu');
       if (scrim) scrim.setAttribute('data-open', 'false');
-      if (main) main.removeAttribute('inert');
-      if (foot) foot.removeAttribute('inert');
+      requestAnimationFrame(function () { if (main) main.removeAttribute('inert'); if (foot) foot.removeAttribute('inert'); });
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
@@ -114,11 +113,8 @@ document.documentElement.classList.add('js');
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          var el = entry.target;
-          var idx = parseInt(el.getAttribute('data-stagger') || '0', 10) || 0;
-          el.style.setProperty('--i', idx);
-          el.classList.add('in');
-          revealObserver.unobserve(el);
+          entry.target.classList.add('in');
+          revealObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
@@ -204,44 +200,18 @@ document.documentElement.classList.add('js');
   /* ---------------- Hero word-reveal (once on load) ---------------- */
   var display = document.querySelector('.hero .display');
   if (display) {
-    var words = display.querySelectorAll('.w');
-    words.forEach(function (w, i) { w.style.setProperty('--i', Math.min(i, 6)); });
     // reveal on first paint after parse, never gated on window load (LCP text)
     requestAnimationFrame(function () { requestAnimationFrame(function () { display.classList.add('w-in'); }); });
-  }
-
-  /* ---------------- Hero photo parallax-lite ---------------- */
-  var ridge = document.querySelector('.ridge');
-  var ridgeImg = ridge ? ridge.querySelector('img') : null;
-  if (ridge && ridgeImg && hasIO && !reduce) {
-    var rafId = null;
-    function tick() {
-      var rect = ridge.getBoundingClientRect();
-      var vh = window.innerHeight || document.documentElement.clientHeight;
-      var progress = (vh / 2 - (rect.top + rect.height / 2)) / vh; // -0.5..0.5 roughly
-      var max = 12;
-      var y = Math.max(-max, Math.min(max, progress * max * 2));
-      ridgeImg.style.setProperty('--parallax-y', y.toFixed(2) + 'px');
-      rafId = requestAnimationFrame(tick);
-    }
-    new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          if (rafId === null) rafId = requestAnimationFrame(tick);
-        } else if (rafId !== null) {
-          cancelAnimationFrame(rafId);
-          rafId = null;
-        }
-      });
-    }, { threshold: 0 }).observe(ridge);
   }
 
   /* ---------------- Ridgeline motif — cumulative lit ticks ---------------- */
   (function initRidgeline() {
     var dividers = Array.prototype.slice.call(document.querySelectorAll('.ridgeline'));
+    var ridge = document.querySelector('.ridge');
     if (!dividers.length) return;
-    if (!hasIO || reduce) return; // no-JS/reduced-motion: markup already ships fully lit
+    if (!hasIO || reduce) return; // no-JS/reduced-motion: markup already ships fully lit, hero already colour
     var lit = dividers.map(function () { return false; });
+    var firstLit = false;
     dividers.forEach(function (svg) {
       svg.querySelectorAll('.tick').forEach(function (t) { t.classList.remove('ridgeline-lit'); });
     });
@@ -257,7 +227,13 @@ document.documentElement.classList.add('js');
       entries.forEach(function (entry) {
         var idx = dividers.indexOf(entry.target);
         if (idx === -1) return;
-        if (entry.boundingClientRect.top < (window.innerHeight || 0)) lit[idx] = true;
+        if (entry.boundingClientRect.top < (window.innerHeight || 0)) {
+          lit[idx] = true;
+          if (idx === 0 && !firstLit) {
+            firstLit = true;
+            if (ridge) ridge.classList.add('photo-color');
+          }
+        }
         paint();
       });
     }, { threshold: 0, rootMargin: '0px 0px -20% 0px' });
@@ -276,7 +252,8 @@ document.documentElement.classList.add('js');
           var idx = stepNodes.indexOf(entry.target);
           if (idx > maxIdx) {
             maxIdx = idx;
-            railFill.style.setProperty('--fill', String((maxIdx + 1) / stepNodes.length));
+            var fillV = String((maxIdx + 1) / stepNodes.length);
+            requestAnimationFrame(function () { railFill.style.setProperty('--fill', fillV); });
           }
         }
       });

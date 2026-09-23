@@ -1,0 +1,128 @@
+/* motion-designer.css — prototype-only chrome, does not affect site/ */
+body {
+  font-family: var(--font-sans);
+  background: var(--surface);
+  color: var(--ink);
+  margin: 0;
+  padding: var(--space-6);
+}
+.proto-head {
+  max-width: 760px;
+  margin: 0 auto var(--space-9);
+}
+.proto-panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+  padding: var(--space-6);
+  margin-bottom: var(--space-7);
+}
+.proto-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font: 500 16px/24px var(--font-sans);
+}
+.proto-toggle input {
+  width: 20px;
+  height: 20px;
+}
+.proto-checklist {
+  margin: var(--space-4) 0 0;
+  padding-left: 1.2em;
+}
+.proto-checklist li {
+  margin-bottom: var(--space-2);
+}
+.proto-section {
+  max-width: 760px;
+  margin: 0 auto var(--space-9);
+}
+.proto-section h2 {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: var(--space-2);
+}
+.proto-note {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-top: var(--space-3);
+}
+.proto-stage {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-md);
+  padding: var(--space-7);
+  background: var(--surface-alt);
+}
+
+/* Reproduce hero styling minimally for the prototype stage */
+.proto-hero .display {
+  font-size: 56px;
+  line-height: 58px;
+  font-weight: 600;
+  letter-spacing: -1.4px;
+  margin: 0 0 var(--space-4);
+}
+.proto-hero .display em { font-style: normal; color: var(--timber-text); }
+
+/* About stage */
+.proto-about {
+  display: grid;
+  grid-template-columns: minmax(0, 200px) 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+.proto-about .portrait {
+  margin: 0;
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--timber);
+}
+.proto-about .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.proto-about .avatar { position: relative; width: 72px; height: 72px; border-radius: 50%; overflow: hidden; background: var(--timber); box-shadow: 0 0 0 2px var(--timber); margin-top: var(--space-4); }
+.proto-about .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Reveal demo cards (below-fold stand-in) */
+.proto-reveal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-4);
+}
+.proto-reveal-grid .card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  background: var(--surface-raised);
+  min-height: 96px;
+}
+.proto-spacer {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-md);
+  margin: var(--space-6) 0;
+}
+
+pre.diff {
+  background: var(--surface-alt);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 20px;
+  white-space: pre;
+}
+.diff-add { color: var(--success); }
+.diff-del { color: var(--danger); }
+
+/* CLS-check marker used by the automated Playwright verification */
+#cls-marker { position: relative; }

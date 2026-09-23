@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Micro-interaction prototype — WBS v4</title>
+<link rel="stylesheet" href="../../site/assets/tokens.css">
+<link rel="stylesheet" href="../../site/assets/components.css">
+<link rel="stylesheet" href="../../site/assets/motion.css">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--surface);color:var(--ink);font:400 16px/24px var(--font-sans);padding:0 0 80px}
+  a{color:var(--brand)}
+  :focus-visible{outline:2px solid var(--focus);outline-offset:2px;box-shadow:0 0 0 1px var(--forest)}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  h1{font-size:28px;margin:0 0 8px}
+  h2{font-size:20px;margin:48px 0 4px}
+  .lede{color:var(--ink-muted);max-width:68ch}
+  .panel-top{background:var(--surface-alt);border-bottom:1px solid var(--line);padding:24px 0;margin-bottom:16px}
+  .rm-toggle{display:flex;align-items:center;gap:10px;font-weight:600;margin:16px 0}
+  .rm-toggle input{width:20px;height:20px}
+  .checklist{margin:12px 0 0;padding-left:20px}
+  .checklist li{margin:4px 0}
+  .checklist code{background:var(--surface-raised);padding:1px 5px;border-radius:4px;font-family:var(--font-mono);font-size:13px}
+  .demo-row{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;margin-top:16px}
+  .demo-note{font-size:13px;color:var(--ink-muted);max-width:32ch}
+  section.demo{border-top:1px solid var(--line);padding-top:8px}
+  .cards{grid-template-columns:repeat(3,minmax(0,220px))}
+  .gallery{grid-template-columns:repeat(3,minmax(0,220px));max-width:700px}
+  .tile{width:220px}
+  form#proto-quote{max-width:420px;grid-template-columns:1fr}
+  #proto-status{min-height:20px}
+  /* Reduced-motion emulation: mirrors the prefers-reduced-motion block in motion.css,
+     scoped to html.emu-reduced so reviewers can toggle it without devtools. */
+  html.emu-reduced .reveal,
+  html.emu-reduced .tile--duo img,
+  html.emu-reduced .tile--duo .cap,
+  html.emu-reduced *{transition-duration:0ms!important;animation-duration:0ms!important}
+  html.emu-reduced .faq .panel[data-open="true"]{grid-template-rows:1fr}
+  html.emu-reduced #proto-quote .wbs-btn[data-state="loading"]::before{animation:none;opacity:.55}
+</style>
+</head>
+<body>
+
+<div class="panel-top">
+  <div class="wrap">
+    <h1>Micro-interaction prototype</h1>
+    <p class="lede">Isolated components from <code>10-interaction-motion-v4.md</code> §3 (service card hover,
+      gallery duotone hover, FAQ disclosure, floating labels, button loading/success). Reuses shipped
+      <code>tokens.css</code> / <code>components.css</code> / <code>motion.css</code> — nothing here is new visual language.</p>
+    <label class="rm-toggle"><input type="checkbox" id="rmToggle"> Emulate <code>prefers-reduced-motion: reduce</code></label>
+    <strong>Keyboard-only walkthrough</strong>
+    <ol class="checklist">
+      <li>Tab into a service card icon area — no visible affordance needed beyond focus ring; tab past a card and confirm <code>:focus-visible</code> matches the mouse-hover surface swap.</li>
+      <li>Tab onto a gallery tile — image should turn to colour exactly as it does on mouse hover, no extra caption movement.</li>
+      <li>Tab to an FAQ question, press <kbd>Enter</kbd>/<kbd>Space</kbd> — panel opens without layout jump; press again to close.</li>
+      <li>Tab into the name/email fields — label should already float correctly for the pre-filled name field on load.</li>
+      <li>Tab to "Send request" and press <kbd>Enter</kbd> — button shows loading then success; the status line is announced via <code>aria-live</code>.</li>
+      <li>Toggle the reduced-motion checkbox above and repeat: FAQ opens instantly, button loading is an opacity pulse (no spinner).</li>
+    </ol>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section class="demo">
+  <h2>Services — hover = focus-visible surface swap</h2>
+  <p class="demo-note">Plain surface swap only, no tilt/lift trick. Hover and keyboard focus produce the identical state.</p>
+  <div class="cards demo-row">
+    <article class="card">
+      <div class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M5 20V12l4-3 4 3 4-3 4 3v8M12 20v-5"/></svg></div>
+      <h3 class="unit-title">Landscape</h3>
+      <p>Ground work that makes a sloping section usable and dry.</p>
+    </article>
+    <article class="card">
+      <div class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 10-10-3-3L5 16l-1 4z"/></svg></div>
+      <h3 class="unit-title">Carpentry</h3>
+      <p>Outdoor timber work built to handle salt air and winter rain.</p>
+    </article>
+    <a class="card" href="#" style="text-decoration:none;color:inherit">
+      <div class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-6 7 6v12"/></svg></div>
+      <h3 class="unit-title">Build (as a link)</h3>
+      <p>Same card as an anchor, to prove focus-visible parity on both elements/tags.</p>
+    </a>
+  </div>
+</section>
+
+<section class="demo">
+  <h2>Recent work — duotone→colour, tab-reachable, no caption-rise</h2>
+  <p class="demo-note">Caption sits static; only the photo crossfades from duotone to colour on hover
+    <em>and</em> <code>:focus-visible</code>. No separate transform on the caption block.</p>
+  <div class="gallery demo-row">
+    <a class="tile tile--duo" data-theme="dark" href="#" aria-label="Cedar deck and pergola, Carpentry">
+      <img src="https://images.pexels.com/photos/10847167/pexels-photo-10847167.jpeg?w=440&h=330&fit=crop" alt="" width="440" height="330" loading="lazy">
+      <div class="cap"><b>Cedar deck and pergola</b><span>Onetangi · Carpentry</span></div>
+    </a>
+    <a class="tile tile--duo" data-theme="dark" href="#" aria-label="Timber retaining and steps, Landscape">
+      <img src="https://images.pexels.com/photos/34532537/pexels-photo-34532537.jpeg?w=440&h=330&fit=crop" alt="" width="440" height="330" loading="lazy">
+      <div class="cap"><b>Timber retaining and steps</b><span>Oneroa · Landscape</span></div>
+    </a>
+  </div>
+</section>
+
+<section class="demo">
+  <h2>FAQ — grid-rows disclosure</h2>
+  <p class="demo-note">Native button semantics, <code>aria-expanded</code>, question stays anchored while the
+    answer opens/closes. Under reduced-motion the panel flips state instantly (no grid-rows transition).</p>
+  <div class="faq" id="protoFaq">
+    <div><button type="button" class="q-btn" id="faq-btn-0" aria-expanded="false" aria-controls="faq-panel-0">How long does a deck or renovation take?</button>
+      <div class="panel" id="faq-panel-0" role="region" aria-labelledby="faq-btn-0" data-open="false"><div><p>It depends on scope and site access. The timeline is set in the quote, before work starts.</p></div></div></div>
+    <div><button type="button" class="q-btn" id="faq-btn-1" aria-expanded="false" aria-controls="faq-panel-1">How does the quote work?</button>
+      <div class="panel" id="faq-panel-1" role="region" aria-labelledby="faq-btn-1" data-open="false"><div><p>After the site visit you get an itemised written quote, valid for 30 days.</p></div></div></div>
+  </div>
+</section>
+
+<section class="demo">
+  <h2>Contact — floating labels + button loading/success</h2>
+  <p class="demo-note">Name is pre-filled to prove the label floats correctly on load (via
+    <code>:not(:placeholder-shown)</code>, not JS/animation-dependent). Submit to see loading → success states.</p>
+  <form id="proto-quote" novalidate>
+    <div class="wbs-field wbs-field--float"><input id="p-name" class="wbs-field__input" type="text" placeholder=" " value="Jess Carter"><label for="p-name" class="wbs-field__label">Your name</label></div>
+    <div class="wbs-field wbs-field--float"><input id="p-email" class="wbs-field__input" type="email" placeholder=" "><label for="p-email" class="wbs-field__label">Email</label></div>
+    <div><button class="wbs-btn wbs-btn--primary" type="submit" id="proto-submit">Send request</button></div>
+    <p class="status" id="proto-status" role="status" aria-live="polite"></p>
+  </form>
+</section>
+
+<section class="demo">
+  <h2>Proposed diff for <code>site/</code> (text only — no files touched here)</h2>
+  <pre style="white-space:pre-wrap;background:var(--surface-raised);border:1px solid var(--line);border-radius:var(--radius-md);padding:16px;font-size:13px;line-height:20px">
+assets/motion.css
+- Remove the caption-rise transform block:
+    html.js .tile--duo .cap {
+      transform: translateY(8px);
+      opacity: .92;
+      transition: transform var(--motion-base) var(--ease-firm), opacity var(--motion-base) var(--ease-firm);
+    }
+  and its :hover/:focus-within/(hover:none) counterparts that animate `.cap` transform/opacity.
+  Keep only the `.tile--duo img` filter crossfade rule; `.cap` stays static (no transition, no transform).
++ Add explicit :focus-visible parity next to every hover-only interactive rule that lacked it:
+    .cards .card:hover .icon  -> add  .cards .card:focus-within .icon { transform: translateY(-2px); }
+    (gallery already correctly pairs :hover with :focus-within — keep as-is)
+  Audit target: any future hover-only rule added to this file must ship with a focus-visible/focus-within
+  twin in the same commit (services icon lift is the one gap found in v3 markup).
+
+assets/components.css
++ No changes needed for card/field/button base styles; :focus-visible already defined globally.
+
+site/index.html
+- Wrap `.tile--duo` figures in a real focusable element (e.g. swap <figure> for <a> around the whole
+  tile, or add tabindex="0" + keydown handler) so the hover/focus-within crossfade is keyboard-reachable
+  the same way the prototype demonstrates with <a class="tile tile--duo">. Currently the production
+  markup uses non-interactive <figure> tiles with no link, so :focus-within has nothing to key off.
+- No markup change needed for FAQ, floating labels, or button loading/success — already correct and
+  matches this prototype's isolated components verbatim.
+
+assets/site.js
+- No changes: FAQ enhancement, floating-label markup, and button loading/success logic already ship
+  as spec'd; this prototype's JS only reproduces them for isolated review.
+  </pre>
+</section>
+
+</div>
+
+<script src="micro-interaction.js" defer></script>
+</body>
+</html>

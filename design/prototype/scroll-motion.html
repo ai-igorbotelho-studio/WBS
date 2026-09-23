@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WBS — Scroll &amp; Motion prototype</title>
+<meta name="description" content="Scroll-driven interaction prototype: hero crossfade, ridgeline, process rail, opacity-only reveal, FLIP gallery filter.">
+<link rel="stylesheet" href="../../site/assets/tokens.css">
+<link rel="stylesheet" href="../../site/assets/motion.css">
+<link rel="stylesheet" href="scroll-motion.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="rig">
+  <div class="wrap">
+    <h1>Scroll &amp; Motion prototype <span class="badge">scroll-motion</span></h1>
+    <p>Owns: header scroll-spy + compact state, hero photo crossfade (replaces parallax), ridgeline
+      cumulative lit ticks, process rail fill, opacity-only reveal, FLIP gallery filter. See
+      <code>design/10-interaction-motion-v4.md</code>.</p>
+    <label><input type="checkbox" id="emu-reduced"> Emulate <code>prefers-reduced-motion: reduce</code> (in addition to your OS setting)</label>
+    <label><input type="checkbox" id="flip-mode"> Instant gallery filter (skip FLIP animation) — auto-on under reduced motion</label>
+    <p><b>Keyboard checklist</b> — every item below should be true with mouse unplugged:</p>
+    <ol>
+      <li>Tab reaches every nav link, chip and gallery tile in visual order; focus ring visible on each.</li>
+      <li>Scroll-spy <code>aria-current</code> updates by scroll position alone, not by focus — tabbing does not fight it.</li>
+      <li>Filter chips are reachable and operable with Enter/Space; <code>aria-pressed</code> reflects the active one.</li>
+      <li>No element traps focus; no keystroke is hijacked to control scroll speed or position.</li>
+      <li>With reduced motion emulated, every effect below renders its end state instantly — nothing is missing, only un-animated.</li>
+    </ol>
+  </div>
+</div>
+
+<header class="header" id="siteHeader">
+  <div class="wrap nav">
+    <a class="logo" href="#top">Waiheke Backyards Solutions</a>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="#top">Hero</a></li>
+      <li><a href="#ridgeline-2">Landscape</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#cards">Cards</a></li>
+      <li><a href="#work">Gallery</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+<section id="top">
+  <div class="wrap hero">
+    <div>
+      <span class="eyebrow">Stand-in copy</span>
+      <h2 class="h1">The build story unfolds as you scroll</h2>
+      <p class="lead">This hero photo starts duotone. As soon as the first ridgeline divider below
+        lights, the photo crossfades to full colour — a one-shot IntersectionObserver swap, not a
+        per-frame parallax listener. Scroll down.</p>
+    </div>
+    <figure class="ridge">
+      <img src="../../site/assets/photos/timber-framing.webp" alt="Timber wall framing under construction, lit by afternoon sun" width="1600" height="2400" loading="eager">
+      <figcaption>Framing · Waiheke</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="wrap" aria-hidden="true">
+  <svg class="ridgeline" viewBox="0 0 600 24" preserveAspectRatio="none"><path d="M0 18 L80 6 L160 20 L240 4 L320 16 L400 8 L480 20 L560 6 L600 14"/><circle class="tick" data-i="0" cx="100" cy="12" r="2"/><circle class="tick" data-i="1" cx="300" cy="12" r="2"/><circle class="tick" data-i="2" cx="500" cy="12" r="2"/></svg>
+</div>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">01 · Landscape (stand-in)</span>
+    <h2 class="h1">Retaining, paths and planting</h2>
+    <p>Stand-in copy for the section that would normally carry the landscaping pitch. Scroll further
+      for the second ridgeline handoff.</p>
+  </div>
+</section>
+
+<div class="wrap" aria-hidden="true" id="ridgeline-2">
+  <svg class="ridgeline" viewBox="0 0 600 24" preserveAspectRatio="none"><path d="M0 10 L70 20 L150 6 L230 18 L310 4 L390 16 L470 8 L540 20 L600 12"/><circle class="tick" data-i="0" cx="100" cy="12" r="2"/><circle class="tick" data-i="1" cx="300" cy="12" r="2"/><circle class="tick" data-i="2" cx="500" cy="12" r="2"/></svg>
+</div>
+
+<section class="alt" id="process">
+  <div class="wrap">
+    <span class="eyebrow">02 · How we work</span>
+    <h2 class="h1">Four steps, no surprises</h2>
+    <p>The rail below fills as each step card crosses 40% into view — one IntersectionObserver per
+      card, no scroll listener, no rAF loop.</p>
+    <div class="steps-wrap">
+      <div class="rail" aria-hidden="true"><span class="rail__fill"></span></div>
+      <div class="steps">
+        <article class="step"><span class="num">STEP 01</span><h3>Site visit</h3><p>Levels, photos, a walk through what is possible.</p></article>
+        <article class="step"><span class="num">STEP 02</span><h3>Written quote</h3><p>Itemised, valid 30 days, 30% deposit confirms.</p></article>
+        <article class="step"><span class="num">STEP 03</span><h3>The build</h3><p>Our team on site, progress photos as we go.</p></article>
+        <article class="step"><span class="num">STEP 04</span><h3>Handover</h3><p>Final walk-through, balance invoiced, 12-month warranty.</p></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap" aria-hidden="true">
+  <svg class="ridgeline" viewBox="0 0 600 24" preserveAspectRatio="none"><path d="M0 14 L60 4 L140 18 L220 8 L300 20 L380 6 L460 16 L540 4 L600 12"/><circle class="tick" data-i="0" cx="100" cy="12" r="2"/><circle class="tick" data-i="1" cx="300" cy="12" r="2"/><circle class="tick" data-i="2" cx="500" cy="12" r="2"/></svg>
+</div>
+
+<section id="cards">
+  <div class="wrap">
+    <span class="eyebrow">03 · Stand-in card grid</span>
+    <h2 class="h1">Opacity-only reveal, no CLS</h2>
+    <p>Each card below fades in (opacity only, no <code>translateY</code>) the first time it is 15%
+      visible, then unobserves itself. Compare with <code>site/assets/motion.css .reveal</code>,
+      which still animates a 16px rise — the CLS source flagged in
+      <code>docs/performance-v3-2026-09-22.md</code>.</p>
+    <div class="card-grid">
+      <article class="card reveal2" data-stagger="0"><h3>Timber decking</h3><p>Stand-in copy for a service card.</p></article>
+      <article class="card reveal2" data-stagger="1"><h3>Retaining walls</h3><p>Stand-in copy for a service card.</p></article>
+      <article class="card reveal2" data-stagger="2"><h3>Fencing</h3><p>Stand-in copy for a service card.</p></article>
+      <article class="card reveal2" data-stagger="3"><h3>Garden paths</h3><p>Stand-in copy for a service card.</p></article>
+      <article class="card reveal2" data-stagger="4"><h3>Pergolas</h3><p>Stand-in copy for a service card.</p></article>
+      <article class="card reveal2" data-stagger="5"><h3>Planting</h3><p>Stand-in copy for a service card.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="work">
+  <div class="wrap">
+    <span class="eyebrow">04 · Recent work</span>
+    <h2 class="h1">Filter with FLIP reflow</h2>
+    <div class="filters" role="group" aria-label="Filter by category">
+      <button type="button" class="chip" data-filter="All" aria-pressed="true">All</button>
+      <button type="button" class="chip" data-filter="Landscape" aria-pressed="false">Landscape</button>
+      <button type="button" class="chip" data-filter="Carpentry" aria-pressed="false">Carpentry</button>
+      <button type="button" class="chip" data-filter="Build" aria-pressed="false">Build</button>
+    </div>
+    <div class="gallery">
+      <figure class="tile" data-cat="Landscape"><b>Retaining and steps</b></figure>
+      <figure class="tile" data-cat="Carpentry"><b>Timber deck</b></figure>
+      <figure class="tile" data-cat="Build"><b>Garden build</b></figure>
+      <figure class="tile" data-cat="Landscape"><b>Garden path</b></figure>
+      <figure class="tile" data-cat="Carpentry"><b>Pergola frame</b></figure>
+      <figure class="tile" data-cat="Build"><b>Deck build</b></figure>
+      <figure class="tile" data-cat="Landscape"><b>Planting bed</b></figure>
+      <figure class="tile" data-cat="Carpentry"><b>Fence panel</b></figure>
+      <figure class="tile" data-cat="Build"><b>Site handover</b></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="h1">Proposed diff for <code>site/</code></h2>
+    <p>Once approved, port this prototype into production as follows (no other behaviour changes):</p>
+    <pre class="diff">site/assets/motion.css
+  - html.js .reveal { opacity:0; transform:translateY(var(--reveal-distance)); transition: opacity …, transform …; }
+  + html.js .reveal { opacity:0; transition: opacity var(--motion-base) var(--ease-steady); transition-delay: calc(var(--stagger-step) * var(--i,0)); }
+    (drop --reveal-distance entirely; --reveal-distance token becomes dead and can be removed from :root)
+  - html.js .ridge img { transform: translateY(var(--parallax-y, 0px)); will-change: transform; }
+  + html.js .ridge img { filter: grayscale(1) contrast(1.05); transition: filter var(--motion-slow) var(--ease-steady); }
+  + html.js .ridge.photo-color img { filter: grayscale(0) contrast(1); }
+    (--parallax-max token becomes dead, remove)
+
+site/assets/site.js
+  - "Hero photo parallax-lite" block (rAF tick loop + IO play/pause) — delete in full (~24 lines)
+  + one-shot IO on the first .ridgeline that adds .photo-color to .ridge and disconnects
+  ~ "Ridgeline motif" IO callback gains one line: `if (idx === 0) ridge.classList.add('photo-color')`
+  ~ "Reveal + stagger" IO callback: drop the CLS-causing transform, keep opacity + stagger delay (no JS change, CSS-only)
+  ~ "Recent work — filter with FLIP" gains an instant-mode branch already present for prefers-reduced-motion;
+    optionally exposes it as a persisted user preference if the Head wants the toggle in production (not required — the
+    toggle in this prototype is a review aid, reduced-motion already covers the real requirement)
+
+site/index.html
+  ~ <figure class="ridge"> keeps its <picture>/webp markup unchanged; no new markup needed for the crossfade
+    (class toggle only touches the existing <img>)
+
+Net JS: removes the parallax rAF+IO block (~24 lines / ~0.6 KB), adds ~6 lines to the ridgeline IO
+callback (~0.15 KB) — net negative, matching §5 of 10-interaction-motion-v4.md.</pre>
+  </div>
+</section>
+
+</main>
+
+<script src="scroll-motion.min.js"></script>
+</body>
+</html>

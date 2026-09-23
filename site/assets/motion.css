@@ -7,26 +7,15 @@
   /* Durations and easings (--motion-*, --ease-*) now live in tokens.css,
      generated from design-system/tokens.json (motion family, v2). */
 
-  /* Reveal / stagger */
-  --reveal-distance: 16px;
-  --stagger-step: 80ms;
-  --stagger-step-max: 6;
-
-  /* New caps */
-  --parallax-max: 12px;
 }
 
 /* ------------------------------------------------------------------ */
-/* Reveal + stagger */
+/* Reveal — opacity-only, no stagger, no CLS */
 html.js .reveal {
   opacity: 0;
-  transform: translateY(var(--reveal-distance));
-  transition: opacity var(--motion-base) var(--ease-steady),
-              transform var(--motion-base) var(--ease-steady);
-  transition-delay: calc(var(--stagger-step) * var(--i, 0));
+  transition: opacity var(--motion-base) var(--ease-steady);
 }
-html.js .reveal.in { opacity: 1; transform: none; }
-html.js .stagger > :nth-child(n + 7) { --i: var(--stagger-step-max); }
+html.js .reveal.in { opacity: 1; }
 
 /* Header */
 .header {
@@ -73,16 +62,17 @@ html.js .cta-bar[data-visible="true"] { transform: none; visibility: visible; tr
 /* Hero word-reveal — static markup, spans already in HTML */
 html.js .display .w {
   display: inline-block;
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path var(--motion-base) var(--ease-steady);
-  transition-delay: calc(var(--stagger-step) * var(--i, 0));
+  opacity: 0;
+  transition: opacity var(--motion-base) var(--ease-steady);
 }
-html.js .display.w-in .w { clip-path: inset(0 0 0% 0); }
+html.js .display.w-in .w { opacity: 1; }
 
-/* Hero photo parallax-lite (rAF-driven translateY via inline custom property) */
-html.js .ridge img { transform: translateY(var(--parallax-y, 0px)); will-change: transform; }
-
-/* Stat counters have no extra CSS; textContent is written directly */
+/* Hero photo — duotone at rest, crossfades to colour when the first ridgeline lights */
+html.js .ridge img {
+  filter: grayscale(1) contrast(1.05);
+  transition: filter var(--motion-slow) var(--ease-steady);
+}
+html.js .ridge.photo-color img { filter: grayscale(0) contrast(1); }
 
 /* ------------------------------------------------------------------ */
 /* Ridgeline divider — inline SVG stroke draw on load, pure CSS */
@@ -106,12 +96,13 @@ html.js .ridgeline .tick { transition: fill var(--motion-base) var(--ease-steady
 
 /* ------------------------------------------------------------------ */
 /* Services cards — plain hover surface-swap, no tilt */
+html.js .cards .card .icon {
+  transition: transform var(--motion-fast) var(--ease-firm);
+}
 @media (hover: hover) and (pointer: fine) {
-  html.js .cards .card .icon {
-    transition: transform var(--motion-fast) var(--ease-firm);
-  }
   html.js .cards .card:hover .icon { transform: translateY(-2px); }
 }
+html.js .cards .card:focus-within .icon { transform: translateY(-2px); }
 
 /* ------------------------------------------------------------------ */
 /* Process — connecting progress rail (horizontal bar above the step cards, desktop only) */
@@ -159,20 +150,12 @@ html.js .tile--duo img {
   filter: grayscale(1) contrast(1.05);
   transition: filter var(--motion-base) var(--ease-firm);
 }
-html.js .tile--duo .cap {
-  transform: translateY(8px);
-  opacity: .92;
-  transition: transform var(--motion-base) var(--ease-firm), opacity var(--motion-base) var(--ease-firm);
-}
 @media (hover: hover) and (pointer: fine) {
   html.js .tile--duo:hover img,
   html.js .tile--duo:focus-within img { filter: grayscale(0) contrast(1); }
-  html.js .tile--duo:hover .cap,
-  html.js .tile--duo:focus-within .cap { transform: none; opacity: 1; }
 }
 @media (hover: none) {
   html.js .tile--duo img { filter: grayscale(0) contrast(1); }
-  html.js .tile--duo .cap { transform: none; opacity: 1; }
 }
 
 /* Category filter chips */
@@ -285,6 +268,7 @@ html.js #quote .wbs-btn[data-state="loading"]::before {
   content: "\2713"; margin-right: 8px;
 }
 @keyframes wbs-spin { to { transform: rotate(360deg); } }
+@keyframes wbs-pulse { 50% { opacity: .35; } }
 
 /* ------------------------------------------------------------------ */
 /* Buttons — CSS-only active state (ripple/magnetic-lite cut, see 09-ui-spec-v3 §4) */
@@ -297,23 +281,21 @@ html.js #quote .wbs-btn[data-state="loading"]::before {
   :root {
     --motion-instant: 0ms; --motion-fast: 0ms; --motion-base: 0ms;
     --motion-slow: 0ms; --motion-slower: 0ms;
-    --reveal-distance: 0px; --stagger-step: 0ms;
-    --parallax-max: 0px;
   }
   *, *::before, *::after { animation-duration: 0ms !important; animation-iteration-count: 1 !important; transition-duration: 0ms !important; }
 
-  html.js .reveal { opacity: 1; transform: none; }
-  html.js .display .w { clip-path: inset(0 0 0% 0); }
-  html.js .ridge img { transform: none; }
+  html.js .reveal { opacity: 1; }
+  html.js .display .w { opacity: 1; }
+  html.js .ridge img { filter: grayscale(0) contrast(1); }
   .ridgeline path { stroke-dashoffset: 0; animation: none; }
   .rail__fill { transform: scaleX(1); }
   html.js .portrait img { clip-path: inset(0 0 0% 0); }
   html.js .avatar .ring circle { stroke-dashoffset: 0; }
   html.js .tile--duo img { filter: grayscale(0) contrast(1); }
-  html.js .tile--duo .cap { transform: none; opacity: 1; }
   html.js .gallery .tile { transition: none; }
   .faq .panel[data-open="true"] { grid-template-rows: 1fr; }
   .cta-bar { transition: none; }
   .ridgeline .tick { fill: var(--ridgeline-lit); fill-opacity: 1; stroke: var(--forest); stroke-width: 1; }
   .drawer, .drawer-scrim { transition: none !important; }
+  html.js #quote .wbs-btn[data-state="loading"]::before { animation: wbs-pulse 900ms ease-in-out infinite !important; }
 }

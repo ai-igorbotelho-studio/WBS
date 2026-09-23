@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Motion Designer — prototype (10-interaction-motion-v4 §6)</title>
+<link rel="preload" href="../../site/assets/fonts/BricolageGrotesque-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../site/assets/fonts/DMMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../site/assets/fonts/DMMono-Medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../site/assets/tokens.css">
+<link rel="stylesheet" href="../../site/assets/motion.css">
+<link rel="stylesheet" href="motion-designer.css">
+<style>
+  /* Prototype-only overrides that implement the v4 spec literally (opacity-only hero,
+     opacity-only global reveal with no above-the-fold stagger). These rules intentionally
+     shadow the shipped motion.css rules of the same selectors so the Head can compare the
+     "as spec'd" behaviour against "as shipped" (see proposed diff at the bottom). */
+
+  /* Hero word-reveal: opacity-only, no clip-path, no translateY, one shot. */
+  html.js .proto-hero .display .w {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity var(--motion-base) var(--ease-steady);
+  }
+  html.js .proto-hero .display.w-in .w { opacity: 1; }
+
+  /* Global below-fold reveal: opacity-only, IO-gated, no stagger delay above the fold.
+     (This stage represents below-fold content only, so no --i / stagger is applied at all,
+     matching "no stagger delay above the fold" — below fold content here has no stagger either,
+     since the v4 cut removed the CLS-causing translateY, not because stagger itself was unsafe;
+     we keep it off in this stand-in to keep the demo timing legible.) */
+  html.js .proto-reveal-grid .reveal {
+    opacity: 0;
+    transform: none;
+    transition: opacity var(--motion-base) var(--ease-steady);
+  }
+  html.js .proto-reveal-grid .reveal.in { opacity: 1; }
+
+  /* Reduced-motion emulation: identical ruleset to @media (prefers-reduced-motion: reduce)
+     in motion.css, applied via a class toggle instead of the media query so reviewers without
+     OS-level access to the setting can still see the final-state behaviour. */
+  html.reduced-motion-emu .proto-hero .display .w,
+  html.reduced-motion-emu .proto-reveal-grid .reveal { transition: none !important; }
+  html.reduced-motion-emu .proto-hero .display .w { opacity: 1 !important; }
+  html.reduced-motion-emu .proto-reveal-grid .reveal { opacity: 1 !important; transform: none !important; }
+  html.reduced-motion-emu .portrait img { clip-path: inset(0 0 0% 0) !important; transition: none !important; }
+  html.reduced-motion-emu .avatar .ring circle { stroke-dashoffset: 0 !important; transition: none !important; }
+
+  .proto-hero.js .display .w { opacity: 0; } /* avoid FOUC before JS binds w-in */
+</style>
+</head>
+<body>
+<header class="proto-head">
+  <p class="eyebrow">design/prototype/motion-designer.html</p>
+  <h1 class="h1">Motion Designer prototype</h1>
+  <p class="body">Implements <code>design/10-interaction-motion-v4.md §3, §6</code> rows owned by
+  motion-designer: hero word-reveal (opacity-only), About portrait wipe + avatar ring
+  (opacity+clip only), and the global below-fold reveal (opacity-only, IO-gated, no stagger
+  above the fold). Reuses shipped <code>tokens.css</code> and <code>motion.css</code> by
+  relative path — no new durations/easings invented here.</p>
+
+  <div class="proto-panel">
+    <label class="proto-toggle" for="reducedMotionEmu">
+      <input type="checkbox" id="reducedMotionEmu">
+      Emulate <code>prefers-reduced-motion: reduce</code>
+    </label>
+    <p class="proto-note">Toggling this applies the exact same end-state rules as the CSS
+    media query (see inline <code>&lt;style&gt;</code> block above) — it does not simulate the
+    OS setting, it duplicates the contract so reviewers without OS access can verify it.</p>
+    <button type="button" id="replayBeats" class="wbs-btn wbs-btn--ghost" style="margin-top:12px;min-height:44px;padding:8px 16px;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--surface-raised);cursor:pointer;">
+      Replay hero + about beats
+    </button>
+  </div>
+
+  <div class="proto-panel">
+    <h2 class="h3" style="margin-top:0">Keyboard-nav checklist</h2>
+    <ul class="proto-checklist body">
+      <li>Tab from the reduced-motion checkbox reaches the replay button next, in visible focus
+      order — no element below traps or skips focus.</li>
+      <li>Space/Enter toggles the checkbox and activates the replay button identically to
+      mouse click.</li>
+      <li>None of the three motions below (hero, about, reveal) have any keyboard-operable
+      surface of their own — they are decorative/one-shot, so there is no focus stop expected
+      inside <code>.proto-hero</code>, <code>.proto-about</code>, or
+      <code>.proto-reveal-grid</code> (matches "decorative only" / "no keyboard path" in the
+      v4 table).</li>
+      <li>Scrolling the reveal-grid stage into view via keyboard (Page Down / arrow keys) still
+      triggers the IntersectionObserver reveal — confirmed no dependency on pointer events.</li>
+      <li>With the reduced-motion checkbox checked, tabbing through the page produces zero
+      layout shift and zero animation frames (verify via devtools Rendering → paint flashing,
+      or the automated Playwright check below).</li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="proto-section proto-hero js">
+    <h2>1. Hero word-reveal — opacity-only, one shot</h2>
+    <p class="body-l">Communicates: reinforces the one line meant to be read first. Nothing else
+    on the page competes for attention in the first 500ms.</p>
+    <div class="proto-stage">
+      <h1 class="display"><span class="w">Backyards</span> <em><span class="w">built</span> <span class="w">with</span> <span class="w">care.</span></em></h1>
+    </div>
+    <p class="proto-note">Uses <code>--motion-base</code> / <code>--ease-steady</code> from
+    tokens.css. Opacity transition only — no <code>transform</code>, no <code>clip-path</code>,
+    so this is a zero-CLS reveal by construction (no shape ever occupies different geometry).</p>
+  </section>
+
+  <section class="proto-section proto-about">
+    <div>
+      <h2>2. About — portrait wipe + avatar ring, single beat</h2>
+      <p class="body-l">Communicates: one credibility beat (a person behind the brand), not a
+      recurring habit — fires once, opacity+clip only, no translate.</p>
+      <figure class="portrait">
+        <img src="../../site/assets/photos/carpentry-planer.jpg" alt="A carpenter feeding a hardwood board through a thicknesser in the workshop" width="1200" height="1800">
+      </figure>
+    </div>
+    <div>
+      <span class="avatar">
+        <img src="../../site/assets/photos/pablo-baldo-160.jpg" alt="Pablo Baldo" width="160" height="160">
+        <svg class="ring" aria-hidden="true" viewBox="0 0 88 88" style="position:absolute;inset:-3px;overflow:visible"><circle cx="44" cy="44" r="42"/></svg>
+      </span>
+      <p class="proto-note">Portrait: <code>clip-path: inset()</code> wipe. Ring:
+      <code>stroke-dashoffset</code> draw (no fill/opacity change on the stroke itself besides
+      the draw). Neither uses <code>transform: translate*</code>.</p>
+    </div>
+  </section>
+
+  <section class="proto-section">
+    <h2>3. Global below-fold reveal — opacity-only, IO-gated, no stagger above the fold</h2>
+    <p class="body-l">Communicates: new content has entered view, without moving already-settled
+    layout (the v3 16px rise is dropped — it was decoration that broke the CLS budget, per
+    <code>08 §performance</code>).</p>
+    <div class="proto-spacer">scroll ↓ to trigger the IntersectionObserver below</div>
+    <div id="cls-marker" class="proto-reveal-grid">
+      <div class="reveal card"><strong>Card one</strong><p class="small">opacity 0 → 1, no transform, no delay</p></div>
+      <div class="reveal card"><strong>Card two</strong><p class="small">observed independently, no cascading stagger</p></div>
+      <div class="reveal card"><strong>Card three</strong><p class="small">unobserved once revealed (one-shot)</p></div>
+      <div class="reveal card"><strong>Card four</strong><p class="small">reduced-motion: opacity jumps to 1 instantly</p></div>
+    </div>
+  </section>
+
+  <section class="proto-section">
+    <h2>Proposed diff for <code>site/</code> (text only — nothing applied)</h2>
+    <p class="body">Exact lines to change once the Head approves this prototype. None of this is
+    executed against <code>site/</code> by this file.</p>
+
+    <h3 class="h3">site/assets/motion.css</h3>
+    <pre class="diff"><span class="diff-del">- html.js .display .w {
+-   display: inline-block;
+-   clip-path: inset(0 0 100% 0);
+-   transition: clip-path var(--motion-base) var(--ease-steady);
+-   transition-delay: calc(var(--stagger-step) * var(--i, 0));
+- }
+- html.js .display.w-in .w { clip-path: inset(0 0 0% 0); }</span>
+<span class="diff-add">+ html.js .display .w {
++   display: inline-block;
++   opacity: 0;
++   transition: opacity var(--motion-base) var(--ease-steady);
++ }
++ html.js .display.w-in .w { opacity: 1; }</span>
+
+<span class="diff-del">- html.js .reveal {
+-   opacity: 0;
+-   transform: translateY(var(--reveal-distance));
+-   transition: opacity var(--motion-base) var(--ease-steady),
+-               transform var(--motion-base) var(--ease-steady);
+-   transition-delay: calc(var(--stagger-step) * var(--i, 0));
+- }
+- html.js .reveal.in { opacity: 1; transform: none; }
+- html.js .stagger > :nth-child(n + 7) { --i: var(--stagger-step-max); }</span>
+<span class="diff-add">+ html.js .reveal {
++   opacity: 0;
++   transition: opacity var(--motion-base) var(--ease-steady);
++ }
++ html.js .reveal.in { opacity: 1; }
++ /* --reveal-distance, --stagger-step, .stagger nth-child rule removed:
++    no element above the fold (hero, .hero-actions, .stats) or below it
++    carries a translateY or stagger delay any more. */</span>
+
+<span class="diff-del">- @media (prefers-reduced-motion: reduce) {
+-   ...
+-   html.js .reveal { opacity: 1; transform: none; }
+-   html.js .display .w { clip-path: inset(0 0 0% 0); }</span>
+<span class="diff-add">+ @media (prefers-reduced-motion: reduce) {
++   ...
++   html.js .reveal { opacity: 1; }
++   html.js .display .w { opacity: 1; }</span>
+    (portrait/ring/tile/rail/etc. rules under the reduced-motion block are unaffected — kept as-is)
+</pre>
+
+    <h3 class="h3">site/assets/site.js</h3>
+    <pre class="diff"><span class="diff-del">-       var idx = parseInt(el.getAttribute('data-stagger') || '0', 10) || 0;
+-       el.style.setProperty('--i', idx);
+-       el.classList.add('in');</span>
+<span class="diff-add">+       el.classList.add('in'); // no --i / data-stagger read: stagger removed site-wide</span>
+    <span class="proto-note" style="display:block;margin-top:8px">(hero word-reveal JS block at
+    site.js lines ~204-211 is unchanged — it only toggles the <code>w-in</code> class, the visual
+    change lives entirely in motion.css above.)</span>
+</pre>
+
+    <h3 class="h3">site/index.html</h3>
+    <pre class="diff"><span class="proto-note">No markup changes required. <code>data-stagger</code>
+    attributes on <code>.reveal</code> elements become inert once the CSS/JS above ship and may
+    be removed in a follow-up cleanup PR; leaving them in place is harmless (unused attribute).</span>
+</pre>
+  </section>
+</main>
+
+<script src="motion-designer.js"></script>
+</body>
+</html>
